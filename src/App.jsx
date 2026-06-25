@@ -203,21 +203,40 @@ const TITLE_ODDS_NOTE = "Pre-tournament line from the December draw vs. current 
 
 const R32 = [
   { m: 73, date: "Jun 28", venue: "Los Angeles", a: { team: "South Africa", flag: "🇿🇦", conf: true }, b: { team: "Canada", flag: "🇨🇦", conf: true } },
-  { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { label: "3rd A/B/C/D/F", cands: [{ t: "Scotland", pct: 45 }, { t: "Sweden", pct: 30 }, { t: "Australia", pct: 15 }] } },
+  // M74b: 3rd from A/B/C/D/F — Bosnia leads (4 pts, best 3rd so far), then S.Korea & Scotland (3 pts each), Sweden (likely 3rd F)
+  { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { label: "3rd A/B/C/D/F", cands: [{ t: "Bosnia", pct: 42 }, { t: "South Korea", pct: 22 }, { t: "Scotland", pct: 14 }, { t: "Sweden", pct: 14 }] } },
   { m: 75, date: "Jun 30", venue: "Guadalajara", a: { label: "Grp F 1st", cands: [{ t: "Netherlands", pct: 55 }, { t: "Japan", pct: 45 }] }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
   { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { label: "Grp F 2nd", cands: [{ t: "Japan", pct: 50 }, { t: "Netherlands", pct: 45 }, { t: "Sweden", pct: 5 }] } },
-  { m: 77, date: "Jun 30", venue: "New York NJ", a: { label: "Grp I 1st", cands: [{ t: "France", pct: 80 }, { t: "Norway", pct: 20 }] }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Cabo Verde", pct: 35 }, { t: "Uruguay", pct: 30 }, { t: "Belgium", pct: 25 }] } },
-  { m: 78, date: "Jun 30", venue: "Dallas", a: { label: "Grp E 2nd", cands: [{ t: "Ivory Coast", pct: 75 }, { t: "Ecuador", pct: 25 }] }, b: { label: "Grp I 2nd", cands: [{ t: "Norway", pct: 55 }, { t: "France", pct: 20 }, { t: "Senegal", pct: 25 }] } },
-  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Uruguay", pct: 40 }, { t: "Cabo Verde", pct: 30 }, { t: "Sweden", pct: 20 }] } },
-  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 80 }, { t: "Croatia", pct: 12 }, { t: "Ghana", pct: 8 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 35 }, { t: "Senegal", pct: 30 }, { t: "Ecuador", pct: 20 }] } },
-  { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Ecuador", pct: 35 }, { t: "Bosnia/Qatar", pct: 30 }, { t: "Senegal", pct: 20 }] } },
-  { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 65 }, { t: "Belgium", pct: 25 }, { t: "Iran", pct: 10 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "Czechia", pct: 35 }, { t: "Ecuador", pct: 25 }, { t: "Austria", pct: 20 }] } },
-  { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "DR Congo", pct: 40 }, { t: "Colombia", pct: 35 }, { t: "Portugal", pct: 25 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 45 }, { t: "Croatia", pct: 40 }, { t: "England", pct: 15 }] } },
-  { m: 84, date: "Jul 2", venue: "Los Angeles", a: { label: "Grp H 1st", cands: [{ t: "Spain", pct: 85 }, { t: "Uruguay", pct: 12 }, { t: "Cabo Verde", pct: 3 }] }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 55 }, { t: "Argentina", pct: 20 }, { t: "Algeria", pct: 25 }] } },
-  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Belgium", pct: 35 }, { t: "Sweden", pct: 25 }, { t: "Senegal", pct: 20 }] } },
-  { m: 86, date: "Jul 2", venue: "Miami", a: { label: "Grp J 1st", cands: [{ t: "Argentina", pct: 78 }, { t: "Austria", pct: 22 }] }, b: { label: "Grp H 2nd", cands: [{ t: "Uruguay", pct: 45 }, { t: "Cabo Verde", pct: 35 }, { t: "Spain", pct: 15 }] } },
-  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { label: "Grp K 1st", cands: [{ t: "Colombia", pct: 50 }, { t: "Portugal", pct: 42 }, { t: "DR Congo", pct: 8 }] }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Senegal", pct: 35 }, { t: "Austria", pct: 25 }, { t: "Australia", pct: 20 }] } },
-  { m: 88, date: "Jul 3", venue: "Dallas", a: { label: "Grp D 2nd", cands: [{ t: "Australia", pct: 60 }, { t: "Paraguay", pct: 40 }] }, b: { label: "Grp G 2nd", cands: [{ t: "Belgium", pct: 45 }, { t: "Iran", pct: 35 }, { t: "Egypt", pct: 20 }] } },
+  // M77a: France & Norway both 6 pts — they play each other Jun 26, split is close
+  // M77b: 3rd from C/D/F/G/H — Sweden & Aus/Par (3 pts) outrank Belgium/Cabo Verde/Uruguay (1-2 pts)
+  { m: 77, date: "Jun 30", venue: "New York NJ", a: { label: "Grp I 1st", cands: [{ t: "France", pct: 55 }, { t: "Norway", pct: 45 }] }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Sweden", pct: 28 }, { t: "Australia", pct: 22 }, { t: "Paraguay", pct: 18 }, { t: "Scotland", pct: 16 }] } },
+  // M78a: Ivory Coast (3 pts) vs Curaçao today; Ecuador (1 pt) faces Germany — near-certain Ivory Coast 2nd
+  // M78b: Grp I 2nd is France or Norway only — Senegal (0 pts) cannot finish 2nd
+  { m: 78, date: "Jun 30", venue: "Dallas", a: { label: "Grp E 2nd", cands: [{ t: "Ivory Coast", pct: 85 }, { t: "Ecuador", pct: 15 }] }, b: { label: "Grp I 2nd", cands: [{ t: "Norway", pct: 55 }, { t: "France", pct: 45 }] } },
+  // M79b: 3rd from C/E/F/H/I — Sweden (3 pts) and Scotland (3 pts) lead; Ecuador/Curaçao/Senegal/Iraq (0-1 pt) very weak
+  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Sweden", pct: 35 }, { t: "Scotland", pct: 22 }, { t: "Cabo Verde", pct: 22 }, { t: "Uruguay", pct: 12 }] } },
+  // M80a: England & Ghana both 4 pts — Ghana 8% was far too low; England plays Panama, Ghana plays Croatia
+  // M80b: 3rd from E/H/I/J/K — Austria/Algeria (3 pts if 3rd in J) dominate; Senegal (0 pts) nowhere near 30%
+  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 55 }, { t: "Ghana", pct: 35 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 36 }, { t: "Algeria", pct: 30 }, { t: "Cabo Verde", pct: 18 }, { t: "Uruguay", pct: 10 }] } },
+  // M81b: 3rd from B/E/F/I/J — Bosnia (4 pts) is the clear frontrunner, not Ecuador (1 pt); Qatar eliminated so "Bosnia/Qatar" removed
+  { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Bosnia", pct: 45 }, { t: "Algeria", pct: 20 }, { t: "Austria", pct: 18 }, { t: "Sweden", pct: 12 }] } },
+  // M82a: Egypt 65% is reasonable; Iran underrated at 10% given they play Egypt directly
+  // M82b: 3rd from A/E/H/I/J — Czechia ELIMINATED (4th in A); South Korea is 3rd in A
+  { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 62 }, { t: "Iran", pct: 24 }, { t: "Belgium", pct: 14 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 38 }, { t: "Austria", pct: 26 }, { t: "Algeria", pct: 22 }, { t: "Cabo Verde", pct: 10 }] } },
+  // M83a: Grp K 2nd — Colombia confirmed 1st (6 pts), cannot be 2nd; Portugal (4 pts) is near-certain 2nd
+  // M83b: England and Ghana both 4 pts — England at 15% for 2nd was wrong
+  { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "Portugal", pct: 88 }, { t: "DR Congo", pct: 12 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 42 }, { t: "England", pct: 30 }, { t: "Croatia", pct: 28 }] } },
+  // M84b: Grp J 2nd — Argentina confirmed 1st (6 pts), cannot be 2nd; it's Austria vs Algeria only
+  { m: 84, date: "Jul 2", venue: "Los Angeles", a: { label: "Grp H 1st", cands: [{ t: "Spain", pct: 78 }, { t: "Uruguay", pct: 14 }, { t: "Cabo Verde", pct: 8 }] }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 52 }, { t: "Algeria", pct: 48 }] } },
+  // M85b: 3rd from E/F/G/I/J — Sweden (3 pts) and Belgium/Iran (2 pts from G) realistic; Senegal (0 pts) removed
+  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Sweden", pct: 32 }, { t: "Belgium", pct: 24 }, { t: "Iran", pct: 22 }, { t: "Algeria", pct: 14 }] } },
+  // M86a: Argentina won Group J — confirmed, not probabilistic
+  { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { label: "Grp H 2nd", cands: [{ t: "Uruguay", pct: 42 }, { t: "Cabo Verde", pct: 38 }, { t: "Spain", pct: 15 }] } },
+  // M87a: Colombia won Group K (6 pts) — confirmed, not probabilistic
+  // M87b: 3rd from D/E/I/J/L — Senegal (0 pts) at 35% was absurd; Aus/Par loser (3 pts) and Austria/Algeria (3 pts) are the real candidates
+  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Australia", pct: 28 }, { t: "Paraguay", pct: 28 }, { t: "Austria", pct: 22 }, { t: "Algeria", pct: 14 }] } },
+  // M88b: Egypt (4 pts, group leader) was underrated at 20% for 2nd; Iran plays Egypt directly so both in play
+  { m: 88, date: "Jul 3", venue: "Dallas", a: { label: "Grp D 2nd", cands: [{ t: "Australia", pct: 50 }, { t: "Paraguay", pct: 50 }] }, b: { label: "Grp G 2nd", cands: [{ t: "Belgium", pct: 35 }, { t: "Iran", pct: 30 }, { t: "Egypt", pct: 25 }, { t: "New Zealand", pct: 10 }] } },
 ];
 
 const R16 = [
@@ -260,8 +279,8 @@ const QUALIFICATION = [
   { team: "Spain", flag: "🇪🇸", state: "likely", detail: "Leads Group H (4 pts); plays Uruguay in finale Jun 26" },
   { team: "Netherlands", flag: "🇳🇱", state: "likely", detail: "Top of Group F (4 pts); plays Tunisia Jun 25" },
   { team: "Japan", flag: "🇯🇵", state: "likely", detail: "Level top of Group F (4 pts); plays Sweden Jun 25" },
-  { team: "Colombia", flag: "🇨🇴", state: "likely", detail: "Leads Group K, perfect (6 pts)" },
-  { team: "Portugal", flag: "🇵🇹", state: "likely", detail: "2nd in Group K (4 pts) after 5-0 rout" },
+  { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K — 6 pts, 3 wins; R32 Jul 3, Kansas City" },
+  { team: "Portugal", flag: "🇵🇹", state: "in", detail: "Confirmed Group K (4 pts, GD +5); can't be overtaken by DR Congo" },
   { team: "Egypt", flag: "🇪🇬", state: "likely", detail: "Leads Group G (4 pts)" },
   { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "likely", detail: "Top of Group L (4 pts)" },
   { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "alive", detail: "3rd in Group B (4 pts) — tracking to advance as best 3rd" },
