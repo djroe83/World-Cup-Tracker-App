@@ -1,25 +1,25 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Wed, June 24, 2026 · 2:05 PM ET";
+const DATA_AS_OF = "Thu, June 25, 2026";
 
 const GROUPS = {
   A: [
-    { team: "Mexico", flag: "🇲🇽", P: 2, W: 2, D: 0, L: 0, GF: 3, GA: 0, GD: 3, Pts: 6 },
-    { team: "South Korea", flag: "🇰🇷", P: 2, W: 1, D: 0, L: 1, GF: 2, GA: 2, GD: 0, Pts: 3 },
-    { team: "Czechia", flag: "🇨🇿", P: 2, W: 0, D: 1, L: 1, GF: 2, GA: 3, GD: -1, Pts: 1 },
-    { team: "South Africa", flag: "🇿🇦", P: 2, W: 0, D: 1, L: 1, GF: 1, GA: 3, GD: -2, Pts: 1 },
+    { team: "Mexico", flag: "🇲🇽", P: 3, W: 3, D: 0, L: 0, GF: 6, GA: 0, GD: 6, Pts: 9 },
+    { team: "South Africa", flag: "🇿🇦", P: 3, W: 1, D: 1, L: 1, GF: 2, GA: 3, GD: -1, Pts: 4 },
+    { team: "South Korea", flag: "🇰🇷", P: 3, W: 1, D: 0, L: 2, GF: 2, GA: 3, GD: -1, Pts: 3 },
+    { team: "Czechia", flag: "🇨🇿", P: 3, W: 0, D: 1, L: 2, GF: 2, GA: 6, GD: -4, Pts: 1 },
   ],
   B: [
-    { team: "Switzerland", flag: "🇨🇭", P: 2, W: 1, D: 1, L: 0, GF: 5, GA: 2, GD: 3, Pts: 4 },
-    { team: "Canada", flag: "🇨🇦", P: 2, W: 1, D: 1, L: 0, GF: 7, GA: 1, GD: 6, Pts: 4 },
-    { team: "Bosnia & Herzegovina", flag: "🇧🇦", P: 2, W: 0, D: 1, L: 1, GF: 2, GA: 5, GD: -3, Pts: 1 },
-    { team: "Qatar", flag: "🇶🇦", P: 2, W: 0, D: 1, L: 1, GF: 1, GA: 7, GD: -6, Pts: 1 },
+    { team: "Switzerland", flag: "🇨🇭", P: 3, W: 2, D: 1, L: 0, GF: 7, GA: 3, GD: 4, Pts: 7 },
+    { team: "Canada", flag: "🇨🇦", P: 3, W: 1, D: 1, L: 1, GF: 8, GA: 3, GD: 5, Pts: 4 },
+    { team: "Bosnia & Herzegovina", flag: "🇧🇦", P: 3, W: 1, D: 1, L: 1, GF: 5, GA: 6, GD: -1, Pts: 4 },
+    { team: "Qatar", flag: "🇶🇦", P: 3, W: 0, D: 1, L: 2, GF: 2, GA: 10, GD: -8, Pts: 1 },
   ],
   C: [
-    { team: "Brazil", flag: "🇧🇷", P: 2, W: 1, D: 1, L: 0, GF: 4, GA: 1, GD: 3, Pts: 4 },
-    { team: "Morocco", flag: "🇲🇦", P: 2, W: 1, D: 1, L: 0, GF: 2, GA: 1, GD: 1, Pts: 4 },
-    { team: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", P: 2, W: 1, D: 0, L: 1, GF: 1, GA: 1, GD: 0, Pts: 3 },
-    { team: "Haiti", flag: "🇭🇹", P: 2, W: 0, D: 0, L: 2, GF: 0, GA: 4, GD: -4, Pts: 0 },
+    { team: "Brazil", flag: "🇧🇷", P: 3, W: 2, D: 1, L: 0, GF: 7, GA: 1, GD: 6, Pts: 7 },
+    { team: "Morocco", flag: "🇲🇦", P: 3, W: 2, D: 1, L: 0, GF: 6, GA: 3, GD: 3, Pts: 7 },
+    { team: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", P: 3, W: 1, D: 0, L: 2, GF: 1, GA: 4, GD: -3, Pts: 3 },
+    { team: "Haiti", flag: "🇭🇹", P: 3, W: 0, D: 0, L: 3, GF: 2, GA: 8, GD: -6, Pts: 0 },
   ],
   D: [
     { team: "USA", flag: "🇺🇸", P: 2, W: 2, D: 0, L: 0, GF: 6, GA: 1, GD: 5, Pts: 6 },
@@ -129,12 +129,12 @@ const MATCHES = [
   { id: 46, group: "L", md: 2, date: "Tue Jun 23", time: "4:00 PM", venue: "Gillette Stadium, Foxborough", status: "final", home: "England", away: "Ghana", hs: 0, as: 0, odds: { home: -500, draw: 600, away: 1200, pct: [80, 14, 6] }, note: "Ghana frustrates England in a goalless stalemate" },
   { id: 47, group: "L", md: 2, date: "Tue Jun 23", time: "7:00 PM", venue: "BMO Field, Toronto", status: "final", home: "Panama", away: "Croatia", hs: 0, as: 1, odds: { home: 550, draw: 300, away: -136, pct: [15, 27, 58] }, note: "Croatia gets its first win to revive its campaign" },
   { id: 48, group: "K", md: 2, date: "Tue Jun 23", time: "10:00 PM", venue: "Estadio Akron, Zapopan", status: "final", home: "Colombia", away: "DR Congo", hs: 1, as: 0, odds: { home: -200, draw: 333, away: 550, pct: [60, 22, 18] }, note: "Colombia edges it to take control of Group K" },
-  { id: 49, group: "B", md: 3, date: "Wed Jun 24", time: "3:00 PM", venue: "BC Place, Vancouver", status: "upcoming", home: "Switzerland", away: "Canada", hs: null, as: null, odds: { home: 180, draw: 215, away: 150, pct: [33, 30, 37] }, est: true },
-  { id: 50, group: "B", md: 3, date: "Wed Jun 24", time: "3:00 PM", venue: "Lumen Field, Seattle", status: "upcoming", home: "Bosnia & Herzegovina", away: "Qatar", hs: null, as: null, odds: { home: -140, draw: 250, away: 360, pct: [52, 27, 21] }, est: true },
-  { id: 51, group: "C", md: 3, date: "Wed Jun 24", time: "6:00 PM", venue: "Hard Rock Stadium, Miami Gardens", status: "upcoming", home: "Scotland", away: "Brazil", hs: null, as: null, odds: { home: 600, draw: 320, away: -240, pct: [13, 24, 63] }, est: true },
-  { id: 52, group: "C", md: 3, date: "Wed Jun 24", time: "6:00 PM", venue: "Mercedes-Benz Stadium, Atlanta", status: "upcoming", home: "Morocco", away: "Haiti", hs: null, as: null, odds: { home: -260, draw: 320, away: 700, pct: [66, 22, 12] }, est: true },
-  { id: 53, group: "A", md: 3, date: "Wed Jun 24", time: "9:00 PM", venue: "Estadio Azteca, Mexico City", status: "upcoming", home: "Czechia", away: "Mexico", hs: null, as: null, odds: { home: 280, draw: 250, away: -120, pct: [25, 28, 47] }, est: true },
-  { id: 54, group: "A", md: 3, date: "Wed Jun 24", time: "9:00 PM", venue: "Estadio BBVA, Monterrey", status: "upcoming", home: "South Africa", away: "South Korea", hs: null, as: null, odds: { home: 240, draw: 230, away: -110, pct: [27, 29, 44] }, est: true },
+  { id: 49, group: "B", md: 3, date: "Wed Jun 24", time: "3:00 PM", venue: "BC Place, Vancouver", status: "final", home: "Switzerland", away: "Canada", hs: 2, as: 1, odds: { home: 180, draw: 215, away: 150, pct: [33, 30, 37] }, note: "Switzerland top Group B; Shaqiri penalty seals it" },
+  { id: 50, group: "B", md: 3, date: "Wed Jun 24", time: "3:00 PM", venue: "Lumen Field, Seattle", status: "final", home: "Bosnia & Herzegovina", away: "Qatar", hs: 3, as: 1, odds: { home: -140, draw: 250, away: 360, pct: [52, 27, 21] }, note: "Bosnia advance as one of the best third-place teams" },
+  { id: 51, group: "C", md: 3, date: "Wed Jun 24", time: "6:00 PM", venue: "Hard Rock Stadium, Miami Gardens", status: "final", home: "Scotland", away: "Brazil", hs: 0, as: 3, odds: { home: 600, draw: 320, away: -240, pct: [13, 24, 63] }, note: "Brazil top Group C in style; Scotland eliminated" },
+  { id: 52, group: "C", md: 3, date: "Wed Jun 24", time: "6:00 PM", venue: "Mercedes-Benz Stadium, Atlanta", status: "final", home: "Morocco", away: "Haiti", hs: 4, as: 2, odds: { home: -260, draw: 320, away: 700, pct: [66, 22, 12] }, note: "Morocco through 2nd in Group C in emphatic fashion" },
+  { id: 53, group: "A", md: 3, date: "Wed Jun 24", time: "9:00 PM", venue: "Estadio Azteca, Mexico City", status: "final", home: "Czechia", away: "Mexico", hs: 0, as: 3, odds: { home: 280, draw: 250, away: -120, pct: [25, 28, 47] }, note: "Mexico sweep Group A 3-0-0 — dominant from start to finish" },
+  { id: 54, group: "A", md: 3, date: "Wed Jun 24", time: "9:00 PM", venue: "Estadio BBVA, Monterrey", status: "final", home: "South Africa", away: "South Korea", hs: 1, as: 0, odds: { home: 240, draw: 230, away: -110, pct: [27, 29, 44] }, note: "South Africa's stunning 1-0 win edges out South Korea for 2nd place in Group A" },
   { id: 55, group: "E", md: 3, date: "Thu Jun 25", time: "4:00 PM", venue: "Lincoln Financial Field, Philadelphia", status: "upcoming", home: "Curaçao", away: "Ivory Coast", hs: null, as: null, odds: { home: 650, draw: 340, away: -260, pct: [12, 23, 65] }, est: true },
   { id: 56, group: "E", md: 3, date: "Thu Jun 25", time: "4:00 PM", venue: "MetLife Stadium, East Rutherford", status: "upcoming", home: "Ecuador", away: "Germany", hs: null, as: null, odds: { home: 420, draw: 290, away: -170, pct: [18, 25, 57] }, est: true },
   { id: 57, group: "F", md: 3, date: "Thu Jun 25", time: "7:00 PM", venue: "AT&T Stadium, Arlington", status: "upcoming", home: "Japan", away: "Sweden", hs: null, as: null, odds: { home: 135, draw: 230, away: 190, pct: [38, 28, 34] }, est: true },
@@ -202,10 +202,10 @@ const TITLE_ODDS = [
 const TITLE_ODDS_NOTE = "Pre-tournament line from the December draw vs. current price (Jun 20). Pre-game/futures only — not live in-play.";
 
 const R32 = [
-  { m: 73, date: "Jun 28", venue: "Los Angeles", a: { label: "Grp A 2nd", cands: [{ t: "South Korea", pct: 70 }, { t: "Czechia", pct: 20 }, { t: "South Africa", pct: 10 }] }, b: { label: "Grp B 2nd", cands: [{ t: "Switzerland", pct: 50 }, { t: "Canada", pct: 45 }, { t: "Bosnia", pct: 5 }] } },
+  { m: 73, date: "Jun 28", venue: "Los Angeles", a: { team: "South Africa", flag: "🇿🇦", conf: true }, b: { team: "Canada", flag: "🇨🇦", conf: true } },
   { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { label: "3rd A/B/C/D/F", cands: [{ t: "Scotland", pct: 45 }, { t: "Sweden", pct: 30 }, { t: "Australia", pct: 15 }] } },
-  { m: 75, date: "Jun 30", venue: "Guadalajara", a: { label: "Grp F 1st", cands: [{ t: "Netherlands", pct: 55 }, { t: "Japan", pct: 45 }] }, b: { label: "Grp C 2nd", cands: [{ t: "Morocco", pct: 45 }, { t: "Brazil", pct: 40 }, { t: "Scotland", pct: 15 }] } },
-  { m: 76, date: "Jun 29", venue: "Houston", a: { label: "Grp C 1st", cands: [{ t: "Brazil", pct: 55 }, { t: "Morocco", pct: 45 }] }, b: { label: "Grp F 2nd", cands: [{ t: "Japan", pct: 50 }, { t: "Netherlands", pct: 45 }, { t: "Sweden", pct: 5 }] } },
+  { m: 75, date: "Jun 30", venue: "Guadalajara", a: { label: "Grp F 1st", cands: [{ t: "Netherlands", pct: 55 }, { t: "Japan", pct: 45 }] }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
+  { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { label: "Grp F 2nd", cands: [{ t: "Japan", pct: 50 }, { t: "Netherlands", pct: 45 }, { t: "Sweden", pct: 5 }] } },
   { m: 77, date: "Jun 30", venue: "New York NJ", a: { label: "Grp I 1st", cands: [{ t: "France", pct: 80 }, { t: "Norway", pct: 20 }] }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Cabo Verde", pct: 35 }, { t: "Uruguay", pct: 30 }, { t: "Belgium", pct: 25 }] } },
   { m: 78, date: "Jun 30", venue: "Dallas", a: { label: "Grp E 2nd", cands: [{ t: "Ivory Coast", pct: 75 }, { t: "Ecuador", pct: 25 }] }, b: { label: "Grp I 2nd", cands: [{ t: "Norway", pct: 55 }, { t: "France", pct: 20 }, { t: "Senegal", pct: 25 }] } },
   { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Uruguay", pct: 40 }, { t: "Cabo Verde", pct: 30 }, { t: "Sweden", pct: 20 }] } },
@@ -214,7 +214,7 @@ const R32 = [
   { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 65 }, { t: "Belgium", pct: 25 }, { t: "Iran", pct: 10 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "Czechia", pct: 35 }, { t: "Ecuador", pct: 25 }, { t: "Austria", pct: 20 }] } },
   { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "DR Congo", pct: 40 }, { t: "Colombia", pct: 35 }, { t: "Portugal", pct: 25 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 45 }, { t: "Croatia", pct: 40 }, { t: "England", pct: 15 }] } },
   { m: 84, date: "Jul 2", venue: "Los Angeles", a: { label: "Grp H 1st", cands: [{ t: "Spain", pct: 85 }, { t: "Uruguay", pct: 12 }, { t: "Cabo Verde", pct: 3 }] }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 55 }, { t: "Argentina", pct: 20 }, { t: "Algeria", pct: 25 }] } },
-  { m: 85, date: "Jul 2", venue: "Vancouver", a: { label: "Grp B 1st", cands: [{ t: "Canada", pct: 50 }, { t: "Switzerland", pct: 50 }] }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Belgium", pct: 35 }, { t: "Sweden", pct: 25 }, { t: "Senegal", pct: 20 }] } },
+  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Belgium", pct: 35 }, { t: "Sweden", pct: 25 }, { t: "Senegal", pct: 20 }] } },
   { m: 86, date: "Jul 2", venue: "Miami", a: { label: "Grp J 1st", cands: [{ t: "Argentina", pct: 78 }, { t: "Austria", pct: 22 }] }, b: { label: "Grp H 2nd", cands: [{ t: "Uruguay", pct: 45 }, { t: "Cabo Verde", pct: 35 }, { t: "Spain", pct: 15 }] } },
   { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { label: "Grp K 1st", cands: [{ t: "Colombia", pct: 50 }, { t: "Portugal", pct: 42 }, { t: "DR Congo", pct: 8 }] }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Senegal", pct: 35 }, { t: "Austria", pct: 25 }, { t: "Australia", pct: 20 }] } },
   { m: 88, date: "Jul 3", venue: "Dallas", a: { label: "Grp D 2nd", cands: [{ t: "Australia", pct: 60 }, { t: "Paraguay", pct: 40 }] }, b: { label: "Grp G 2nd", cands: [{ t: "Belgium", pct: 45 }, { t: "Iran", pct: 35 }, { t: "Egypt", pct: 20 }] } },
@@ -246,55 +246,60 @@ const SF = [
 const FINAL = { m: 104, date: "Jul 19", venue: "New York NJ", from: [101, 102] };
 
 const QUALIFICATION = [
-  { team: "Mexico", flag: "🇲🇽", state: "in", detail: "Won Group A — first team to clinch" },
-  { team: "USA", flag: "🇺🇸", state: "in", detail: "Won Group D — plays R32 Jul 1, Bay Area" },
+  { team: "Mexico", flag: "🇲🇽", state: "in", detail: "Won Group A 3-0-0 — perfect record, 9 pts" },
+  { team: "South Africa", flag: "🇿🇦", state: "in", detail: "2nd in Group A — shock 1-0 win over South Korea clinched it" },
+  { team: "Switzerland", flag: "🇨🇭", state: "in", detail: "Won Group B (7 pts), edged Canada 2-1 on MD3" },
+  { team: "Canada", flag: "🇨🇦", state: "in", detail: "2nd in Group B (4 pts, GD +5)" },
+  { team: "Brazil", flag: "🇧🇷", state: "in", detail: "Won Group C (7 pts), beat Scotland 3-0 on MD3" },
+  { team: "Morocco", flag: "🇲🇦", state: "in", detail: "2nd in Group C (7 pts, GD +3), beat Haiti 4-2" },
+  { team: "USA", flag: "🇺🇸", state: "in", detail: "Won Group D — R32 Jul 1, Bay Area" },
   { team: "Germany", flag: "🇩🇪", state: "in", detail: "Won Group E" },
-  { team: "France", flag: "🇫🇷", state: "in", detail: "Clinched Group I (6 pts); plays Norway for top spot" },
+  { team: "France", flag: "🇫🇷", state: "in", detail: "Clinched Group I (6 pts); plays Norway for top spot Jun 26" },
   { team: "Norway", flag: "🇳🇴", state: "in", detail: "Clinched in Group I (6 pts) on Haaland's goals" },
-  { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J; Messi now all-time WC top scorer" },
-  { team: "Spain", flag: "🇪🇸", state: "likely", detail: "Leads Group H (4 pts); plays Uruguay in finale" },
-  { team: "Netherlands", flag: "🇳🇱", state: "likely", detail: "Top of Group F (4 pts)" },
-  { team: "Japan", flag: "🇯🇵", state: "likely", detail: "Level top of Group F (4 pts)" },
+  { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J; Messi is now all-time WC top scorer (18)" },
+  { team: "Spain", flag: "🇪🇸", state: "likely", detail: "Leads Group H (4 pts); plays Uruguay in finale Jun 26" },
+  { team: "Netherlands", flag: "🇳🇱", state: "likely", detail: "Top of Group F (4 pts); plays Tunisia Jun 25" },
+  { team: "Japan", flag: "🇯🇵", state: "likely", detail: "Level top of Group F (4 pts); plays Sweden Jun 25" },
   { team: "Colombia", flag: "🇨🇴", state: "likely", detail: "Leads Group K, perfect (6 pts)" },
   { team: "Portugal", flag: "🇵🇹", state: "likely", detail: "2nd in Group K (4 pts) after 5-0 rout" },
-  { team: "Morocco", flag: "🇲🇦", state: "likely", detail: "Level top of Group C (4 pts)" },
-  { team: "Brazil", flag: "🇧🇷", state: "likely", detail: "Level top of Group C (4 pts)" },
   { team: "Egypt", flag: "🇪🇬", state: "likely", detail: "Leads Group G (4 pts)" },
-  { team: "Switzerland", flag: "🇨🇭", state: "likely", detail: "Level top of Group B (4 pts); plays Canada" },
-  { team: "Canada", flag: "🇨🇦", state: "likely", detail: "Level top of Group B (4 pts); plays Switzerland" },
   { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "likely", detail: "Top of Group L (4 pts)" },
-  { team: "Cabo Verde", flag: "🇨🇻", state: "alive", detail: "Shock 2 pts; in a knockout spot as things stand" },
-  { team: "Austria", flag: "🇦🇹", state: "alive", detail: "3 pts in Group J, needs a result vs Algeria" },
+  { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "alive", detail: "3rd in Group B (4 pts) — tracking to advance as best 3rd" },
+  { team: "South Korea", flag: "🇰🇷", state: "alive", detail: "3rd in Group A (3 pts, GD −1) — awaiting best-3rd comparison" },
+  { team: "Cabo Verde", flag: "🇨🇻", state: "alive", detail: "Shock 2 pts; in a knockout spot as things stand; plays Jun 26" },
+  { team: "Austria", flag: "🇦🇹", state: "alive", detail: "3 pts in Group J, needs a result vs Algeria Jun 27" },
   { team: "Algeria", flag: "🇩🇿", state: "alive", detail: "3 pts after comeback win; alive in Group J" },
-  { team: "Ghana", flag: "🇬🇭", state: "alive", detail: "4 pts in Group L, in good shape" },
-  { team: "Croatia", flag: "🇭🇷", state: "alive", detail: "3 pts; revived after beating Panama" },
-  { team: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", state: "alive", detail: "3 pts; needs a result vs Brazil" },
-  { team: "Uruguay", flag: "🇺🇾", state: "alive", detail: "2 pts; must get a result vs Spain" },
-  { team: "Belgium", flag: "🇧🇪", state: "alive", detail: "2 pts, winless; needs to beat New Zealand" },
-  { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "0 pts but late goal keeps slim 3rd-place hope" },
-  { team: "Haiti", flag: "🇭🇹", state: "out", detail: "Eliminated from Group C" },
+  { team: "Ghana", flag: "🇬🇭", state: "alive", detail: "4 pts in Group L, in good shape for Jun 27" },
+  { team: "Croatia", flag: "🇭🇷", state: "alive", detail: "3 pts; revived after beating Panama; plays Ghana Jun 27" },
+  { team: "Uruguay", flag: "🇺🇾", state: "alive", detail: "2 pts; must get a result vs Spain Jun 26" },
+  { team: "Belgium", flag: "🇧🇪", state: "alive", detail: "2 pts, winless; needs to beat New Zealand Jun 26" },
+  { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "0 pts but late goal keeps slim 3rd-place hope; plays Jun 26" },
+  { team: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", state: "out", detail: "Eliminated — 3rd in Group C; 3 pts, GD −3" },
+  { team: "Haiti", flag: "🇭🇹", state: "out", detail: "Eliminated — 4th in Group C (0 pts)" },
+  { team: "Qatar", flag: "🇶🇦", state: "out", detail: "Eliminated — 4th in Group B (1 pt)" },
+  { team: "Czechia", flag: "🇨🇿", state: "out", detail: "Eliminated — 4th in Group A (1 pt)" },
   { team: "Tunisia", flag: "🇹🇳", state: "out", detail: "Eliminated from Group F" },
   { team: "Türkiye", flag: "🇹🇷", state: "out", detail: "Eliminated from Group D" },
   { team: "Jordan", flag: "🇯🇴", state: "out", detail: "Eliminated from Group J (0 pts)" },
   { team: "Uzbekistan", flag: "🇺🇿", state: "out", detail: "Eliminated from Group K (0 pts)" },
 ];
 
-const KC_NOTE = "Arrowhead Stadium (Kansas City) hosts six matches: four group games (Jun 16, 17, 20, 25, 27) and a Round of 32 tie on Jun 28. Your early-July plan likely targets a knockout match here.";
 
 const NOW_BRIEFING = {
-  headline: "The group stage reaches its final matchday — and the bracket is nearly set.",
-  body: "Matchdays 1 and 2 are complete; the final group games (June 24–27) now decide the last knockout spots and the seeding. The confirmed list keeps growing: Mexico, USA, Germany, France, Norway, and Argentina are all through, with several more on the brink. Messi made history, passing Klose as the World Cup's all-time leading scorer. France has settled in as the tournament favorite, Spain has recovered from its opening scare, and the small-nation stories — Cabo Verde above all — refuse to fade. From here, every group's two games kick off at the same time to keep it fair.",
+  headline: "Groups D, E, and F play their decisive final matchday today.",
+  body: "Yesterday wrapped up Groups A, B, and C. Mexico swept all three games. South Africa stunned South Korea to claim 2nd in Group A. Switzerland topped Group B; Brazil and Morocco both advanced from Group C with seven points. Today (June 25) Groups D, E, and F play simultaneously — the USA, Germany, and the Netherlands look set to advance, with second places and third-place wildcards still in the balance. Groups G through L follow over the next two days.",
   threads: [
-    "Confirmed in the Round of 32: Mexico, USA (Group D winners), Germany, France, Norway, Argentina.",
-    "USA's path: Round of 32 locked for Wed July 1, 8pm ET at Levi's Stadium (Bay Area), vs a third-place team. Likely Belgium next, Seattle July 6.",
-    "History: Messi is now the outright all-time World Cup scoring leader (18 goals), passing Klose's 16.",
-    "Cinderella watch: Cabo Verde (2 pts vs Spain & Uruguay) can still reach the knockouts from Group H.",
-    "Golden Boot race: Mbappé and Haaland (each with multiple goals) chase Messi; Salah and others lurk.",
+    "Confirmed in the Round of 32: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, France, Norway, Argentina.",
+    "Surprise of MD3: South Africa 1-0 South Korea — Bafana Bafana pip the Koreans to 2nd in Group A in the final minutes.",
+    "Group C: Brazil 3-0 Scotland and Morocco 4-2 Haiti — both nations through with 7 pts.",
+    "USA's path: Round of 32 locked for Wed July 1, 8 PM ET at Levi's Stadium (Bay Area).",
+    "History: Messi (18 WC goals) is the all-time leader. Mbappé and Haaland both in pursuit.",
   ],
 };
 
 const DAY_SUMMARIES = {
-  "Wed Jun 24": "The final group matchday begins — and from here, every game in a group kicks off simultaneously to keep things honest. Groups A, B, and C settle today.",
+  "Thu Jun 25": "Groups D, E, and F play their simultaneous final matchday. Germany vs Ecuador and Curaçao vs Ivory Coast kick off at 4 PM ET; Japan vs Sweden and Tunisia vs Netherlands at 7 PM; USA vs Türkiye and Paraguay vs Australia at 10 PM.",
+  "Wed Jun 24": "Groups A, B, and C wrapped. South Africa's 1-0 win over South Korea was the shock of the day, knocking the Koreans to 3rd. Mexico swept the group 3-0 over Czechia. Switzerland edged Canada 2-1 to top Group B; Bosnia beat Qatar 3-1. Brazil 3-0 Scotland, Morocco 4-2 Haiti — both advance from Group C.",
   "Tue Jun 23": "Matchday 2 wrapped for Groups K and L. Portugal exploded for 5-0; England held 0-0 by Ghana; Croatia revived with a narrow win.",
   "Mon Jun 22": "A day for the legends. Messi scored his 17th and 18th WC goals to pass Klose as all-time leading scorer. Mbappé brace, Haaland brace.",
   "Sun Jun 21": "Matchday 2 for Groups G and H. Spain routed Saudi Arabia 4-0; Cabo Verde drew again with Uruguay; Salah led Egypt to their first-ever WC regulation win.",
@@ -311,8 +316,8 @@ const DAY_SUMMARIES = {
 };
 
 const MATCH_DETAILS = {
-  19: { watch: ["Lionel Messi (Argentina) — hat-trick vs Algeria, tying Klose's all-time World Cup record at 16 goals, on his 200th cap."], color: ["It happened at Arrowhead Stadium in Kansas City — the venue at the center of your July trip."], fun: ["Klose's record of 16 WC goals stood since 2014; Messi tying it at ~38 is remarkable longevity.", "Algeria's finest hour was beating West Germany in 1982 — so shocking it led FIFA to make final group games kick off simultaneously."] },
-  35: { watch: ["Eloy Room (Curaçao) — 15 saves, the most in a 90-minute World Cup match since records began in 1966."], fun: ["Curaçao (population ~150,000) is the smallest nation by population ever to play at a World Cup.", "Played at Arrowhead Stadium in Kansas City — one of your trip's venues."] },
+  19: { watch: ["Lionel Messi (Argentina) — hat-trick vs Algeria, tying Klose's all-time World Cup record at 16 goals, on his 200th cap."], fun: ["Klose's record of 16 WC goals stood since 2014; Messi tying it at ~38 is remarkable longevity.", "Algeria's finest hour was beating West Germany in 1982 — so shocking it led FIFA to make final group games kick off simultaneously."] },
+  35: { watch: ["Eloy Room (Curaçao) — 15 saves, the most in a 90-minute World Cup match since records began in 1966."], fun: ["Curaçao (population ~150,000) is the smallest nation by population ever to play at a World Cup.", "The match was played at Arrowhead Stadium in Kansas City."] },
   41: { watch: ["Lionel Messi (Argentina) — scores 17th & 18th WC goals, passes Klose as all-time leading scorer."], fun: ["Argentina are reigning champions (2022) and Messi, at ~38, is chasing an unprecedented second straight title.", "Argentina has won three World Cups (1978, 1986, 2022)."] },
   13: { watch: ["Vozinha (Cabo Verde) — eight saves to deny Spain; the goalkeeping performance of the tournament so far."], odds: ["Spain were among the heaviest favorites of the group stage (~ -650) and didn't win — the upset of the tournament."], fun: ["Cabo Verde, an Atlantic archipelago of ~525,000 people, qualified for its first-ever World Cup in 2026.", "Spain entered as reigning European champions and one of the title favorites."] },
   4:  { watch: ["Folarin Balogun (USA) — historic brace, first US World Cup multi-goal game since 1930."], fun: ["Balogun was born in New York, raised in London, and chose the USA over England in 2023.", "As co-hosts, the USA, Canada, and Mexico all qualified automatically."] },
@@ -638,7 +643,6 @@ function VenuesView({ venuesData, activeVenue, setActiveVenue, expanded, toggle 
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
                     <span style={{ fontSize: 16 }}>{FLAG_COUNTRY[v.meta.country]}</span>
                     <span style={{ fontSize: 16, fontWeight: 800 }}>{v.meta.city}</span>
-                    {isKC && <Pill tone="kc">Your trip</Pill>}
                     {live && <Pill tone="live">● Live</Pill>}
                   </div>
                   <div style={{ fontSize: 11.5, color: "#6b7280" }}>{v.venue.split(",")[0]}</div>
@@ -889,9 +893,6 @@ export default function App() {
             <Section title="Just finished" accent="#4ade80">
               {recent.map((m) => <MatchCard key={m.id} m={m} alwaysOpen />)}
             </Section>
-            <div style={{ background: "rgba(251,191,36,0.06)", border: "1px solid #4a3a16", borderRadius: 12, padding: 14, fontSize: 12.5, color: "#d4b876", lineHeight: 1.5 }}>
-              <strong style={{ color: "#fbbf24" }}>🏟️ Your Kansas City trip:</strong> {KC_NOTE}
-            </div>
           </div>
         )}
 
