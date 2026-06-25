@@ -316,6 +316,90 @@ const QUALIFICATION = [
 ];
 
 
+const GROUP_SCENARIOS = [
+  {
+    group: "D", date: "Thu Jun 25",
+    teams: [
+      { team: "USA", flag: "🇺🇸", fate: "in", note: "Confirmed group winners (6 pts)" },
+      { team: "Australia", flag: "🇦🇺", fate: "controls", note: "Win vs Paraguay → 2nd place secured" },
+      { team: "Paraguay", flag: "🇵🇾", fate: "controls", note: "Win vs Australia → 2nd place secured" },
+      { team: "Türkiye", flag: "🇹🇷", fate: "out", note: "Eliminated — 0 pts, cannot reach top 2" },
+    ],
+  },
+  {
+    group: "E", date: "Thu Jun 25",
+    teams: [
+      { team: "Germany", flag: "🇩🇪", fate: "in", note: "Confirmed group winners (6 pts)" },
+      { team: "Ivory Coast", flag: "🇨🇮", fate: "controls", note: "Win vs Curaçao → 2nd place clinched" },
+      { team: "Ecuador", flag: "🇪🇨", fate: "needs", note: "Win + Ivory Coast loss required" },
+      { team: "Curaçao", flag: "🇨🇼", fate: "needs", note: "Win + Ecuador beaten by Germany — slim path" },
+    ],
+  },
+  {
+    group: "F", date: "Thu Jun 25",
+    teams: [
+      { team: "Netherlands", flag: "🇳🇱", fate: "controls", note: "Win vs Tunisia → top 2 secured" },
+      { team: "Japan", flag: "🇯🇵", fate: "controls", note: "Win vs Sweden → top 2 secured" },
+      { team: "Sweden", flag: "🇸🇪", fate: "controls", note: "Win vs Japan → 6 pts, through regardless" },
+      { team: "Tunisia", flag: "🇹🇳", fate: "out", note: "Eliminated — 0 pts, cannot advance" },
+    ],
+  },
+  {
+    group: "G", date: "Fri Jun 26",
+    teams: [
+      { team: "Egypt", flag: "🇪🇬", fate: "controls", note: "Win vs Iran → 1st place guaranteed (7 pts)" },
+      { team: "Iran", flag: "🇮🇷", fate: "controls", note: "Win vs Egypt → 5 pts, top 2 very likely" },
+      { team: "Belgium", flag: "🇧🇪", fate: "controls", note: "Win vs New Zealand → 5 pts, top 2 secured" },
+      { team: "New Zealand", flag: "🇳🇿", fate: "needs", note: "Win + Egypt beats Iran → could sneak into 2nd" },
+    ],
+  },
+  {
+    group: "H", date: "Fri Jun 26",
+    teams: [
+      { team: "Spain", flag: "🇪🇸", fate: "controls", note: "Win vs Uruguay → 1st guaranteed (7 pts)" },
+      { team: "Cabo Verde", flag: "🇨🇻", fate: "controls", note: "Win vs Saudi → 5 pts, likely 2nd or 1st" },
+      { team: "Uruguay", flag: "🇺🇾", fate: "controls", note: "Win vs Spain → through as 1st or 2nd" },
+      { team: "Saudi Arabia", flag: "🇸🇦", fate: "needs", note: "Win + Spain beats Uruguay → 4 pts clears them to 2nd" },
+    ],
+  },
+  {
+    group: "I", date: "Fri Jun 26",
+    teams: [
+      { team: "France", flag: "🇫🇷", fate: "in", note: "Confirmed (6 pts) — plays Norway for 1st place" },
+      { team: "Norway", flag: "🇳🇴", fate: "in", note: "Confirmed (6 pts) — plays France for 1st place" },
+      { team: "Senegal", flag: "🇸🇳", fate: "needs", note: "Win vs Iraq + advance as best 3rd — very slim" },
+      { team: "Iraq", flag: "🇮🇶", fate: "out", note: "Eliminated — 0 pts, no realistic path" },
+    ],
+  },
+  {
+    group: "J", date: "Sat Jun 27",
+    teams: [
+      { team: "Argentina", flag: "🇦🇷", fate: "in", note: "Confirmed group winners (6 pts, Messi record 18 WC goals)" },
+      { team: "Austria", flag: "🇦🇹", fate: "controls", note: "Win vs Algeria → 6 pts, 2nd place secured" },
+      { team: "Algeria", flag: "🇩🇿", fate: "controls", note: "Win vs Austria → 6 pts, 2nd place secured" },
+      { team: "Jordan", flag: "🇯🇴", fate: "out", note: "Eliminated — 0 pts, cannot advance" },
+    ],
+  },
+  {
+    group: "K", date: "Sat Jun 27",
+    teams: [
+      { team: "Colombia", flag: "🇨🇴", fate: "in", note: "Confirmed group winners (6 pts)" },
+      { team: "Portugal", flag: "🇵🇹", fate: "in", note: "Confirmed through — DR Congo cannot catch (4 pts guaranteed)" },
+      { team: "DR Congo", flag: "🇨🇩", fate: "needs", note: "Win vs Uzbekistan + become best 3rd — long odds" },
+      { team: "Uzbekistan", flag: "🇺🇿", fate: "out", note: "Eliminated — 0 pts" },
+    ],
+  },
+  {
+    group: "L", date: "Sat Jun 27",
+    teams: [
+      { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", fate: "controls", note: "Win vs Panama → top 2 confirmed (7 pts)" },
+      { team: "Ghana", flag: "🇬🇭", fate: "controls", note: "Win vs Croatia → top 2 confirmed (7 pts)" },
+      { team: "Croatia", flag: "🇭🇷", fate: "controls", note: "Win vs Ghana → 6 pts, through regardless of England result" },
+      { team: "Panama", flag: "🇵🇦", fate: "out", note: "Eliminated — 0 pts" },
+    ],
+  },
+];
+
 const NOW_BRIEFING = {
   headline: "Groups D, E, and F play their decisive final matchday today.",
   body: "Yesterday wrapped up Groups A, B, and C. Mexico swept all three games. South Africa stunned South Korea to claim 2nd in Group A. Switzerland topped Group B; Brazil and Morocco both advanced from Group C with seven points. Today (June 25) Groups D, E, and F play simultaneously — the USA, Germany, and the Netherlands look set to advance, with second places and third-place wildcards still in the balance. Groups G through L follow over the next two days.",
@@ -779,6 +863,47 @@ function FutureMatch({ match, label }) {
   );
 }
 
+function GroupScenarioCard({ scenario }) {
+  const [open, setOpen] = useState(false);
+  const fateConfig = {
+    in:       { icon: "✓", label: "Through",       bg: T.greenBg, fg: T.green, bd: T.greenBorder },
+    controls: { icon: "◈", label: "Controls fate", bg: T.blueBg,  fg: T.blue,  bd: T.blueBorder },
+    needs:    { icon: "~", label: "Needs help",    bg: T.amberBg, fg: T.amber, bd: T.amberBorder },
+    out:      { icon: "✗", label: "Eliminated",    bg: "#f8fafc", fg: T.textDim, bd: T.border },
+  };
+  const summary = scenario.teams.map((t) => fateConfig[t.fate].icon).join(" ");
+  return (
+    <div style={{ background: T.cardBg, border: `1px solid ${T.border}`, borderRadius: 12, overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
+      <button onClick={() => setOpen(!open)} style={{ width: "100%", textAlign: "left", background: "transparent", border: "none", padding: "11px 14px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <span style={{ fontSize: 14, fontWeight: 800, color: T.red }}>Group {scenario.group}</span>
+          <span style={{ fontSize: 11, color: T.textDim }}>{scenario.date}</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 12, letterSpacing: "0.12em", color: T.textMid }}>{summary}</span>
+          <span style={{ fontSize: 12, color: T.textDim }}>{open ? "▲" : "▼"}</span>
+        </div>
+      </button>
+      {open && (
+        <div style={{ borderTop: `1px solid ${T.border}` }}>
+          {scenario.teams.map((t, i) => {
+            const c = fateConfig[t.fate];
+            return (
+              <div key={t.team} style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 14px", background: c.bg, borderTop: i > 0 ? `1px solid ${T.border}` : "none" }}>
+                <span style={{ fontSize: 16 }}>{t.flag}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, minWidth: 98, color: T.text }}>{t.team}</span>
+                <span style={{ fontSize: 14, fontWeight: 800, color: c.fg, minWidth: 16 }}>{c.icon}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: c.fg, minWidth: 82 }}>{c.label}</span>
+                <span style={{ fontSize: 11.5, color: T.textMid, lineHeight: 1.4, flex: 1 }}>{t.note}</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function BracketColumn({ title, children }) {
   return (
     <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: 10 }}>
@@ -811,7 +936,17 @@ function BracketView() {
           <BracketColumn title="Final"><FutureMatch match={FINAL} label="🏆 FINAL" /></BracketColumn>
         </div>
       </div>
-      <h3 style={{ fontSize: 14, fontWeight: 800, margin: "24px 0 12px", color: T.text }}>Qualification status</h3>
+      <h3 style={{ fontSize: 14, fontWeight: 800, margin: "24px 0 6px", color: T.text }}>Group run-in scenarios</h3>
+      <div style={{ fontSize: 12, color: T.textDim, marginBottom: 12, display: "flex", gap: 14, flexWrap: "wrap" }}>
+        <span><strong style={{ color: T.green }}>✓</strong> Through</span>
+        <span><strong style={{ color: T.blue }}>◈</strong> Controls own fate (win = through)</span>
+        <span><strong style={{ color: T.amber }}>~</strong> Needs help</span>
+        <span><strong style={{ color: T.textDim }}>✗</strong> Eliminated</span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 28 }}>
+        {GROUP_SCENARIOS.map((s) => <GroupScenarioCard key={s.group} scenario={s} />)}
+      </div>
+      <h3 style={{ fontSize: 14, fontWeight: 800, margin: "0 0 12px", color: T.text }}>Qualification status</h3>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         {grouped.map(({ st, teams }) => {
           if (!teams.length) return null;
@@ -997,7 +1132,15 @@ export default function App() {
           </div>
         )}
         {tab === "bracket" && <BracketView />}
-        {tab === "rankings" && <RankingsView rankings={RANKINGS} asOf={RANKINGS_AS_OF} />}
+        {tab === "rankings" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+            <RankingsView rankings={RANKINGS} asOf={RANKINGS_AS_OF} />
+            <div>
+              <h3 style={{ fontSize: 14, fontWeight: 800, margin: "0 0 12px", color: T.text }}>Odds to Win the World Cup</h3>
+              <TitleOddsView odds={TITLE_ODDS} note={TITLE_ODDS_NOTE} />
+            </div>
+          </div>
+        )}
         {tab === "title" && <TitleOddsView odds={TITLE_ODDS} note={TITLE_ODDS_NOTE} />}
         {tab === "results" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
