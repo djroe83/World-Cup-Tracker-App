@@ -346,6 +346,16 @@ const VENUES = {
 
 const FLAG_COUNTRY = { US: "🇺🇸", CA: "🇨🇦", MX: "🇲🇽" };
 
+const T = {
+  pageBg: "#f4f6f9", cardBg: "#ffffff", cardBg2: "#f8fafc", inputBg: "#eef1f5",
+  border: "#e2e8f0", borderMid: "#cbd5e1",
+  text: "#0f172a", textMid: "#475569", textDim: "#94a3b8",
+  red: "#DC1F2E", redBg: "#fff1f2", redBorder: "#fecdd3",
+  blue: "#1D4ED8", blueBg: "#eff6ff", blueBorder: "#bfdbfe",
+  green: "#15803d", greenBg: "#f0fdf4", greenBorder: "#bbf7d0",
+  amber: "#b45309", amberBg: "#fffbeb", amberBorder: "#fde68a",
+};
+
 const fmtOdds = (n) => (n > 0 ? `+${n}` : `${n}`);
 
 function sortGroup(rows) {
@@ -364,11 +374,11 @@ function impliedPct(american) {
 
 function Pill({ children, tone = "default" }) {
   const tones = {
-    default: { bg: "#1c2128", fg: "#9aa4b2", bd: "#2d333b" },
-    live: { bg: "#3d1418", fg: "#ff5a5f", bd: "#5a1d22" },
-    final: { bg: "#0f2a1a", fg: "#4ade80", bd: "#1a4029" },
-    upcoming: { bg: "#1a2536", fg: "#60a5fa", bd: "#243b5c" },
-    kc: { bg: "#2e2410", fg: "#fbbf24", bd: "#4a3a16" },
+    default: { bg: T.inputBg, fg: T.textMid, bd: T.border },
+    live: { bg: T.redBg, fg: T.red, bd: T.redBorder },
+    final: { bg: T.greenBg, fg: T.green, bd: T.greenBorder },
+    upcoming: { bg: T.blueBg, fg: T.blue, bd: T.blueBorder },
+    kc: { bg: T.amberBg, fg: T.amber, bd: T.amberBorder },
   };
   const t = tones[tone] || tones.default;
   return (
@@ -380,15 +390,15 @@ function OddsBar({ pct }) {
   const [h, d, a] = pct;
   return (
     <div>
-      <div style={{ display: "flex", height: 8, borderRadius: 4, overflow: "hidden", background: "#1c2128" }}>
-        <div style={{ width: `${h}%`, background: "#4ade80" }} />
-        <div style={{ width: `${d}%`, background: "#3f4754" }} />
-        <div style={{ width: `${a}%`, background: "#fbbf24" }} />
+      <div style={{ display: "flex", height: 8, borderRadius: 4, overflow: "hidden", background: T.inputBg }}>
+        <div style={{ width: `${h}%`, background: T.blue }} />
+        <div style={{ width: `${d}%`, background: T.borderMid }} />
+        <div style={{ width: `${a}%`, background: T.red }} />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6, fontSize: 11, color: "#6b7280" }}>
-        <span style={{ color: "#4ade80" }}>{h}% home</span>
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6, fontSize: 11, color: T.textDim }}>
+        <span style={{ color: T.blue }}>{h}% home</span>
         <span>{d}% draw</span>
-        <span style={{ color: "#fbbf24" }}>{a}% away</span>
+        <span style={{ color: T.red }}>{a}% away</span>
       </div>
     </div>
   );
@@ -396,8 +406,8 @@ function OddsBar({ pct }) {
 
 function OddsCell({ label, val, accent }) {
   return (
-    <div style={{ flex: 1, background: "#1c2128", borderRadius: 10, padding: "10px 8px", textAlign: "center" }}>
-      <div style={{ fontSize: 10, color: "#6b7280", marginBottom: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</div>
+    <div style={{ flex: 1, background: T.inputBg, borderRadius: 10, padding: "10px 8px", textAlign: "center", border: `1px solid ${T.border}` }}>
+      <div style={{ fontSize: 10, color: T.textDim, marginBottom: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</div>
       <div style={{ fontSize: 16, fontWeight: 800, color: accent, fontVariantNumeric: "tabular-nums" }}>{val}</div>
     </div>
   );
@@ -413,7 +423,7 @@ function MatchDetail({ label, icon, items, accent }) {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {items.map((t, i) => (
-          <div key={i} style={{ display: "flex", gap: 7, fontSize: 12.5, lineHeight: 1.5, color: "#cbd2dc" }}>
+          <div key={i} style={{ display: "flex", gap: 7, fontSize: 12.5, lineHeight: 1.5, color: T.textMid }}>
             <span style={{ color: accent, flexShrink: 0 }}>•</span>
             <span>{t}</span>
           </div>
@@ -428,10 +438,10 @@ function TeamRow({ name, flag, score, win }) {
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "5px 0" }}>
       <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
         <span style={{ fontSize: 22 }}>{flag}</span>
-        <span style={{ fontSize: 16, fontWeight: win ? 700 : 500, color: win ? "#fff" : "#cbd2dc" }}>{name}</span>
+        <span style={{ fontSize: 16, fontWeight: win ? 700 : 500, color: win ? T.text : T.textMid }}>{name}</span>
       </div>
       {score !== null && score !== undefined && (
-        <span style={{ fontSize: 22, fontWeight: 800, color: win ? "#fff" : "#7d8694", fontVariantNumeric: "tabular-nums" }}>{score}</span>
+        <span style={{ fontSize: 22, fontWeight: 800, color: win ? T.red : T.textDim, fontVariantNumeric: "tabular-nums" }}>{score}</span>
       )}
     </div>
   );
@@ -443,7 +453,7 @@ function MatchCard({ m, expanded, onToggle, alwaysOpen = false }) {
   return (
     <div
       onClick={alwaysOpen ? undefined : onToggle}
-      style={{ background: "#16191f", border: "1px solid", borderColor: open ? "#3a4250" : "#23282f", borderRadius: 14, padding: "14px 16px", cursor: alwaysOpen ? "default" : "pointer" }}
+      style={{ background: T.cardBg, border: "1px solid", borderColor: open ? T.blue : T.border, borderRadius: 14, padding: "14px 16px", cursor: alwaysOpen ? "default" : "pointer", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -453,41 +463,41 @@ function MatchCard({ m, expanded, onToggle, alwaysOpen = false }) {
           {m.status === "upcoming" && <Pill tone="upcoming">{m.date} · {m.time}</Pill>}
           {m.kc && <Pill tone="kc">Kansas City</Pill>}
         </div>
-        {!alwaysOpen && <span style={{ fontSize: 11, color: "#6b7280" }}>{expanded ? "▲" : "▼"}</span>}
+        {!alwaysOpen && <span style={{ fontSize: 11, color: T.textDim }}>{expanded ? "▲" : "▼"}</span>}
       </div>
       <TeamRow name={m.home} flag={FLAG[m.home]} score={scoreShown ? m.hs : null} win={scoreShown && m.hs > m.as} />
       <TeamRow name={m.away} flag={FLAG[m.away]} score={scoreShown ? m.as : null} win={scoreShown && m.as > m.hs} />
-      <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280", display: "flex", gap: 6, alignItems: "center" }}>
+      <div style={{ marginTop: 10, fontSize: 11, color: T.textDim, display: "flex", gap: 6, alignItems: "center" }}>
         <span>📍</span><span>{m.venue}</span>
       </div>
       {open && (
-        <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid #23282f" }}>
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${T.border}` }}>
           {m.odds ? (
             <>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6b7280", marginBottom: 10 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.textDim, marginBottom: 10 }}>
                 {m.est ? "Pre-game odds · early estimate" : `Pre-game odds${m.status !== "upcoming" ? " · line at kickoff" : ""}`}
               </div>
               <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
-                <OddsCell label={m.home} val={fmtOdds(m.odds.home)} accent="#4ade80" />
-                <OddsCell label="Draw" val={fmtOdds(m.odds.draw)} accent="#9aa4b2" />
-                <OddsCell label={m.away} val={fmtOdds(m.odds.away)} accent="#fbbf24" />
+                <OddsCell label={m.home} val={fmtOdds(m.odds.home)} accent={T.blue} />
+                <OddsCell label="Draw" val={fmtOdds(m.odds.draw)} accent={T.textMid} />
+                <OddsCell label={m.away} val={fmtOdds(m.odds.away)} accent={T.red} />
               </div>
               <OddsBar pct={m.odds.pct} />
-              {m.note && <div style={{ marginTop: 12, fontSize: 12.5, color: "#d4b876", lineHeight: 1.5 }}>⭐ {m.note}</div>}
+              {m.note && <div style={{ marginTop: 12, fontSize: 12.5, color: T.amber, lineHeight: 1.5 }}>⭐ {m.note}</div>}
             </>
           ) : (
-            <div style={{ fontSize: 12.5, color: "#6b7280", lineHeight: 1.5 }}>
+            <div style={{ fontSize: 12.5, color: T.textDim, lineHeight: 1.5 }}>
               Matchday {m.md} · odds open closer to kickoff.
-              {m.note && <div style={{ marginTop: 6, color: "#d4b876" }}>⭐ {m.note}</div>}
+              {m.note && <div style={{ marginTop: 6, color: T.amber }}>⭐ {m.note}</div>}
             </div>
           )}
           {MATCH_DETAILS[m.id] && (
-            <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid #23282f" }}>
-              <MatchDetail label="Watch" icon="⭐" items={MATCH_DETAILS[m.id].watch} accent="#60a5fa" />
-              <MatchDetail label="Odds & upset watch" icon="📊" items={MATCH_DETAILS[m.id].odds} accent="#4ade80" />
-              <MatchDetail label="Stakes" icon="🎯" items={MATCH_DETAILS[m.id].stakes} accent="#f59e0b" />
-              <MatchDetail label="Fun facts" icon="🎉" items={MATCH_DETAILS[m.id].fun} accent="#38bdf8" />
-              <MatchDetail label="Color" icon="🎭" items={MATCH_DETAILS[m.id].color} accent="#c084fc" />
+            <div style={{ marginTop: 16, paddingTop: 14, borderTop: `1px solid ${T.border}` }}>
+              <MatchDetail label="Watch" icon="⭐" items={MATCH_DETAILS[m.id].watch} accent={T.blue} />
+              <MatchDetail label="Odds & upset watch" icon="📊" items={MATCH_DETAILS[m.id].odds} accent={T.green} />
+              <MatchDetail label="Stakes" icon="🎯" items={MATCH_DETAILS[m.id].stakes} accent={T.amber} />
+              <MatchDetail label="Fun facts" icon="🎉" items={MATCH_DETAILS[m.id].fun} accent="#0284c7" />
+              <MatchDetail label="Color" icon="🎭" items={MATCH_DETAILS[m.id].color} accent="#7c3aed" />
             </div>
           )}
         </div>
@@ -499,29 +509,29 @@ function MatchCard({ m, expanded, onToggle, alwaysOpen = false }) {
 function GroupTable({ letter, rows }) {
   const sorted = sortGroup(rows);
   return (
-    <div style={{ background: "#16191f", border: "1px solid #23282f", borderRadius: 14, overflow: "hidden" }}>
-      <div style={{ padding: "12px 16px", borderBottom: "1px solid #23282f", display: "flex", justifyContent: "space-between" }}>
-        <span style={{ fontSize: 14, fontWeight: 800 }}>Group {letter}</span>
-        <span style={{ fontSize: 11, color: "#6b7280" }}>top 2 + best 3rds advance</span>
+    <div style={{ background: T.cardBg, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+      <div style={{ padding: "12px 16px", borderBottom: `1px solid ${T.border}`, display: "flex", justifyContent: "space-between", background: T.pageBg }}>
+        <span style={{ fontSize: 14, fontWeight: 800, color: T.blue }}>Group {letter}</span>
+        <span style={{ fontSize: 11, color: T.textDim }}>top 2 + best 3rds advance</span>
       </div>
       <div style={{ padding: "4px 8px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "20px 1fr 28px 28px 28px 36px 32px", gap: 4, padding: "6px 8px", fontSize: 10, color: "#6b7280", fontWeight: 700, textTransform: "uppercase" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "20px 1fr 28px 28px 28px 36px 32px", gap: 4, padding: "6px 8px", fontSize: 10, color: T.textDim, fontWeight: 700, textTransform: "uppercase" }}>
           <span>#</span><span>Team</span><span style={{ textAlign: "center" }}>P</span>
           <span style={{ textAlign: "center" }}>W</span><span style={{ textAlign: "center" }}>D</span>
           <span style={{ textAlign: "center" }}>GD</span><span style={{ textAlign: "center" }}>Pts</span>
         </div>
         {sorted.map((r, i) => (
-          <div key={r.team} style={{ display: "grid", gridTemplateColumns: "20px 1fr 28px 28px 28px 36px 32px", gap: 4, padding: "8px", alignItems: "center", borderRadius: 8, background: i < 2 ? "rgba(74,222,128,0.06)" : i === 2 ? "rgba(96,165,250,0.05)" : "transparent", borderLeft: i < 2 ? "2px solid #4ade80" : i === 2 ? "2px solid #60a5fa" : "2px solid transparent" }}>
-            <span style={{ fontSize: 12, color: "#6b7280", fontWeight: 700 }}>{i + 1}</span>
-            <span style={{ display: "flex", gap: 7, alignItems: "center", fontSize: 13, fontWeight: 600 }}>
+          <div key={r.team} style={{ display: "grid", gridTemplateColumns: "20px 1fr 28px 28px 28px 36px 32px", gap: 4, padding: "8px", alignItems: "center", borderRadius: 8, background: i < 2 ? T.greenBg : i === 2 ? T.blueBg : "transparent", borderLeft: i < 2 ? `2px solid ${T.green}` : i === 2 ? `2px solid ${T.blue}` : "2px solid transparent" }}>
+            <span style={{ fontSize: 12, color: T.textDim, fontWeight: 700 }}>{i + 1}</span>
+            <span style={{ display: "flex", gap: 7, alignItems: "center", fontSize: 13, fontWeight: 600, color: T.text }}>
               <span style={{ fontSize: 16 }}>{r.flag}</span>
               <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.team}</span>
             </span>
-            <span style={{ textAlign: "center", fontSize: 12, color: "#9aa4b2" }}>{r.P}</span>
-            <span style={{ textAlign: "center", fontSize: 12, color: "#9aa4b2" }}>{r.W}</span>
-            <span style={{ textAlign: "center", fontSize: 12, color: "#9aa4b2" }}>{r.D}</span>
-            <span style={{ textAlign: "center", fontSize: 12, color: r.GD > 0 ? "#4ade80" : r.GD < 0 ? "#f87171" : "#9aa4b2" }}>{r.GD > 0 ? `+${r.GD}` : r.GD}</span>
-            <span style={{ textAlign: "center", fontSize: 14, fontWeight: 800 }}>{r.Pts}</span>
+            <span style={{ textAlign: "center", fontSize: 12, color: T.textMid }}>{r.P}</span>
+            <span style={{ textAlign: "center", fontSize: 12, color: T.textMid }}>{r.W}</span>
+            <span style={{ textAlign: "center", fontSize: 12, color: T.textMid }}>{r.D}</span>
+            <span style={{ textAlign: "center", fontSize: 12, color: r.GD > 0 ? T.green : r.GD < 0 ? T.red : T.textMid }}>{r.GD > 0 ? `+${r.GD}` : r.GD}</span>
+            <span style={{ textAlign: "center", fontSize: 14, fontWeight: 800, color: T.text }}>{r.Pts}</span>
           </div>
         ))}
       </div>
@@ -529,12 +539,12 @@ function GroupTable({ letter, rows }) {
   );
 }
 
-function Section({ title, accent, children }) {
+function Section({ title, children }) {
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-        <span style={{ width: 6, height: 6, borderRadius: 999, background: accent }} />
-        <h2 style={{ margin: 0, fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#9aa4b2" }}>{title}</h2>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+        <div style={{ width: 3, height: 18, background: T.red, borderRadius: 2, flexShrink: 0 }} />
+        <h2 style={{ margin: 0, fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: T.textMid }}>{title}</h2>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>{children}</div>
     </div>
@@ -542,27 +552,27 @@ function Section({ title, accent, children }) {
 }
 
 function Empty({ children }) {
-  return <div style={{ background: "#16191f", border: "1px dashed #2d333b", borderRadius: 12, padding: 18, fontSize: 13, color: "#6b7280", textAlign: "center" }}>{children}</div>;
+  return <div style={{ background: T.cardBg2, border: `1px dashed ${T.border}`, borderRadius: 12, padding: 18, fontSize: 13, color: T.textDim, textAlign: "center" }}>{children}</div>;
 }
 
 function RankingsView({ rankings, asOf }) {
   return (
     <div>
-      <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 14 }}>{asOf}. Trend arrows compare to the prior FIFA update.</div>
-      <div style={{ background: "#16191f", border: "1px solid #23282f", borderRadius: 14, overflow: "hidden" }}>
+      <div style={{ fontSize: 12, color: T.textDim, marginBottom: 14 }}>{asOf}. Trend arrows compare to the prior FIFA update.</div>
+      <div style={{ background: T.cardBg, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
         {rankings.map((r, i) => {
           const diff = r.prev - r.rank;
           const dnq = r.note === "did not qualify";
           return (
-            <div key={r.team} style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 14px", borderBottom: i < rankings.length - 1 ? "1px solid #1c2128" : "none", opacity: dnq ? 0.5 : 1 }}>
-              <span style={{ width: 26, fontSize: 15, fontWeight: 800, color: r.rank <= 3 ? "#fbbf24" : "#6b7280", fontVariantNumeric: "tabular-nums" }}>{r.rank}</span>
+            <div key={r.team} style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 14px", borderBottom: i < rankings.length - 1 ? `1px solid ${T.border}` : "none", opacity: dnq ? 0.45 : 1 }}>
+              <span style={{ width: 26, fontSize: 15, fontWeight: 800, color: r.rank <= 3 ? T.red : T.textDim, fontVariantNumeric: "tabular-nums" }}>{r.rank}</span>
               <span style={{ fontSize: 22 }}>{r.flag}</span>
-              <span style={{ flex: 1, fontSize: 15, fontWeight: 600 }}>
+              <span style={{ flex: 1, fontSize: 15, fontWeight: 600, color: T.text }}>
                 {r.team}
-                {dnq && <span style={{ fontSize: 10, color: "#f87171", marginLeft: 8, textTransform: "uppercase" }}>DNQ</span>}
+                {dnq && <span style={{ fontSize: 10, color: T.red, marginLeft: 8, textTransform: "uppercase" }}>DNQ</span>}
               </span>
-              {!dnq && diff !== 0 && <span style={{ fontSize: 12, fontWeight: 700, color: diff > 0 ? "#4ade80" : "#f87171" }}>{diff > 0 ? `▲ ${diff}` : `▼ ${Math.abs(diff)}`}</span>}
-              {!dnq && diff === 0 && <span style={{ fontSize: 12, color: "#4b5563" }}>—</span>}
+              {!dnq && diff !== 0 && <span style={{ fontSize: 12, fontWeight: 700, color: diff > 0 ? T.green : T.red }}>{diff > 0 ? `▲ ${diff}` : `▼ ${Math.abs(diff)}`}</span>}
+              {!dnq && diff === 0 && <span style={{ fontSize: 12, color: T.textDim }}>—</span>}
             </div>
           );
         })}
@@ -576,25 +586,25 @@ function TitleOddsView({ odds, note }) {
   const maxPct = Math.max(...sorted.map((o) => impliedPct(o.now)));
   return (
     <div>
-      <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 14 }}>{note}</div>
+      <div style={{ fontSize: 12, color: T.textDim, marginBottom: 14 }}>{note}</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {sorted.map((o) => {
           const nowP = impliedPct(o.now);
           const preP = impliedPct(o.pre);
           const moved = o.now < o.pre ? "shorter" : o.now > o.pre ? "longer" : "flat";
-          const moveColor = moved === "shorter" ? "#4ade80" : moved === "longer" ? "#f87171" : "#6b7280";
+          const moveColor = moved === "shorter" ? T.green : moved === "longer" ? T.red : T.textDim;
           return (
-            <div key={o.team} style={{ background: "#16191f", border: "1px solid #23282f", borderRadius: 12, padding: "12px 14px" }}>
+            <div key={o.team} style={{ background: T.cardBg, border: `1px solid ${T.border}`, borderRadius: 12, padding: "12px 14px", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                 <span style={{ fontSize: 20 }}>{o.flag}</span>
-                <span style={{ flex: 1, fontSize: 15, fontWeight: 700 }}>{o.team}</span>
-                <span style={{ fontSize: 16, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>{o.now > 0 ? `+${o.now}` : o.now}</span>
+                <span style={{ flex: 1, fontSize: 15, fontWeight: 700, color: T.text }}>{o.team}</span>
+                <span style={{ fontSize: 16, fontWeight: 800, fontVariantNumeric: "tabular-nums", color: T.text }}>{o.now > 0 ? `+${o.now}` : o.now}</span>
               </div>
-              <div style={{ display: "flex", height: 7, borderRadius: 4, overflow: "hidden", background: "#1c2128", marginBottom: 8 }}>
-                <div style={{ width: `${(nowP / maxPct) * 100}%`, background: "#4ade80" }} />
+              <div style={{ display: "flex", height: 7, borderRadius: 4, overflow: "hidden", background: T.inputBg, marginBottom: 8 }}>
+                <div style={{ width: `${(nowP / maxPct) * 100}%`, background: T.red }} />
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#6b7280" }}>
-                <span>Now: <strong style={{ color: "#cbd2dc" }}>{nowP}%</strong> implied</span>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: T.textDim }}>
+                <span>Now: <strong style={{ color: T.text }}>{nowP}%</strong> implied</span>
                 <span>Pre: {o.pre > 0 ? `+${o.pre}` : o.pre} ({preP}%)</span>
                 <span style={{ color: moveColor, fontWeight: 700 }}>{moved === "shorter" ? "▲ shortened" : moved === "longer" ? "▼ drifted" : "— flat"}</span>
               </div>
@@ -611,8 +621,8 @@ function VenuesView({ venuesData, activeVenue, setActiveVenue, expanded, toggle 
   const proj = (lat, lng) => ({ x: ((lng - LNG_MIN) / (LNG_MAX - LNG_MIN)) * 100, y: ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * 100 });
   return (
     <div>
-      <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 14 }}>16 host stadiums across 3 countries. Tap a dot or city to see every match there.</div>
-      <div style={{ position: "relative", width: "100%", paddingBottom: "62%", background: "#10141b", border: "1px solid #23282f", borderRadius: 14, marginBottom: 12, overflow: "hidden" }}>
+      <div style={{ fontSize: 12, color: T.textDim, marginBottom: 14 }}>16 host stadiums across 3 countries. Tap a dot or city to see every match there.</div>
+      <div style={{ position: "relative", width: "100%", paddingBottom: "62%", background: "#dde6f0", border: `1px solid ${T.border}`, borderRadius: 14, marginBottom: 12, overflow: "hidden" }}>
         {venuesData.map((v) => {
           if (!v.meta.lat) return null;
           const { x, y } = proj(v.meta.lat, v.meta.lng);
@@ -621,42 +631,41 @@ function VenuesView({ venuesData, activeVenue, setActiveVenue, expanded, toggle 
           const isKC = v.meta.city === "Kansas City";
           return (
             <button key={v.venue} onClick={() => setActiveVenue(isActive ? null : v.venue)} title={v.meta.city}
-              style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)", width: isActive ? 16 : 12, height: isActive ? 16 : 12, borderRadius: 999, background: hasLive ? "#ff5a5f" : isKC ? "#fbbf24" : "#4ade80", border: isActive ? "2px solid #fff" : "2px solid #0d0f13", cursor: "pointer", padding: 0 }} />
+              style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)", width: isActive ? 16 : 12, height: isActive ? 16 : 12, borderRadius: 999, background: hasLive ? T.red : isKC ? T.amber : T.blue, border: isActive ? `2px solid ${T.text}` : `2px solid ${T.cardBg}`, cursor: "pointer", padding: 0 }} />
           );
         })}
-        <div style={{ position: "absolute", bottom: 8, left: 10, fontSize: 10, color: "#4b5563", display: "flex", gap: 12 }}>
-          <span><span style={{ color: "#4ade80" }}>●</span> host city</span>
-          <span><span style={{ color: "#fbbf24" }}>●</span> Kansas City</span>
-          <span><span style={{ color: "#ff5a5f" }}>●</span> live now</span>
+        <div style={{ position: "absolute", bottom: 8, left: 10, fontSize: 10, color: T.textMid, display: "flex", gap: 12, background: "rgba(255,255,255,0.7)", padding: "3px 8px", borderRadius: 6 }}>
+          <span><span style={{ color: T.blue }}>●</span> host city</span>
+          <span><span style={{ color: T.amber }}>●</span> Kansas City</span>
+          <span><span style={{ color: T.red }}>●</span> live now</span>
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {venuesData.map((v) => {
           const isActive = activeVenue === v.venue;
-          const isKC = v.meta.city === "Kansas City";
           const played = v.games.filter((g) => g.status === "final").length;
           const live = v.games.some((g) => g.status === "live");
           return (
-            <div key={v.venue} style={{ background: "#16191f", border: "1px solid", borderColor: isActive ? "#3a4250" : "#23282f", borderRadius: 14, overflow: "hidden" }}>
+            <div key={v.venue} style={{ background: T.cardBg, border: "1px solid", borderColor: isActive ? T.blue : T.border, borderRadius: 14, overflow: "hidden", boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
               <button onClick={() => setActiveVenue(isActive ? null : v.venue)} style={{ width: "100%", textAlign: "left", background: "transparent", border: "none", padding: "14px 16px", cursor: "pointer", color: "inherit", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
                     <span style={{ fontSize: 16 }}>{FLAG_COUNTRY[v.meta.country]}</span>
-                    <span style={{ fontSize: 16, fontWeight: 800 }}>{v.meta.city}</span>
+                    <span style={{ fontSize: 16, fontWeight: 800, color: T.text }}>{v.meta.city}</span>
                     {live && <Pill tone="live">● Live</Pill>}
                   </div>
-                  <div style={{ fontSize: 11.5, color: "#6b7280" }}>{v.venue.split(",")[0]}</div>
+                  <div style={{ fontSize: 11.5, color: T.textDim }}>{v.venue.split(",")[0]}</div>
                 </div>
                 <div style={{ textAlign: "right", display: "flex", alignItems: "center", gap: 10 }}>
                   <div>
-                    <div style={{ fontSize: 18, fontWeight: 800 }}>{v.games.length}</div>
-                    <div style={{ fontSize: 10, color: "#6b7280" }}>{played} done</div>
+                    <div style={{ fontSize: 18, fontWeight: 800, color: T.text }}>{v.games.length}</div>
+                    <div style={{ fontSize: 10, color: T.textDim }}>{played} done</div>
                   </div>
-                  <span style={{ fontSize: 11, color: "#6b7280" }}>{isActive ? "▲" : "▼"}</span>
+                  <span style={{ fontSize: 11, color: T.textDim }}>{isActive ? "▲" : "▼"}</span>
                 </div>
               </button>
               {isActive && (
-                <div style={{ borderTop: "1px solid #23282f", padding: "8px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
+                <div style={{ borderTop: `1px solid ${T.border}`, padding: "8px 10px", display: "flex", flexDirection: "column", gap: 8, background: T.pageBg }}>
                   {v.games.map((g) => <MatchCard key={g.id} m={g} expanded={expanded === g.id} onToggle={() => toggle(g.id)} />)}
                 </div>
               )}
@@ -678,32 +687,32 @@ function ForecastSlot({ slot }) {
   const [open, setOpen] = useState(false);
   if (slot.conf) {
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: "rgba(74,222,128,0.1)", borderLeft: "2px solid #4ade80", borderRadius: 5 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: T.greenBg, borderLeft: `2px solid ${T.green}`, borderRadius: 5 }}>
         <span style={{ fontSize: 14 }}>{slot.flag}</span>
-        <span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>{slot.team}</span>
-        <span style={{ marginLeft: "auto", fontSize: 9, color: "#4ade80" }}>✓</span>
+        <span style={{ fontSize: 12.5, fontWeight: 700, color: T.green }}>{slot.team}</span>
+        <span style={{ marginLeft: "auto", fontSize: 9, color: T.green }}>✓</span>
       </div>
     );
   }
   const cands = slot.cands || [];
   const top = cands[0];
   return (
-    <div style={{ background: "#1c2128", borderLeft: `2px solid ${slot.us ? "#60a5fa" : "transparent"}`, borderRadius: 5, overflow: "hidden" }}>
+    <div style={{ background: T.inputBg, borderLeft: `2px solid ${slot.us ? T.blue : T.border}`, borderRadius: 5, overflow: "hidden" }}>
       <button onClick={() => setOpen(!open)} style={{ width: "100%", display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: "transparent", border: "none", cursor: "pointer", color: "inherit" }}>
-        <span style={{ fontSize: 10.5, color: "#7d8694", fontWeight: 600 }}>{slot.label}</span>
-        {top && <span style={{ marginLeft: "auto", fontSize: 11, color: "#9aa4b2" }}>{flagFor(top.t)} {top.t} <span style={{ color: "#5f6b7a" }}>{top.pct}%</span></span>}
-        <span style={{ fontSize: 8, color: "#5f6b7a" }}>{open ? "▲" : "▼"}</span>
+        <span style={{ fontSize: 10.5, color: T.textMid, fontWeight: 600 }}>{slot.label}</span>
+        {top && <span style={{ marginLeft: "auto", fontSize: 11, color: T.textMid }}>{flagFor(top.t)} {top.t} <span style={{ color: T.textDim }}>{top.pct}%</span></span>}
+        <span style={{ fontSize: 8, color: T.textDim }}>{open ? "▲" : "▼"}</span>
       </button>
       {open && cands.length > 0 && (
         <div style={{ padding: "2px 8px 8px", display: "flex", flexDirection: "column", gap: 4 }}>
           {cands.map((c) => (
             <div key={c.t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ fontSize: 12 }}>{flagFor(c.t)}</span>
-              <span style={{ fontSize: 11.5, color: "#cbd2dc", flex: 1 }}>{c.t}</span>
-              <div style={{ width: 50, height: 5, background: "#2d333b", borderRadius: 3, overflow: "hidden" }}>
-                <div style={{ width: `${c.pct}%`, height: "100%", background: "#60a5fa" }} />
+              <span style={{ fontSize: 11.5, color: T.textMid, flex: 1 }}>{c.t}</span>
+              <div style={{ width: 50, height: 5, background: T.border, borderRadius: 3, overflow: "hidden" }}>
+                <div style={{ width: `${c.pct}%`, height: "100%", background: T.blue }} />
               </div>
-              <span style={{ fontSize: 10.5, color: "#9aa4b2", width: 26, textAlign: "right" }}>{c.pct}%</span>
+              <span style={{ fontSize: 10.5, color: T.textDim, width: 26, textAlign: "right" }}>{c.pct}%</span>
             </div>
           ))}
         </div>
@@ -714,8 +723,8 @@ function ForecastSlot({ slot }) {
 
 function TreeMatch({ match }) {
   return (
-    <div style={{ background: "#16191f", border: `1px solid ${match.kc ? "#4a3a16" : "#23282f"}`, borderRadius: 9, padding: 7, display: "flex", flexDirection: "column", gap: 4, width: 210 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8.5, color: "#6b7280", padding: "0 2px 1px" }}>
+    <div style={{ background: T.cardBg, border: `1px solid ${match.kc ? T.amberBorder : T.border}`, borderRadius: 9, padding: 7, display: "flex", flexDirection: "column", gap: 4, width: 210, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8.5, color: T.textDim, padding: "0 2px 1px" }}>
         <span>M{match.m}</span>
         <span>{match.date} · {match.venue}{match.kc ? " ★" : ""}</span>
       </div>
@@ -727,13 +736,13 @@ function TreeMatch({ match }) {
 
 function FutureMatch({ match, label }) {
   return (
-    <div style={{ background: "#16191f", border: `1px solid ${match.us ? "#3a4250" : match.kc ? "#4a3a16" : "#23282f"}`, borderRadius: 9, padding: 7, display: "flex", flexDirection: "column", gap: 4, width: 210 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8.5, color: "#6b7280", padding: "0 2px 1px" }}>
+    <div style={{ background: T.cardBg, border: `1px solid ${match.us ? T.blueBorder : match.kc ? T.amberBorder : T.border}`, borderRadius: 9, padding: 7, display: "flex", flexDirection: "column", gap: 4, width: 210, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8.5, color: T.textDim, padding: "0 2px 1px" }}>
         <span>{label}</span>
         <span>{match.date} · {match.venue}{match.kc ? " ★" : ""}</span>
       </div>
       {match.from.map((f) => (
-        <div key={f} style={{ padding: "6px 8px", background: "#1c2128", borderRadius: 5, fontSize: 10.5, color: "#7d8694" }}>Winner M{f}</div>
+        <div key={f} style={{ padding: "6px 8px", background: T.inputBg, borderRadius: 5, fontSize: 10.5, color: T.textMid }}>Winner M{f}</div>
       ))}
     </div>
   );
@@ -742,7 +751,7 @@ function FutureMatch({ match, label }) {
 function BracketColumn({ title, children }) {
   return (
     <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-      <div style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#9aa4b2", textAlign: "center", marginBottom: 2 }}>{title}</div>
+      <div style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: T.textMid, textAlign: "center", marginBottom: 2 }}>{title}</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>{children}</div>
     </div>
   );
@@ -750,17 +759,17 @@ function BracketColumn({ title, children }) {
 
 function BracketView() {
   const stateColors = {
-    in: { bg: "rgba(74,222,128,0.1)", fg: "#4ade80", label: "Confirmed" },
-    likely: { bg: "rgba(96,165,250,0.1)", fg: "#60a5fa", label: "Likely" },
-    alive: { bg: "rgba(251,191,36,0.1)", fg: "#fbbf24", label: "Still alive" },
-    out: { bg: "rgba(248,113,113,0.08)", fg: "#f87171", label: "Eliminated" },
+    in: { bg: T.greenBg, fg: T.green, bd: T.greenBorder, label: "Confirmed" },
+    likely: { bg: T.blueBg, fg: T.blue, bd: T.blueBorder, label: "Likely" },
+    alive: { bg: T.amberBg, fg: T.amber, bd: T.amberBorder, label: "Still alive" },
+    out: { bg: "#fef2f2", fg: T.red, bd: T.redBorder, label: "Eliminated" },
   };
   const grouped = ["in", "likely", "alive", "out"].map((st) => ({ st, teams: QUALIFICATION.filter((q) => q.state === st) }));
   return (
     <div>
-      <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 14, lineHeight: 1.5 }}>
+      <div style={{ fontSize: 12, color: T.textDim, marginBottom: 14, lineHeight: 1.5 }}>
         Full bracket — scroll sideways to move through the rounds. Tap any open slot to see top candidates.
-        <span style={{ color: "#4ade80" }}> ✓ green</span> = confirmed; ★ = Kansas City matches; blue = USA's path.
+        <span style={{ color: T.green }}> ✓ green</span> = confirmed; ★ = Kansas City matches; blue = USA's path.
       </div>
       <div style={{ overflowX: "auto", paddingBottom: 12 }}>
         <div style={{ display: "flex", gap: 16, minWidth: "min-content", alignItems: "flex-start" }}>
@@ -771,7 +780,7 @@ function BracketView() {
           <BracketColumn title="Final"><FutureMatch match={FINAL} label="🏆 FINAL" /></BracketColumn>
         </div>
       </div>
-      <h3 style={{ fontSize: 14, fontWeight: 800, margin: "24px 0 12px" }}>Qualification status</h3>
+      <h3 style={{ fontSize: 14, fontWeight: 800, margin: "24px 0 12px", color: T.text }}>Qualification status</h3>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         {grouped.map(({ st, teams }) => {
           if (!teams.length) return null;
@@ -780,14 +789,14 @@ function BracketView() {
             <div key={st}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                 <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: c.fg }}>{c.label}</span>
-                <span style={{ fontSize: 11, color: "#6b7280" }}>({teams.length})</span>
+                <span style={{ fontSize: 11, color: T.textDim }}>({teams.length})</span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {teams.map((t) => (
-                  <div key={t.team} style={{ display: "flex", alignItems: "center", gap: 9, padding: "9px 11px", background: c.bg, borderRadius: 8 }}>
+                  <div key={t.team} style={{ display: "flex", alignItems: "center", gap: 9, padding: "9px 11px", background: c.bg, border: `1px solid ${c.bd}`, borderRadius: 8 }}>
                     <span style={{ fontSize: 17 }}>{t.flag}</span>
-                    <span style={{ fontSize: 13.5, fontWeight: 700, minWidth: 96 }}>{t.team}</span>
-                    <span style={{ fontSize: 11.5, color: "#9aa4b2", lineHeight: 1.4 }}>{t.detail}</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 700, minWidth: 96, color: T.text }}>{t.team}</span>
+                    <span style={{ fontSize: 11.5, color: T.textMid, lineHeight: 1.4 }}>{t.detail}</span>
                   </div>
                 ))}
               </div>
@@ -852,45 +861,52 @@ export default function App() {
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0d0f13", color: "#e6e9ee", fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: T.pageBg, color: T.text, fontFamily: "'Inter', system-ui, sans-serif" }}>
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 60px" }}>
         <div style={{ marginBottom: 4, display: "flex", alignItems: "baseline", gap: 10 }}>
-          <span style={{ fontSize: 26 }}>⚽</span>
-          <h1 style={{ margin: 0, fontSize: 24, fontWeight: 900, letterSpacing: "-0.02em" }}>World Cup 2026</h1>
+          <span style={{ fontSize: 28 }}>⚽</span>
+          <h1 style={{ margin: 0, fontSize: 28, fontWeight: 900, letterSpacing: "-0.02em", color: T.text }}>
+            World Cup <span style={{ color: T.red }}>2026</span>
+          </h1>
         </div>
-        <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 18 }}>USA · Canada · Mexico — Data as of {DATA_AS_OF}</div>
+        <div style={{ fontSize: 12, color: T.textDim, marginBottom: 18 }}>
+          USA · Canada · Mexico —{" "}
+          <span style={{ display: "inline-block", background: T.blueBg, color: T.blue, border: `1px solid ${T.blueBorder}`, borderRadius: 999, padding: "1px 8px", fontSize: 11, fontWeight: 600 }}>
+            Data as of {DATA_AS_OF}
+          </span>
+        </div>
 
         <div style={{ display: "flex", gap: 6, marginBottom: 20, overflowX: "auto", paddingBottom: 4 }}>
           {tabs.map((t) => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={{ flexShrink: 0, padding: "9px 14px", borderRadius: 999, border: "1px solid", borderColor: tab === t.id ? "#4ade80" : "#23282f", background: tab === t.id ? "rgba(74,222,128,0.1)" : "#16191f", color: tab === t.id ? "#4ade80" : "#9aa4b2", fontSize: 13, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}>{t.label}</button>
+            <button key={t.id} onClick={() => setTab(t.id)} style={{ flexShrink: 0, padding: "9px 14px", borderRadius: 999, border: "1px solid", borderColor: tab === t.id ? T.red : T.border, background: tab === t.id ? T.red : T.cardBg, color: tab === t.id ? "#ffffff" : T.textMid, fontSize: 13, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap", boxShadow: tab === t.id ? "0 2px 6px rgba(220,31,46,0.25)" : "0 1px 3px rgba(0,0,0,0.06)" }}>{t.label}</button>
           ))}
         </div>
 
         {tab === "now" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-            <div style={{ background: "#16191f", border: "1px solid #23282f", borderRadius: 16, padding: "18px 16px" }}>
-              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#4ade80", display: "block", marginBottom: 8 }}>State of play</span>
-              <h2 style={{ margin: "0 0 10px", fontSize: 17, fontWeight: 800, lineHeight: 1.3 }}>{NOW_BRIEFING.headline}</h2>
-              <p style={{ margin: "0 0 16px", fontSize: 14, lineHeight: 1.6, color: "#aab2bd" }}>{NOW_BRIEFING.body}</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, paddingTop: 14, borderTop: "1px solid #23282f" }}>
+            <div style={{ background: T.cardBg, border: `1px solid ${T.border}`, borderRadius: 16, padding: "18px 16px", boxShadow: "0 2px 8px rgba(0,0,0,0.07)" }}>
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: T.red, display: "block", marginBottom: 8 }}>State of play</span>
+              <h2 style={{ margin: "0 0 10px", fontSize: 17, fontWeight: 800, lineHeight: 1.3, color: T.text }}>{NOW_BRIEFING.headline}</h2>
+              <p style={{ margin: "0 0 16px", fontSize: 14, lineHeight: 1.6, color: T.textMid }}>{NOW_BRIEFING.body}</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8, paddingTop: 14, borderTop: `1px solid ${T.border}` }}>
                 {NOW_BRIEFING.threads.map((t, i) => {
                   const [head, ...rest] = t.split(": ");
                   return (
                     <div key={i} style={{ display: "flex", gap: 8, fontSize: 13, lineHeight: 1.5 }}>
-                      <span style={{ color: "#4ade80", flexShrink: 0 }}>›</span>
-                      <span style={{ color: "#cbd2dc" }}><strong style={{ color: "#fff" }}>{head}:</strong> {rest.join(": ")}</span>
+                      <span style={{ color: T.red, flexShrink: 0, fontWeight: 700 }}>›</span>
+                      <span style={{ color: T.textMid }}><strong style={{ color: T.text }}>{head}:</strong> {rest.join(": ")}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
-            <Section title={live.length ? "Happening now" : "No live matches"} accent="#ff5a5f">
+            <Section title={live.length ? "Happening now" : "No live matches"}>
               {live.length ? live.map((m) => <MatchCard key={m.id} m={m} alwaysOpen />) : <Empty>No game is live right now. The next match is below.</Empty>}
             </Section>
-            <Section title="Up next" accent="#60a5fa">
+            <Section title="Up next">
               {next.map((m) => <MatchCard key={m.id} m={m} alwaysOpen />)}
             </Section>
-            <Section title="Just finished" accent="#4ade80">
+            <Section title="Just finished">
               {recent.map((m) => <MatchCard key={m.id} m={m} alwaysOpen />)}
             </Section>
           </div>
@@ -901,35 +917,35 @@ export default function App() {
           const played = day.games.filter((g) => g.status !== "upcoming");
           return (
             <div>
-              <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 12 }}>Tap a day to see its matches. Tap any match for odds + details.</div>
+              <div style={{ fontSize: 12, color: T.textDim, marginBottom: 12 }}>Tap a day to see its matches. Tap any match for odds + details.</div>
               <div style={{ display: "flex", gap: 6, marginBottom: 18, overflowX: "auto", paddingBottom: 6 }}>
                 {scheduleDays.map((d, i) => {
                   const { dow, md } = splitDate(d.date);
                   const sel = i === dayIdx;
                   return (
-                    <button key={d.date} onClick={() => setDayIdx(i)} style={{ flexShrink: 0, minWidth: 52, padding: "7px 10px", borderRadius: 12, border: "1px solid", borderColor: sel ? "#60a5fa" : "#23282f", background: sel ? "rgba(96,165,250,0.12)" : "#16191f", cursor: "pointer", textAlign: "center" }}>
-                      <div style={{ fontSize: 9.5, fontWeight: 700, textTransform: "uppercase", color: sel ? "#60a5fa" : "#6b7280" }}>{dow}</div>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: sel ? "#fff" : "#cbd2dc", whiteSpace: "nowrap" }}>{md.replace("Jun ", "").replace("Jul ", "")}</div>
+                    <button key={d.date} onClick={() => setDayIdx(i)} style={{ flexShrink: 0, minWidth: 52, padding: "7px 10px", borderRadius: 12, border: "1px solid", borderColor: sel ? T.blue : T.border, background: sel ? T.blueBg : T.cardBg, cursor: "pointer", textAlign: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
+                      <div style={{ fontSize: 9.5, fontWeight: 700, textTransform: "uppercase", color: sel ? T.blue : T.textDim }}>{dow}</div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: sel ? T.blue : T.text, whiteSpace: "nowrap" }}>{md.replace("Jun ", "").replace("Jul ", "")}</div>
                     </button>
                   );
                 })}
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>{day.date}</h3>
-                <span style={{ fontSize: 10, color: "#6b7280", textTransform: "uppercase" }}>MD{day.md} · {day.games.length} games</span>
+                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: T.text }}>{day.date}</h3>
+                <span style={{ fontSize: 10, color: T.textDim, textTransform: "uppercase" }}>MD{day.md} · {day.games.length} games</span>
               </div>
               {DAY_SUMMARIES[day.date] && (
-                <div style={{ background: "rgba(251,191,36,0.05)", border: "1px solid #3a3318", borderRadius: 12, padding: "13px 14px", marginBottom: 14 }}>
-                  <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#fbbf24", display: "block", marginBottom: 6 }}>Day briefing</span>
-                  <div style={{ fontSize: 13, lineHeight: 1.55, color: "#d4b876" }}>{DAY_SUMMARIES[day.date]}</div>
+                <div style={{ background: T.amberBg, border: `1px solid ${T.amberBorder}`, borderRadius: 12, padding: "13px 14px", marginBottom: 14 }}>
+                  <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: T.amber, display: "block", marginBottom: 6 }}>Day briefing</span>
+                  <div style={{ fontSize: 13, lineHeight: 1.55, color: T.textMid }}>{DAY_SUMMARIES[day.date]}</div>
                   {played.length > 0 && (
-                    <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #3a3318", display: "flex", flexDirection: "column", gap: 6 }}>
+                    <div style={{ marginTop: 12, paddingTop: 12, borderTop: `1px solid ${T.amberBorder}`, display: "flex", flexDirection: "column", gap: 6 }}>
                       {played.map((g) => (
                         <div key={g.id} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5 }}>
-                          <span style={{ flexShrink: 0, width: 40, fontSize: 9.5, fontWeight: 700, textTransform: "uppercase", color: "#6b7280" }}>Final</span>
-                          <span style={{ color: "#cbd2dc", fontWeight: g.hs > g.as ? 700 : 500 }}>{FLAG[g.home]} {g.home}</span>
-                          <span style={{ fontWeight: 800, color: "#fff" }}>{g.hs}–{g.as}</span>
-                          <span style={{ color: "#cbd2dc", fontWeight: g.as > g.hs ? 700 : 500 }}>{g.away} {FLAG[g.away]}</span>
+                          <span style={{ flexShrink: 0, width: 40, fontSize: 9.5, fontWeight: 700, textTransform: "uppercase", color: T.textDim }}>Final</span>
+                          <span style={{ color: T.text, fontWeight: g.hs > g.as ? 700 : 500 }}>{FLAG[g.home]} {g.home}</span>
+                          <span style={{ fontWeight: 800, color: T.text }}>{g.hs}–{g.as}</span>
+                          <span style={{ color: T.text, fontWeight: g.as > g.hs ? 700 : 500 }}>{g.away} {FLAG[g.away]}</span>
                         </div>
                       ))}
                     </div>
@@ -958,7 +974,7 @@ export default function App() {
           </div>
         )}
 
-        <div style={{ marginTop: 32, fontSize: 11, color: "#4b5563", lineHeight: 1.6, textAlign: "center" }}>
+        <div style={{ marginTop: 32, fontSize: 11, color: T.textDim, lineHeight: 1.6, textAlign: "center" }}>
           Odds are illustrative snapshots, not live sportsbook feeds. To refresh results, standings & odds, ask Claude to "update the World Cup tracker."
         </div>
       </div>
