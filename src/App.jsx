@@ -414,13 +414,339 @@ const DAY_SUMMARIES = {
 };
 
 const MATCH_DETAILS = {
-  19: { watch: ["Lionel Messi (Argentina) — hat-trick vs Algeria, tying Klose's all-time World Cup record at 16 goals, on his 200th cap."], fun: ["Klose's record of 16 WC goals stood since 2014; Messi tying it at ~38 is remarkable longevity.", "Algeria's finest hour was beating West Germany in 1982 — so shocking it led FIFA to make final group games kick off simultaneously."] },
-  35: { watch: ["Eloy Room (Curaçao) — 15 saves, the most in a 90-minute World Cup match since records began in 1966."], fun: ["Curaçao (population ~150,000) is the smallest nation by population ever to play at a World Cup.", "The match was played at Arrowhead Stadium in Kansas City."] },
-  41: { watch: ["Lionel Messi (Argentina) — scores 17th & 18th WC goals, passes Klose as all-time leading scorer."], fun: ["Argentina are reigning champions (2022) and Messi, at ~38, is chasing an unprecedented second straight title.", "Argentina has won three World Cups (1978, 1986, 2022)."] },
-  13: { watch: ["Vozinha (Cabo Verde) — eight saves to deny Spain; the goalkeeping performance of the tournament so far."], odds: ["Spain were among the heaviest favorites of the group stage (~ -650) and didn't win — the upset of the tournament."], fun: ["Cabo Verde, an Atlantic archipelago of ~525,000 people, qualified for its first-ever World Cup in 2026.", "Spain entered as reigning European champions and one of the title favorites."] },
+  // ── Past matches with notable context ──────────────────────────────────────
+  1:  { fun: ["The Estadio Azteca is the only stadium to host two World Cup finals (1970 and 1986).", "Mexico has hosted the World Cup three times (1970, 1986, 2026) — more than any other nation.", "This was the opening match of the first-ever 48-team World Cup."] },
   4:  { watch: ["Folarin Balogun (USA) — historic brace, first US World Cup multi-goal game since 1930."], fun: ["Balogun was born in New York, raised in London, and chose the USA over England in 2023.", "As co-hosts, the USA, Canada, and Mexico all qualified automatically."] },
   9:  { watch: ["Germany's attack — seven goals in one game is a statement of intent."], fun: ["Germany now owns three of the five WC matches this century in which a team scored 7+, including the infamous 7-1 over Brazil in 2014.", "Curaçao's goal was its first-ever World Cup goal."] },
-  1:  { fun: ["The Estadio Azteca is the only stadium to host two World Cup finals (1970 and 1986).", "Mexico has hosted the World Cup three times (1970, 1986, 2026) — more than any other nation.", "This was the opening match of the first-ever 48-team World Cup."] },
+  13: { watch: ["Vozinha (Cabo Verde) — eight saves to deny Spain; the goalkeeping performance of the tournament so far."], odds: ["Spain were among the heaviest favorites of the group stage (~-650) and didn't win — the upset of the tournament so far."], fun: ["Cabo Verde, an Atlantic archipelago of ~530,000 people, qualified for its first-ever World Cup in 2026.", "Vozinha is 40 years old — one of the oldest goalkeepers ever to play at a World Cup. His mother's emotional US visa journey became the tournament's biggest human-interest story.", "Spain entered as reigning European champions (Euro 2024) and one of the title favorites."] },
+  19: { watch: ["Lionel Messi (Argentina) — hat-trick vs Algeria, tying Klose's all-time World Cup record at 16 goals, on his 200th cap."], fun: ["Klose's record of 16 WC goals stood since 2014; Messi tying it at ~38 is remarkable longevity.", "Algeria's finest hour was beating West Germany in 1982 — so shocking it led FIFA to make final group games kick off simultaneously."] },
+  35: { watch: ["Eloy Room (Curaçao) — 15 saves, the most in a 90-minute World Cup match since records began in 1966."], fun: ["Curaçao (population ~150,000) is the smallest nation by population ever to play at a World Cup.", "Room also made 9 saves to hold Switzerland in the Caribbean qualifiers. He is a genuine World Cup legend from a micro-nation."] },
+  41: { watch: ["Lionel Messi (Argentina) — scores 17th & 18th WC goals, passes Klose as all-time leading scorer."], fun: ["Argentina are reigning champions (2022) and Messi, at ~38, is chasing an unprecedented second straight title.", "Argentina has won three World Cups (1978, 1986, 2022). Messi's 2022 title in Qatar was widely regarded as the greatest individual World Cup performance ever."] },
+
+  // ── Tonight: Group D (Jun 25, 10 PM ET) ────────────────────────────────────
+  59: {
+    watch: [
+      "Arda Güler (Turkey, Real Madrid) — 21-year-old phenom who won the Champions League Revelation of the Season award in 2025-26. Led Real Madrid in chances created all season with 111 key passes and 20 goal contributions. Turkey's only realistic path to any joy runs through him.",
+      "Ricardo Pepi (USA, PSV Eindhoven) — the likely starting striker with Pulisic potentially returning from his calf issue. Pepi has been one of the Eredivisie's top scorers over two seasons at PSV. A strong finish here sharpens his knockout-round credentials.",
+      "Kenan Yıldız (Turkey, Juventus) — 20 years old, Juventus forward averaging 3.5 completed dribbles per 90 minutes in qualifiers. Held dual Turkish-German citizenship and chose Turkey. One of Serie A's most exciting young talents.",
+    ],
+    stakes: [
+      "Turkey are eliminated — 0 pts and 0 goals in two games. This is mathematically a dead rubber, but Arda Güler and the squad play for pride.",
+      "The USA can become the first USMNT in World Cup history to win all three group games. No US team has ever gone 3W-0D-0L in the group stage — a historic milestone is 90 minutes away.",
+    ],
+    fun: [
+      "Hakan Şükür scored after just 10.8 seconds against South Korea in the 2002 World Cup third-place match — the fastest goal in World Cup history. The record still stands today.",
+      "Turkey finished 3rd at the 2002 World Cup in South Korea/Japan — beating Senegal, Brazil (semi) loss, then 3rd-place win over hosts South Korea. Still their greatest football achievement.",
+      "Istanbul, Turkey's largest city (15+ million people), is the only major city in the world straddling two continents — the Bosphorus strait divides the European and Asian sides. The Bosphorus Bridge connects them.",
+      "Turkey has a population of over 85 million, making it one of Europe's largest nations. Yet 2026 is only their 4th World Cup finals appearance.",
+      "The new FIFA rule that got Almirón red-carded was pushed by president Gianni Infantino specifically after Benfica's Prestianni hid verbal insults toward Vinícius Jr. in a Champions League match.",
+      "SoFi Stadium (Inglewood, CA) cost $5.5 billion to build — the most expensive stadium ever constructed. It will host the 2028 Los Angeles Olympic opening ceremony and Super Bowl LXI.",
+    ],
+    color: [
+      "Turkey are coached by Italian Vincenzo Montella — the same man who guided them to the Euro 2024 quarterfinals, their best European Championship run in years. Their failure to score a single goal in 2026 is baffling given the attacking talent available.",
+      "Gio Reyna (USA, Nottingham Forest) was one of the most highly-touted American prospects of his generation — son of US legend Claudio Reyna — but injuries have stunted his career. This tournament is his chance to prove he belongs at the highest level.",
+    ],
+  },
+
+  // ── Tonight: Group D (Jun 25, 10 PM ET) ────────────────────────────────────
+  60: {
+    watch: [
+      "Julio Enciso (Paraguay, Brighton) — the 22-year-old creative engine must carry Paraguay's attack without the suspended Almirón. Known for explosive shooting — he scored one of the goals of the 2022-23 Premier League season with a 35-yard thunderbolt vs Man City.",
+      "Jackson Irvine (Australia, St. Pauli) — tireless captain and midfield leader, born in Brisbane but made his name in Germany's Bundesliga. Sets the tempo for everything the Socceroos do.",
+      "Mat Ryan (Australia, Real Sociedad) — veteran goalkeeper and Australia's most-capped 'keeper. Decisive saves could keep Socceroos alive and through.",
+    ],
+    stakes: [
+      "A draw sends Australia through 2nd on goal difference. Paraguay must win to finish top 2 automatically — otherwise they drop to 3rd and depend on the best-3rd results.",
+      "Paraguay are playing without star midfielder Miguel Almirón — suspended for the first red card under FIFA's new mouth-covering rule. Almirón was sent off vs Turkey for covering his mouth while speaking to an opponent.",
+    ],
+    fun: [
+      "Miguel Almirón became the first player ever sent off under FIFA's new 'mouth-covering' rule — introduced to stop players hiding verbal abuse. He covered his mouth while talking to a Turkish player; the referee reviewed the footage and issued a straight red.",
+      "Paraguay is one of only two landlocked countries in all of South America (the other is Bolivia). Completely surrounded by Argentina, Brazil, and Bolivia.",
+      "Paraguay's official languages are Spanish and Guaraní — one of the few countries in the world where an indigenous language has equal official status. About half the population speaks Guaraní as their primary language.",
+      "This is Paraguay's first World Cup since 2010. In South Africa that year, they reached the quarterfinals before losing to eventual runners-up Spain. A 16-year absence ends here.",
+      "Australia's best-ever World Cup performance was the quarterfinals in Qatar 2022 — beating Denmark and holding on through a dramatic run before losing to Argentina. They are bidding for back-to-back knockout appearances for the first time.",
+      "Mathew Leckie — Australia's most experienced right winger — is out with a hamstring injury suffered against the USA. Tony Popovic made six lineup changes for this game.",
+    ],
+    color: [
+      "A draw suits Australia and a win suits Paraguay — which creates a fascinating tactical asymmetry: one team defending, the other forced to attack. Expect a cagey opening then an open second half.",
+      "Both nations are coached by South Americans: Paraguay's Gustavo Alfaro (Argentine) and Australia's Tony Popovic (born in Melbourne to Croatian parents, former Crystal Palace defender). Two very different footballing philosophies.",
+    ],
+  },
+
+  // ── Friday June 26: Group I (3 PM ET) ──────────────────────────────────────
+  61: {
+    watch: [
+      "Erling Haaland (Norway, Man City) — 4 goals in 2 games, with braces in both. The world's most feared striker is playing his first-ever World Cup and he is showing exactly why every tournament pined for him. His movement, aerial power, and finishing are unmatched.",
+      "Kylian Mbappé (France) — also 4 goals in 2 games, braces in both. The two most explosive forwards at this tournament collide for the first time on the world stage.",
+      "Martin Ødegaard (Norway, Arsenal) — Arsenal's elegant captain is the creative heartbeat of this Norway side. If healthy and in form, he is among the top 5 players in the world.",
+    ],
+    stakes: [
+      "Both are already through to the Round of 32. This is a straight battle for 1st place — the winner gets the 'easier' side of the bracket and almost certainly avoids Spain until the quarterfinals.",
+      "Norway returned to the World Cup for the first time in 28 years. Erling Haaland has talked publicly about fulfilling a childhood dream. A 1st-place finish would be the perfect group stage for them.",
+    ],
+    fun: [
+      "Norway last played at a World Cup in 1998 — where they famously beat eventual winners Brazil 2-1 in the group stage. Kjetil Rekdal's penalty in the 89th minute completed the comeback from 1-0 down.",
+      "Erling Haaland was born in Leeds, England, in July 2000 — his father Alfie Haaland was playing for Manchester City at the time. Erling later joined Man City and became their greatest-ever scorer, breaking the Premier League single-season goals record (36 goals).",
+      "Norway has a population of only 5.4 million — making it one of the smallest nations to have reached the knockout round at a 48-team World Cup. Smaller than Yorkshire.",
+      "France are the only nation to have won the World Cup and European Championship in back-to-back tournaments in the modern era (1998 World Cup + 2000 Euro). They are trying to add a second World Cup title.",
+      "Mbappé scored 4 goals in the 2018 World Cup final tournament (including in the final vs Croatia). He is now the most powerful forward in the world — and already has 4 at this tournament.",
+      "Gillette Stadium in Foxborough, Massachusetts is shared with the New England Patriots NFL team — 6-time Super Bowl champions. The Boston/Foxborough area is one of the most sports-passionate regions in the USA.",
+    ],
+    color: [
+      "Haaland said he is 'absolutely not' a contender for the World Cup trophy — but that Norway are 'absolutely living the dream.' In a rare display of public humility from one of football's most competitive personalities.",
+      "This is arguably the match of the entire group stage. Two unbeaten teams, the two leading scorers of the tournament, meeting in what is functionally a final for the 'easy' side of the bracket.",
+    ],
+  },
+
+  // ── Friday June 26: Group I (3 PM ET) ──────────────────────────────────────
+  62: {
+    watch: [
+      "Sadio Mané (Senegal, Al-Nassr) — the 2022 AFCON Player of the Tournament brings genuine world-class quality. Driven to make a statement after Senegal failed to advance from their group.",
+      "Ismaïla Sarr (Senegal) — electric winger with pace and directness who can unlock any defensive system when given space.",
+    ],
+    stakes: [
+      "Senegal's path to advancing as a best-3rd team requires a win AND very specific results from other groups — an extremely slim scenario.",
+      "Iraq are playing for only their second World Cup knockout appearance — their only previous experience at the finals was Mexico 1986.",
+      "Both teams entered the tournament with hopes. Both have 0 pts. This is a pride match.",
+    ],
+    fun: [
+      "Senegal are the reigning Africa Cup of Nations champions — they won their first-ever AFCON title in 2021 (played in 2022), beating Egypt on penalties in the final. A generation of world-class talent finally delivered continental glory.",
+      "Iraq are appearing at only their second-ever World Cup. Their first was Mexico 1986 — where they lost all three group games but qualified from the Asian zone for the first time in history. This 2026 appearance ends a 40-year wait.",
+      "Dakar, Senegal's capital, is the westernmost capital city on the African mainland — geographically closer to South America than to many African capitals.",
+      "Kalidou Koulibaly (Senegal captain, Chelsea) is one of the most dominant central defenders of his generation — an imposing physical presence who commands both penalty boxes.",
+      "Iraq's Gulf Cup win in 2023 signalled a footballing resurgence for a nation that has endured decades of political turbulence. Their World Cup qualification is a source of enormous national pride across the region.",
+    ],
+    color: [
+      "With nothing material on the line for either team's advancement, expect an open, attack-minded game. Both squads will want to end the tournament with a win and avoid leaving empty-handed.",
+    ],
+  },
+
+  // ── Friday June 26: Group H (8 PM ET) ──────────────────────────────────────
+  63: {
+    watch: [
+      "Vozinha (Cabo Verde, 40) — real name Josimar Évora. Already made 8 saves to deny Spain in their historic 0-0 debut. His mother Ana Cândida couldn't afford the US visa bond — a GoFundMe campaign went viral, a US Congressman intervened, and she was granted a visa in time to see her son play. One of the tournament's great human stories.",
+      "Firas Al-Buraikan (Saudi Arabia) — the 24-year-old striker who scored vs Uruguay. Saudi Arabia's primary attacking threat and their best hope of a tournament-saving win.",
+    ],
+    stakes: [
+      "Cabo Verde (2 pts, Group H 3rd) can potentially advance if they get a result and Spain beats Uruguay. They are already guaranteed a place in World Cup history as giant-killers.",
+      "Saudi Arabia (1 pt) need a win AND Uruguay to lose — an almost impossible combination. This is likely their final match of the tournament.",
+    ],
+    fun: [
+      "Cabo Verde (official name: República de Cabo Verde) is an archipelago of 10 volcanic islands in the Atlantic, ~570 km west of Senegal — population ~530,000. Among the smallest-ever nations in a World Cup.",
+      "This is Cabo Verde's first-ever World Cup. They qualified on 13 October 2025 by beating Eswatini 3-0, ending decades of near-misses. The islands erupted in celebration.",
+      "Vozinha is 40 years old — thought to be one of the oldest goalkeepers ever to play at a World Cup. He plays his club football in the lower reaches of Portuguese football and has a day job. He is an absolute cult hero.",
+      "Saudi Arabia's 2-1 win over Argentina in Qatar 2022 — after being 1-0 down at half time — ranks among the greatest World Cup upsets in history. They are looking for another miracle performance.",
+      "Cabo Verde's culture blends West African and Portuguese influences — the islands were uninhabited before Portuguese explorers arrived in the 1460s. Their most famous cultural export is morna music — a melancholy yet beautiful genre. Cesária Évora, the 'Barefoot Diva,' brought it to global audiences.",
+      "Roberto Mancini, Saudi Arabia's Italian coach, won Euro 2020 with Italy after one of the most remarkable tournament coaching performances in decades. He was hired as Saudi manager in a highly lucrative deal as part of the kingdom's Vision 2030 sports investment push.",
+    ],
+    color: [
+      "Saudi Arabia's Vision 2030 includes hosting the 2034 World Cup and a bid for the 2036 Olympics. The kingdom has spent billions attracting star players (Ronaldo, Benzema, Neymar) to the Saudi Pro League. This World Cup is their proof-of-concept moment for football on the world stage.",
+      "A Cabo Verde victory here — the tiny Atlantic island nation outlasting the Middle East's biggest footballing nation — would be one of the most extraordinary group stage results in World Cup history.",
+    ],
+  },
+
+  // ── Friday June 26: Group H (8 PM ET) ──────────────────────────────────────
+  64: {
+    watch: [
+      "Lamine Yamal (Spain, Barcelona) — born 13 July 2007. At 18, already the second-youngest player to score at a World Cup (behind Pelé in 1958). Runner-up for the 2025 Ballon d'Or. His ability to cut inside from the right and create with both feet in tight spaces is freakish for someone his age.",
+      "Darwin Núñez (Uruguay, Liverpool) — the explosive Liverpool striker with pace and aerial power to trouble any backline. Uruguay need him to deliver against Spain's high defensive line.",
+      "Rodri (Spain, Man City) — reigning 2024 Ballon d'Or winner and the supreme midfielder. Controls possession, covers enormous ground, and executes the highest-level game management.",
+      "Federico Valverde (Uruguay, Real Madrid) — box-to-box engine for both club and country. Capable of changing a game with one moment of individual brilliance.",
+    ],
+    stakes: [
+      "Spain (4 pts) can clinch Group H 1st with a win. A draw may also be enough depending on the Cabo Verde-Saudi Arabia result.",
+      "Uruguay (2 pts) must get something. A loss, combined with Cabo Verde winning, could eliminate the 2-time World Cup winners in the group stage.",
+    ],
+    fun: [
+      "Uruguay won the very first World Cup in 1930 — hosted and won on home soil in Montevideo. They beat Argentina 4-2 in the final in front of 93,000 fans at the Estadio Centenario.",
+      "Spain are unbeaten in their last 10 meetings with Uruguay across 76 years, winning 5 and drawing 5. Their previous World Cup encounters: 2-2 in 1950 and 0-0 in 1990.",
+      "Lamine Yamal won a European Championship the day after his 17th birthday — Spain beat England 2-1 in the Euro 2024 final in Berlin, with Yamal providing the crucial assist. He also won the Kopa Trophy in 2024 and 2025.",
+      "Uruguay's concept of 'garra charrúa' — the fighting spirit of the indigenous Charrúa people — is central to their football identity. They are defined by resilience, fight, and refusing to accept defeat.",
+      "Uruguay has about 3.4 million people — one of the smallest nations ever to win the World Cup. Pound-for-pound, they are arguably the greatest football nation in history (2 WCs, 15 Copa Américas).",
+      "Pedri (Spain, Barcelona) is compared to Xavi and Iniesta — the latest in Spain's legendary lineage of technically perfect interior midfielders. At 23, he is already a Barcelona icon.",
+    ],
+    color: [
+      "Marcelo Bielsa manages Uruguay — 'El Loco' is one of football's most intense and intellectually rigorous managers. His teams press relentlessly and demand maximum physical commitment. Against Spain's technical superiority, this could be a fascinating battle of philosophies.",
+      "This match is at Estadio Akron in Guadalajara, Mexico — the same city where Spain and Uruguay last met in a World Cup in 1990. A full-circle moment for both football nations.",
+    ],
+  },
+
+  // ── Friday June 26: Group G (11 PM ET) ─────────────────────────────────────
+  65: {
+    watch: [
+      "Mohamed Salah (Egypt, Liverpool) — Egypt's captain and talisman, widely regarded as the best African footballer ever. Scored his 68th international goal vs New Zealand and is closing in on Egypt's all-time record. For 107 million Egyptians, a Salah performance at the knockouts is the dream.",
+      "Mehdi Taremi (Iran) — captain and Iran's most dangerous attacker. Has endured a chaotic tournament — Iran's assistant coach was detained at a US airport before a match. On the pitch, Taremi's movement and hold-up play are Iran's best weapons in attack.",
+    ],
+    stakes: [
+      "Egypt (4 pts, Group G leaders) can clinch 1st place with a win. A draw keeps them in 2nd but leaves the door open for Belgium.",
+      "Iran (2 pts) must at minimum draw to survive. A win sends them to the Round of 32 for the first time in their World Cup history. A loss likely eliminates them.",
+    ],
+    fun: [
+      "Egypt are the most successful nation in African football history — they have won the Africa Cup of Nations a record 7 times, including 3 in a row (2006, 2008, 2010).",
+      "Egypt's total World Cup appearances before 2026: just 3 (1934, 1990, 2018). For a nation of 107 million people with the continent's richest football history, their scarcity at the World Cup is remarkable.",
+      "Mehdi Taremi himself said the team's tournament experience in the US has been 'a disaster' — pointing to travel complications, visa issues for staff, and logistical disruptions that disrupted preparation for every match.",
+      "Iran became the first Asian team to beat USA at a World Cup — their 2-1 win in France 1998 (the famous political context match) is still one of the most charged fixtures in international football history.",
+      "The Pyramids of Giza, just outside Cairo, are the only surviving wonder of the ancient Seven Wonders of the World — built around 2560 BC. Egypt's civilization is one of the oldest continuous ones on Earth.",
+      "Salah scored his 67th international goal in the 67th minute vs New Zealand — a coincidence that only superstars achieve. He has scored in back-to-back World Cup matches.",
+    ],
+    color: [
+      "Egypt has 107 million people watching Salah's every move. The pressure and passion surrounding this game in Cairo is almost incomprehensible — Salah qualifying Egypt for the 2018 World Cup with a last-minute penalty against Congo is still replayed daily on Egyptian TV.",
+      "Lumen Field in Seattle is known for generating some of the loudest crowd noise in any sport — the Seattle Seahawks' fans once set the official Guinness World Record for loudest crowd roar. Iran vs Egypt will be played in an unforgettable atmosphere.",
+    ],
+  },
+
+  // ── Friday June 26: Group G (11 PM ET) ─────────────────────────────────────
+  66: {
+    watch: [
+      "Kevin De Bruyne (Belgium, Man City) — at 34, this is almost certainly his last World Cup. One of the greatest midfielders of his generation — 6 Premier League titles, 1 Champions League with Man City in their historic 2023 treble. Belgium need his vision and passing range to unlock New Zealand.",
+      "Chris Wood (New Zealand, Nottingham Forest) — the All Whites' talismanic striker and an underrated Premier League goal scorer (15+ goals in each of his best PL seasons). New Zealand's only realistic path to any result runs through him.",
+      "Romelu Lukaku (Belgium) — still prolific as a pure penalty-box striker; Belgium's all-time leading scorer. If De Bruyne can find him, chances will come.",
+    ],
+    stakes: [
+      "Belgium (2 pts, winless) need a win to advance. Their campaign has been the tournament's biggest underperformance relative to talent and ranking.",
+      "New Zealand (1 pt) are mathematically eliminated but can cause a historic upset and end on the highest note possible.",
+    ],
+    fun: [
+      "Belgium were ranked #1 in the FIFA world rankings for a record 68 consecutive months (2018-2022) — yet have never won a major international trophy. It is arguably the longest gap between ranking and achievement in international football history.",
+      "Belgium's 'Golden Generation' — De Bruyne, Hazard, Lukaku, Courtois, Alderweireld, Vertonghen — finished 3rd at the 2018 Russia World Cup, defeating Brazil and England on the way. Eden Hazard has since retired. This is their last stand.",
+      "New Zealand went unbeaten at the 2010 World Cup (South Africa) — three draws including a memorable 1-1 with Italy, the reigning world champions. They still failed to advance. They remain the only team in history to go unbeaten at a World Cup without advancing from the group stage.",
+      "New Zealand are internationally far more famous for their All Blacks rugby team — 3-time Rugby World Cup winners (1987, 2011, 2015). Football is a distant second sport in a rugby-mad nation.",
+      "Belgium is one of the world's most politically unusual countries — formally divided between Dutch-speaking Flanders and French-speaking Wallonia, with Brussels officially bilingual. The country went 541 days without a federal government in 2010-11, a world record at the time.",
+      "De Bruyne's agent confirmed he will retire from international football after this World Cup. He won 6 Premier League titles and is considered the greatest player in Man City's history.",
+    ],
+    color: [
+      "Belgium have drawn both games and have not won a single match in the tournament. They could exit without scoring more than 1 goal (vs Egypt MD1) despite having De Bruyne, Lukaku, and Amadou Onana. The squad's quality makes their output one of the most baffling stories of this World Cup.",
+      "This is almost certainly De Bruyne's last 90 minutes in international football. Whatever happens, Belgium and a generation of football fans around the world will want to see him produce something extraordinary in his farewell.",
+    ],
+  },
+
+  // ── Saturday June 27: Group L (5 PM ET) ────────────────────────────────────
+  67: {
+    watch: [
+      "Harry Kane (England, Bayern Munich) — the captain who scored in MD1 (a brace) and sits at 2 WC goals. England's all-time leading scorer with 70+ international goals. A World Cup title is the only major honour that has eluded him.",
+      "Jude Bellingham (England, Real Madrid) — scored vs Croatia in MD1. One of the world's best all-round midfielders at just 22 — European champion with Real Madrid in 2024.",
+    ],
+    stakes: [
+      "England can clinch 1st in Group L with any positive result. A loss, combined with Ghana winning, could see them knocked to 2nd.",
+      "Panama (0 pts, already eliminated) play their last World Cup game. They are looking for their first-ever World Cup win.",
+    ],
+    fun: [
+      "Panama qualified for the World Cup for the first time in 2018 (Russia) — their debut was a 6-1 loss to England. Harry Kane scored a hat-trick that day. This is a very different Panama, but it sets the historical context.",
+      "England won their one and only World Cup in 1966 — at home at Wembley, beating West Germany 4-2 after extra time. Geoff Hurst's hat-trick is the most famous performance in English football history.",
+      "The Panama Canal — one of the world's greatest engineering achievements — connects the Atlantic and Pacific Oceans through a 77 km waterway. Over 14,000 ships use it every year.",
+      "'It's Coming Home' — Three Lions, the anthem of English football optimism written in 1996 by Baddiel, Skinner and the Lightning Seeds — is played before almost every England match. England fans have waited 60+ years for another World Cup.",
+      "Panama has about 4.5 million people and qualified for this World Cup through CONCACAF. Their captain is Roman Torres, though the squad is now younger.",
+    ],
+    color: [
+      "England have been erratic — impressive 4-2 vs Croatia, then a flat 0-0 vs Ghana. Manager Gareth Southgate's slow buildup style divides English fans who expect more from the talent available.",
+    ],
+  },
+
+  // ── Saturday June 27: Group L (5 PM ET) ────────────────────────────────────
+  68: {
+    watch: [
+      "Luka Modrić (Croatia) — still there at ~40 years old, the 2018 Ballon d'Or winner and Real Madrid legend. This is almost certainly his last World Cup match. His vision and passing range don't decline the way pace does.",
+      "Jordan Ayew or Thomas Partey (Ghana) — Ghana's creative leaders, trying to hold off Croatia and reach a 3rd World Cup knockout round.",
+    ],
+    stakes: [
+      "Ghana (4 pts) and Croatia (3 pts) are fighting for 1st or 2nd in Group L. A Croatia win likely sends them through over Ghana; a Ghana draw may be enough depending on the England-Panama score.",
+      "This is almost certainly Modrić's final World Cup appearance — a legendary send-off for one of the greatest midfielders of all time.",
+    ],
+    fun: [
+      "Croatia finished runners-up at the 2018 World Cup (lost 2-4 to France in the final) and 3rd in 2022 (beat Brazil on penalties in the QF). A remarkable record for a nation of just 4 million people.",
+      "Luka Modrić won the 2018 Ballon d'Or — ending an 11-year monopoly by Messi and Ronaldo. He also won 6 UEFA Champions League titles with Real Madrid.",
+      "Ghana are famous for their 2010 World Cup quarterfinal run — when Luis Suárez illegally handled the ball on the line in the 120th minute to deny Ghana a semifinal goal, and Asamoah Gyan missed the resulting penalty. Ghana lost on penalties. Suárez celebrated; Ghana was heartbroken. The football world has not forgotten.",
+      "Croatia's national identity was reborn in 1991 when they declared independence from Yugoslavia. Football was central to the national narrative — Davor Šuker's team finishing 3rd at France 1998 is a founding myth of modern Croatian football.",
+      "Ghana's 'Black Stars' nickname comes from the black star on the national flag — a Pan-African symbol of African unity adopted from Marcus Garvey's Black Star Line.",
+    ],
+    color: [
+      "This could be Modrić's final World Cup game. He may be 40 but he still plays with intelligence, precision and leadership that younger players can't match. Croatia without Modrić's control is a different team entirely.",
+    ],
+  },
+
+  // ── Saturday June 27: Group K (7:30 PM ET) ─────────────────────────────────
+  69: {
+    watch: [
+      "Cristiano Ronaldo (Portugal) — making his record 6th World Cup appearance, at ~41. Still prolific at club level in Saudi Arabia. Portugal need goals; Ronaldo needs records. His goals tally for Portugal stands at 133+.",
+      "Luis Díaz (Colombia, Liverpool) — explosive, unpredictable winger who regularly sets Champions League nights alight. Colombia's most threatening attacker and one of the tournament's most exciting players.",
+      "Bruno Fernandes (Portugal, Man United) — Portugal's creative hub and set-piece specialist. His range of passing and ability to appear from deep make him extremely difficult to track.",
+    ],
+    stakes: [
+      "Colombia are confirmed Group K winners (6 pts) and have nothing to lose — they may rotate. Their Round of 32 opponent (Jul 3, Kansas City) is now set.",
+      "Portugal (4 pts, confirmed 2nd in Group K) are also already through. This is a dead rubber for standings — both teams may rotate heavily.",
+    ],
+    fun: [
+      "Cristiano Ronaldo holds the record for most World Cup appearances (6), most international goals (133+), most international appearances (200+), and most international tournaments played. He is almost certainly playing in his final World Cup group stage game.",
+      "Colombia's Luis Díaz was born in Barrancas, a small town in northern Colombia — his father Manucho was kidnapped in 2023 (later freed), in a story that drew global attention. Díaz played on during the crisis.",
+      "Portugal's Estadio da Luz (Lisbon, 65,000 seats) hosted the 2004 Euro final where Greece famously beat hosts Portugal 1-0 — one of the biggest upsets in tournament history. Portugal have never won a World Cup.",
+      "Colombia reached the 2014 World Cup quarterfinals, with James Rodríguez winning the Golden Boot — 6 goals in 5 games including a stunning volley vs Uruguay rated one of the best WC goals ever.",
+      "Ronaldo's Al-Nassr teammate in Riyadh is none other than Sadio Mané. Saudi Pro League has become a retirement destination for world superstars, redefining football's financial geography.",
+    ],
+    color: [
+      "This match has 'dead rubber' written all over it — but Ronaldo doesn't understand that concept. Even in meaningless games, he plays with intensity. Expect him to chase personal milestones.",
+    ],
+  },
+
+  // ── Saturday June 27: Group K (7:30 PM ET) ─────────────────────────────────
+  70: {
+    watch: [
+      "Cédric Bakambu (DR Congo) — the striker who scored their only goal in the group stage. DR Congo need him to deliver a performance that might make them the most competitive best-3rd team.",
+    ],
+    stakes: [
+      "DR Congo (1 pt) need a win to have any realistic chance of advancing as a best-3rd team. Even then, they'd need a favorable combination of other results.",
+      "Uzbekistan (0 pts) are already eliminated. Their first World Cup appearance ends here.",
+    ],
+    fun: [
+      "Uzbekistan are appearing in their first-ever World Cup. They qualified through the AFC (Asian Football Confederation) after a strong qualification campaign. A historic debut regardless of results.",
+      "DR Congo (formerly Zaire) were the first sub-Saharan African nation to qualify for the World Cup — at West Germany 1974. That team's match vs Brazil is remembered partly because a Zaire player ran up and kicked the ball away during a free kick.",
+      "Kinshasa (DR Congo's capital) is one of Africa's most populous cities — over 17 million people in Greater Kinshasa, one of the fastest-growing urban areas on Earth.",
+      "Uzbekistan's capital, Tashkent, is one of the largest cities in Central Asia and was a key stop on the ancient Silk Road trading route between China, Persia, and Europe.",
+    ],
+    color: [
+      "A largely dead rubber on the surface, but for Uzbekistan — playing their first-ever World Cup match — every 90 minutes is history being written.",
+    ],
+  },
+
+  // ── Saturday June 27: Group J (10 PM ET) ───────────────────────────────────
+  71: {
+    watch: [
+      "Riyad Mahrez (Algeria, Al-Ahli) — the experienced winger and former PL champion (with Man City) brings silk and guile to Algeria's attack. At 35, this is almost certainly his last World Cup.",
+      "Marcel Sabitzer or Christoph Baumgartner (Austria) — Austria's most creative players will need to deliver to avoid the most heartbreaking group-stage exit.",
+    ],
+    stakes: [
+      "Algeria (3 pts) and Austria (3 pts) meet in a winner-takes-all knockout decider. The winner advances 2nd in Group J; the loser is eliminated. Jordan are already out.",
+      "Argentina are already confirmed 1st with 6 pts and will likely rotate heavily.",
+    ],
+    fun: [
+      "Algeria's most famous football moment: beating West Germany in the 1982 World Cup group stage (2-1) — only the second time a European team had been beaten by an African side at the World Cup. FIFA changed the rules to make final group games simultaneous after West Germany and Austria played an infamous 'friendly' result to both qualify over Algeria.",
+      "Austria finished 2nd at the 1954 World Cup — their best-ever finish. Coach Ernst Ocwirk's 'Wunderteam' was one of the most celebrated sides of that era.",
+      "Algeria won the Africa Cup of Nations in 1990 and 2019. Their 2019 triumph — going unbeaten through the entire tournament — was led by Riyad Mahrez.",
+      "The Austria-Algeria rivalry in World Cups: 1982's 'Disgrace of Gijón' — where West Germany and Austria played out a 1-0 result that suited both teams to advance over Algeria — is one of the most controversial moments in World Cup history. It led to FIFA's rule that all final group games must be simultaneous.",
+    ],
+    color: [
+      "Winner-take-all for 2nd place in Group J. One team's tournament ends in tears; the other goes to the Round of 32. Maximum pressure, maximum drama.",
+    ],
+  },
+
+  // ── Saturday June 27: Group J (10 PM ET) ───────────────────────────────────
+  72: {
+    watch: [
+      "Lionel Messi (Argentina) — 18 World Cup goals, all-time record. Playing in what may be his final World Cup group stage match. Will he push the record higher, or save energy for the knockouts? Even a cameo from the bench is a gift to watch.",
+    ],
+    stakes: [
+      "Argentina are confirmed 1st and will rest key players. Jordan (0 pts) are already eliminated.",
+      "The match is in Arlington, Texas — home of AT&T Stadium (Jerry World), one of the USA's most spectacular venues.",
+    ],
+    fun: [
+      "Jordan are appearing in their first-ever World Cup. A remarkable achievement for a nation of ~10 million with limited football infrastructure. Despite losing all three games, the qualification itself is historic.",
+      "Messi's 18 World Cup goals have come across 4 tournaments (2006-2026). He scored just 1 goal in his first two World Cups combined — then 10 in 2022 alone. Age has only made him more decisive.",
+      "Argentina's anthem, 'Aurora,' has no official lyrics — the official version is purely instrumental. Yet fans sing their own words at every match, creating one of world football's most emotional pre-match atmospheres.",
+      "Jordan shares a border with Israel, Syria, Iraq, Saudi Arabia, and Egypt — a geopolitically loaded neighbourhood. Football qualification unified the country in a rare moment of pure national joy.",
+    ],
+    color: [
+      "A World Cup curtain-raiser for Argentina's knockout run — expect Scaloni to use this to rest Messi, De Paul, and Álvarez while testing fringe players. Argentina already have their eyes on the prize.",
+    ],
+  },
 };
 
 const VENUES = {
