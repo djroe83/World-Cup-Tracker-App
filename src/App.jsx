@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Fri, June 26, 2026 — Group D final; Groups G/H/I in progress";
+const DATA_AS_OF = "Fri, June 26, 2026 — Groups D & I final; H (8 PM ET) & G (11 PM ET) in progress";
 
 const GROUPS = {
   A: [
@@ -52,10 +52,10 @@ const GROUPS = {
     { team: "Saudi Arabia", flag: "🇸🇦", P: 2, W: 0, D: 1, L: 1, GF: 1, GA: 5, GD: -4, Pts: 1 },
   ],
   I: [
-    { team: "France", flag: "🇫🇷", P: 2, W: 2, D: 0, L: 0, GF: 6, GA: 1, GD: 5, Pts: 6 },
-    { team: "Norway", flag: "🇳🇴", P: 2, W: 2, D: 0, L: 0, GF: 7, GA: 3, GD: 4, Pts: 6 },
-    { team: "Senegal", flag: "🇸🇳", P: 2, W: 0, D: 0, L: 2, GF: 3, GA: 6, GD: -3, Pts: 0 },
-    { team: "Iraq", flag: "🇮🇶", P: 2, W: 0, D: 0, L: 2, GF: 1, GA: 7, GD: -6, Pts: 0 },
+    { team: "France", flag: "🇫🇷", P: 3, W: 3, D: 0, L: 0, GF: 10, GA: 2, GD: 8, Pts: 9 },
+    { team: "Norway", flag: "🇳🇴", P: 3, W: 2, D: 0, L: 1, GF: 8, GA: 7, GD: 1, Pts: 6 },
+    { team: "Senegal", flag: "🇸🇳", P: 3, W: 1, D: 0, L: 2, GF: 8, GA: 6, GD: 2, Pts: 3 },
+    { team: "Iraq", flag: "🇮🇶", P: 3, W: 0, D: 0, L: 3, GF: 1, GA: 12, GD: -11, Pts: 0 },
   ],
   J: [
     { team: "Argentina", flag: "🇦🇷", P: 2, W: 2, D: 0, L: 0, GF: 5, GA: 0, GD: 5, Pts: 6 },
@@ -141,8 +141,8 @@ const MATCHES = [
   { id: 58, group: "F", md: 3, date: "Thu Jun 25", time: "7:00 PM", venue: "Arrowhead Stadium, Kansas City", status: "final", home: "Tunisia", away: "Netherlands", hs: 1, as: 3, odds: { home: 650, draw: 350, away: -260, pct: [12, 22, 66] }, kc: true, note: "OG Skhiri 3', Brobbey 7', van Hecke 62' (Ned); Mastouri 54' (Tun) — Netherlands win Group F with 7 pts" },
   { id: 59, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "SoFi Stadium, Inglewood", status: "final", home: "Türkiye", away: "USA", hs: 3, as: 2, odds: { home: 320, draw: 260, away: -130, pct: [23, 27, 50] }, note: "Trusty 3' (USA); Arda Güler 10', Yılmaz 31' (Tur); S. Berhalter 49' (USA); Kaan Ayhan 90+8' (Tur) — dramatic stoppage-time winner; USA still advance as Group D champions" },
   { id: 60, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "Levi's Stadium, Santa Clara", status: "final", home: "Paraguay", away: "Australia", hs: 0, as: 0, odds: { home: 180, draw: 215, away: 150, pct: [33, 30, 37] }, note: "Cagey goalless draw — Australia advance 2nd in Group D; Paraguay finish 3rd (4 pts, GD −2) as best-3rd candidate" },
-  { id: 61, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "Gillette Stadium, Foxborough", status: "upcoming", home: "Norway", away: "France", hs: null, as: null, odds: { home: 240, draw: 290, away: -110, pct: [27, 25, 48] }, est: true },
-  { id: 62, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "BMO Field, Toronto", status: "upcoming", home: "Senegal", away: "Iraq", hs: null, as: null, odds: { home: -240, draw: 300, away: 650, pct: [65, 22, 13] }, est: true },
+  { id: 61, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "Gillette Stadium, Foxborough", status: "final", home: "Norway", away: "France", hs: 1, as: 4, odds: { home: 240, draw: 290, away: -110, pct: [27, 25, 48] }, note: "Dembélé hat-trick 7', 20', 32' (second-fastest in WC history); Aasgaard 26' (Nor); Doué 90+' — France win Group I with 9 pts" },
+  { id: 62, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "BMO Field, Toronto", status: "final", home: "Senegal", away: "Iraq", hs: 5, as: 0, odds: { home: -240, draw: 300, away: 650, pct: [65, 22, 13] }, note: "H. Diarra 4', I. Sarr 56', Pape Gueye 59' & 71', Ndiaye 82' — Senegal 5-0 rout keeps best-3rd hopes alive; Iraq finish 4th (0 pts)" },
   { id: 63, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "NRG Stadium, Houston", status: "upcoming", home: "Cabo Verde", away: "Saudi Arabia", hs: null, as: null, odds: { home: 190, draw: 220, away: 150, pct: [34, 29, 37] }, est: true },
   { id: 64, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "Estadio Akron, Zapopan", status: "upcoming", home: "Uruguay", away: "Spain", hs: null, as: null, odds: { home: 270, draw: 250, away: -115, pct: [25, 28, 47] }, est: true },
   { id: 65, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "Lumen Field, Seattle", status: "upcoming", home: "Egypt", away: "Iran", hs: null, as: null, odds: { home: 150, draw: 220, away: 180, pct: [37, 29, 34] }, est: true },
@@ -207,12 +207,12 @@ const R32 = [
   { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { label: "3rd A/B/C/D/F", cands: [{ t: "Sweden", pct: 38 }, { t: "Paraguay", pct: 30 }, { t: "Bosnia", pct: 22 }, { t: "South Korea", pct: 10 }] } },
   { m: 75, date: "Jun 30", venue: "Guadalajara", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
   { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { team: "Japan", flag: "🇯🇵", conf: true } },
-  // M77a: France & Norway both 6 pts — they play each other Jun 26, split is close
-  // M77b: 3rd from C/D/F/G/H — Sweden (4 pts, F3rd) confirmed; Paraguay (4 pts, D3rd) alive; Belgium/Iran (G) & Cabo Verde/Uruguay (H) TBD tonight
-  { m: 77, date: "Jun 30", venue: "New York NJ", a: { label: "Grp I 1st", cands: [{ t: "France", pct: 55 }, { t: "Norway", pct: 45 }] }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Sweden", pct: 34 }, { t: "Paraguay", pct: 26 }, { t: "Belgium", pct: 22 }, { t: "Uruguay", pct: 12 }] } },
-  // M78a: Ivory Coast (3 pts) vs Curaçao today; Ecuador (1 pt) faces Germany — near-certain Ivory Coast 2nd
-  // M78b: Grp I 2nd is France or Norway only — Senegal (0 pts) cannot finish 2nd
-  { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { label: "Grp I 2nd", cands: [{ t: "Norway", pct: 55 }, { t: "France", pct: 45 }] } },
+  // M77a: France won Group I (9 pts) — confirmed
+  // M77b: 3rd from C/D/F/G/H — Sweden (4 pts, F3rd) & Paraguay (4 pts, D3rd) confirmed; Belgium/Iran (G) & Cabo Verde/Uruguay (H) TBD tonight
+  { m: 77, date: "Jun 30", venue: "New York NJ", a: { team: "France", flag: "🇫🇷", conf: true }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Sweden", pct: 36 }, { t: "Paraguay", pct: 28 }, { t: "Belgium", pct: 20 }, { t: "Uruguay", pct: 12 }] } },
+  // M78a: Ivory Coast confirmed 2nd in Group E
+  // M78b: Norway finished 2nd in Group I — confirmed
+  { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
   // M79b: 3rd from C/E/F/H/I — Sweden (3 pts) and Scotland (3 pts) lead; Ecuador/Curaçao/Senegal/Iraq (0-1 pt) very weak
   { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Sweden", pct: 35 }, { t: "Scotland", pct: 22 }, { t: "Cabo Verde", pct: 22 }, { t: "Uruguay", pct: 12 }] } },
   // M80a: England & Ghana both 4 pts — Ghana 8% was far too low; England plays Panama, Ghana plays Croatia
@@ -273,10 +273,10 @@ const QUALIFICATION = [
   { team: "Morocco", flag: "🇲🇦", state: "in", detail: "2nd in Group C (7 pts, GD +3), beat Haiti 4-2" },
   { team: "USA", flag: "🇺🇸", state: "in", detail: "Won Group D (6 pts) — R32 Jul 1, Bay Area vs Bosnia & Herzegovina; lost 2-3 to Turkey on MD3 in a drama-filled final group game" },
   { team: "Germany", flag: "🇩🇪", state: "in", detail: "Won Group E (6 pts) despite shock 1-2 loss to Ecuador on MD3" },
-  { team: "France", flag: "🇫🇷", state: "in", detail: "Clinched Group I (6 pts); plays Norway for top spot Jun 26" },
-  { team: "Norway", flag: "🇳🇴", state: "in", detail: "Clinched in Group I (6 pts) on Haaland's goals" },
+  { team: "France", flag: "🇫🇷", state: "in", detail: "Won Group I (9 pts, GD +8) — Dembélé first-half hat-trick (7', 20', 32') in 4-1 win over Norway; R32 Jun 30, New York NJ" },
+  { team: "Norway", flag: "🇳🇴", state: "in", detail: "2nd in Group I (6 pts) — lost 1-4 to France; Haaland scoreless in MD3; R32 Jun 30, Dallas vs Ivory Coast" },
   { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J; Messi is now all-time WC top scorer (18)" },
-  { team: "Spain", flag: "🇪🇸", state: "likely", detail: "Leads Group H (4 pts); plays Uruguay in finale Jun 26" },
+  { team: "Spain", flag: "🇪🇸", state: "likely", detail: "Leads Group H (4 pts); playing Uruguay Jun 26 8 PM ET (in progress)" },
   { team: "Netherlands", flag: "🇳🇱", state: "in", detail: "Won Group F (7 pts) — beat Tunisia 3-1 on MD3; R32 Jun 30, Guadalajara vs Morocco" },
   { team: "Japan", flag: "🇯🇵", state: "in", detail: "2nd in Group F (5 pts) — drew 1-1 with Sweden on MD3; R32 Jun 29, Houston vs Brazil" },
   { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K — 6 pts, 3 wins; R32 Jul 3, Kansas City" },
@@ -300,10 +300,10 @@ const QUALIFICATION = [
   { team: "Uruguay", flag: "🇺🇾", state: "alive", detail: "2 pts; must get a result vs Spain Jun 26" },
   { team: "Belgium", flag: "🇧🇪", state: "alive", detail: "2 pts, winless; needs to beat New Zealand Jun 26" },
   { team: "DR Congo", flag: "🇨🇩", state: "alive", detail: "1 pt in Group K; plays Uzbekistan Jun 27 — needs a win" },
-  { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "0 pts but late goal keeps slim 3rd-place hope; plays Jun 26" },
+  { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "3rd in Group I (3 pts, GD +2) — 5-0 rout of Iraq (Diarra, Sarr, Gueye×2, Ndiaye); alive as best-3rd candidate" },
   { team: "Ecuador", flag: "🇪🇨", state: "alive", detail: "3rd in Group E (4 pts, GD 0) — shocked Germany 2-1; strong best-3rd candidate" },
   { team: "Curaçao", flag: "🇨🇼", state: "out", detail: "Eliminated — 4th in Group E (1 pt, GD −8)" },
-  { team: "Iraq", flag: "🇮🇶", state: "alive", detail: "0 pts in Group I; plays Senegal Jun 26 — one of them could sneak through" },
+  { team: "Iraq", flag: "🇮🇶", state: "out", detail: "Eliminated — 4th in Group I (0 pts, GD −11); lost 0-5 to Senegal on final day" },
   { team: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", state: "out", detail: "Eliminated — 3rd in Group C; 3 pts, GD −3" },
   { team: "Haiti", flag: "🇭🇹", state: "out", detail: "Eliminated — 4th in Group C (0 pts)" },
   { team: "Qatar", flag: "🇶🇦", state: "out", detail: "Eliminated — 4th in Group B (1 pt)" },
@@ -336,15 +336,6 @@ const GROUP_SCENARIOS = [
     ],
   },
   {
-    group: "I", date: "Fri Jun 26",
-    teams: [
-      { team: "France", flag: "🇫🇷", fate: "in", note: "Confirmed (6 pts) — plays Norway for 1st place" },
-      { team: "Norway", flag: "🇳🇴", fate: "in", note: "Confirmed (6 pts) — plays France for 1st place" },
-      { team: "Senegal", flag: "🇸🇳", fate: "needs", note: "Win vs Iraq + advance as best 3rd — very slim" },
-      { team: "Iraq", flag: "🇮🇶", fate: "out", note: "Eliminated — 0 pts, no realistic path" },
-    ],
-  },
-  {
     group: "J", date: "Sat Jun 27",
     teams: [
       { team: "Argentina", flag: "🇦🇷", fate: "in", note: "Confirmed group winners (6 pts, Messi record 18 WC goals)" },
@@ -374,19 +365,19 @@ const GROUP_SCENARIOS = [
 ];
 
 const NOW_BRIEFING = {
-  headline: "Group D wrapped in drama — Turkey stun USA 3-2 in stoppage time; Groups G, H, and I decide their fates today.",
-  body: "Kaan Ayhan's 90+8' header broke American hearts as Turkey completed a 3-2 comeback win over the USA at SoFi Stadium — the wildest result of the tournament. Auston Trusty gave the US a 3rd-minute lead, but Turkey flipped it through Arda Güler and Barış Alper Yılmaz. Sebastian Berhalter (son of coach Gregg) leveled at 2-2 before Ayhan struck in deep stoppage time. The USA still advance as Group D winners. Paraguay and Australia played out a careful 0-0 draw — Australia are through 2nd, Paraguay 3rd in the best-3rd race. Today: France vs Norway (3 PM ET, Boston — Mbappé vs Haaland for Group I 1st place); Uruguay vs Spain and Cabo Verde vs Saudi Arabia (8 PM ET, Group H); Egypt vs Iran and Belgium vs New Zealand (11 PM ET, Group G).",
+  headline: "Group I done — Dembélé hat-trick destroys Norway 4-1; Group H (8 PM ET) and Group G (11 PM ET) still to finish.",
+  body: "Ousmane Dembélé — reigning Ballon d'Or winner — put on a show for the ages: three goals in 32 minutes (7', 20', 32') gave France an unassailable 3-1 half-time lead against Norway. It was the second-fastest hat-trick in World Cup history, and Désiré Doué added a late fourth. Haaland was kept quiet throughout. Senegal also won 5-0 over Iraq (Diarra, Sarr, Gueye ×2, Ndiaye) to stay alive in the best-3rd race. Now: Spain vs Uruguay and Cabo Verde vs Saudi Arabia kick off at 8 PM ET (Group H — winner-take-all in Guadalajara); Egypt vs Iran and Belgium vs New Zealand at 11 PM ET (Group G). Groups J, K, L complete tomorrow.",
   threads: [
-    "Turkey 3-2 USA: Kaan Ayhan 90+8' stoppage-time header is the goal of the tournament — Turkey's only win, but they were already eliminated. USA advance as Group D winners.",
-    "Paraguay 0-0 Australia: cagey draw as expected — Australia finish 2nd (4 pts, GD 0); Paraguay 3rd (4 pts, GD −2) and in the best-3rd race.",
-    "Confirmed in the Round of 32: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia (18 of 32 confirmed).",
-    "Group I at 3 PM ET: France vs Norway — Mbappé vs Haaland, both on 4 goals each. Winner gets more favorable bracket position; a draw means France finish 1st on goal difference.",
-    "Groups H (8 PM ET) and G (11 PM ET) decide 6 more knockout spots today. Spain, Uruguay, Cabo Verde, Egypt, Belgium, and Iran all fighting for survival.",
+    "France 4-1 Norway: Dembélé hat-trick (7', 20', 32') is the statement performance of the tournament. France win Group I with a perfect 9 pts. Norway 2nd, R32 vs Ivory Coast.",
+    "Senegal 5-0 Iraq: massive statement win — 5 goals in 90 min puts Senegal in the best-3rd race at 3 pts, GD +2. Iraq eliminated (0 pts).",
+    "Confirmed in the Round of 32: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia (18 of 32).",
+    "Group H at 8 PM ET: Spain vs Uruguay and Cabo Verde vs Saudi Arabia — Spain virtually through; Uruguay need to beat Spain to secure their spot. Cabo Verde could sneak through with a win and Spain result.",
+    "Group G at 11 PM ET: Egypt vs Iran (winner likely 1st in group); Belgium vs New Zealand (Belgium need the win to survive after two draws).",
   ],
 };
 
 const DAY_SUMMARIES = {
-  "Fri Jun 26": "Groups G, H, and I final matchday — six matches, six knockout spots decided. 3 PM ET: Norway vs France (Group I 1st place — Mbappé vs Haaland) and Senegal vs Iraq. 8 PM ET: Uruguay vs Spain and Cabo Verde vs Saudi Arabia (Group H). 11 PM ET: Egypt vs Iran and New Zealand vs Belgium (Group G).",
+  "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32' — second-fastest in WC history; Aasgaard 26' Nor; Doué 90+'), France win group 9 pts. Senegal 5-0 Iraq (Diarra 4', Sarr 56', Gueye 59' & 71', Ndiaye 82'). Group H (8 PM ET): Spain vs Uruguay; Cabo Verde vs Saudi Arabia. Group G (11 PM ET): Egypt vs Iran; Belgium vs New Zealand.",
   "Thu Jun 25": "Group E and F completed early; Group D late drama. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace). Netherlands 3-1 Tunisia; Japan 1-1 Sweden — all three Group F teams advance. Late: Turkey 3-2 USA (Trusty 3'; Arda Güler 10', Yılmaz 31'; S. Berhalter 49'; Kaan Ayhan 90+8') — wild finish at SoFi; USA still group winners. Paraguay 0-0 Australia — Australia through 2nd.",
   "Wed Jun 24": "Groups A, B, and C wrapped. South Africa's 1-0 win over South Korea was the shock of the day, knocking the Koreans to 3rd. Mexico swept the group 3-0 over Czechia. Switzerland edged Canada 2-1 to top Group B; Bosnia beat Qatar 3-1. Brazil 3-0 Scotland, Morocco 4-2 Haiti — both advance from Group C.",
   "Tue Jun 23": "Matchday 2 wrapped for Groups K and L. Portugal exploded for 5-0; England held 0-0 by Ghana; Croatia revived with a narrow win.",
@@ -457,51 +448,45 @@ const MATCH_DETAILS = {
     ],
   },
 
-  // ── Friday June 26: Group I (3 PM ET) ──────────────────────────────────────
+  // ── Group I MD3 result: Norway 1-4 France ───────────────────────────────────
   61: {
     watch: [
-      "Erling Haaland (Norway, Man City) — 4 goals in 2 games, with braces in both. The world's most feared striker is playing his first-ever World Cup and he is showing exactly why every tournament pined for him. His movement, aerial power, and finishing are unmatched.",
-      "Kylian Mbappé (France) — also 4 goals in 2 games, braces in both. The two most explosive forwards at this tournament collide for the first time on the world stage.",
-      "Martin Ødegaard (Norway, Arsenal) — Arsenal's elegant captain is the creative heartbeat of this Norway side. If healthy and in form, he is among the top 5 players in the world.",
-    ],
-    stakes: [
-      "Both are already through to the Round of 32. This is a straight battle for 1st place — the winner gets the 'easier' side of the bracket and almost certainly avoids Spain until the quarterfinals.",
-      "Norway returned to the World Cup for the first time in 28 years. Erling Haaland has talked publicly about fulfilling a childhood dream. A 1st-place finish would be the perfect group stage for them.",
+      "Ousmane Dembélé (France) — the reigning Ballon d'Or winner stole the show entirely. Three goals in 32 minutes — one of the great individual performances in modern World Cup history. Dembélé barely featured in headlines before today; after this he leads the Golden Boot race (4 goals).",
+      "Thelo Aasgaard (Norway) — scored Norway's consolation at ~26' to briefly make it 2-1. The young midfielder is one of the tournament's breakout players.",
+      "Désiré Doué (France) — a stunning header in stoppage time completed the 4-1 rout, adding a 4th French goal to cement their group dominance.",
+      "Erling Haaland (Norway) — kept quiet by French defensive organisation. Went scoreless in a match where Norway needed him most. Still a 4-goal tournament but France's pressing neutered him.",
     ],
     fun: [
-      "Norway last played at a World Cup in 1998 — where they famously beat eventual winners Brazil 2-1 in the group stage. Kjetil Rekdal's penalty in the 89th minute completed the comeback from 1-0 down.",
-      "Erling Haaland was born in Leeds, England, in July 2000 — his father Alfie Haaland was playing for Manchester City at the time. Erling later joined Man City and became their greatest-ever scorer, breaking the Premier League single-season goals record (36 goals).",
-      "Norway has a population of only 5.4 million — making it one of the smallest nations to have reached the knockout round at a 48-team World Cup. Smaller than Yorkshire.",
-      "France are the only nation to have won the World Cup and European Championship in back-to-back tournaments in the modern era (1998 World Cup + 2000 Euro). They are trying to add a second World Cup title.",
-      "Mbappé scored 4 goals in the 2018 World Cup final tournament (including in the final vs Croatia). He is now the most powerful forward in the world — and already has 4 at this tournament.",
-      "Gillette Stadium in Foxborough, Massachusetts is shared with the New England Patriots NFL team — 6-time Super Bowl champions. The Boston/Foxborough area is one of the most sports-passionate regions in the USA.",
+      "Dembélé's first-half hat-trick (7', 20', 32') was the second-fastest in World Cup history — the fastest was Sándor Kocsis for Hungary in 1954. The last first-half WC hat-trick before this was Oleg Salenko for Russia vs Cameroon in 1994.",
+      "Dembélé is the reigning Ballon d'Or winner (2025). He had a famously troubled early career — injury after injury at Barcelona kept him from fulfilling his potential. This tournament, he appears to have found consistency at the highest level.",
+      "France's 10 goals in 3 games (GD +8) is the best group-stage record in the 2026 tournament so far. A French win here put them firmly in the conversation as tournament favourites.",
+      "Norway last played at a World Cup in 1998 — where they famously beat eventual winners Brazil 2-1 in the group stage. Their R32 next match is vs Ivory Coast in Dallas — a very winnable tie.",
+      "Erling Haaland was born in Leeds, England in July 2000 — his father Alfie Haaland played for Manchester City at the time. He broke the Premier League single-season goals record (36 goals) in 2022-23.",
     ],
     color: [
-      "Haaland said he is 'absolutely not' a contender for the World Cup trophy — but that Norway are 'absolutely living the dream.' In a rare display of public humility from one of football's most competitive personalities.",
-      "This is arguably the match of the entire group stage. Two unbeaten teams, the two leading scorers of the tournament, meeting in what is functionally a final for the 'easy' side of the bracket.",
+      "This was the tournament's great set-piece matchup that didn't deliver the expected duel: Haaland-Mbappé was billed as the striker showdown of the group stage, but Dembélé — not Mbappé — stole the spotlight entirely. Mbappé assisted the first goal and was influential, but Dembélé was the man.",
+      "Norway head to Dallas and a R32 against Ivory Coast on June 30 — a match they will be confident of winning. Haaland will want to respond with goals.",
     ],
   },
 
-  // ── Friday June 26: Group I (3 PM ET) ──────────────────────────────────────
+  // ── Group I MD3 result: Senegal 5-0 Iraq ────────────────────────────────────
   62: {
     watch: [
-      "Sadio Mané (Senegal, Al-Nassr) — the 2022 AFCON Player of the Tournament brings genuine world-class quality. Driven to make a statement after Senegal failed to advance from their group.",
-      "Ismaïla Sarr (Senegal) — electric winger with pace and directness who can unlock any defensive system when given space.",
-    ],
-    stakes: [
-      "Senegal's path to advancing as a best-3rd team requires a win AND very specific results from other groups — an extremely slim scenario.",
-      "Iraq are playing for only their second World Cup knockout appearance — their only previous experience at the finals was Mexico 1986.",
-      "Both teams entered the tournament with hopes. Both have 0 pts. This is a pride match.",
+      "Habib Diarra (Senegal) — opened the scoring in the 4th minute from a goalbound header. A young midfielder who came through Strasbourg's academy and was recently sold to a top European club.",
+      "Ismaïla Sarr (Senegal) — fired in the second goal (56') from Lamine Camara's cut-back. The electric Aston Villa winger was Senegal's best player on the day.",
+      "Pape Gueye (Senegal) — supersub with two goals (59', 71') within 12 minutes of coming on. His brace turned a win into a statement.",
+      "Iliman Ndiaye (Senegal) — capped a stunning second half with Senegal's fifth (82'), charging 20 yards and thumping in. France's Dembélé may be the name of the day, but Senegal's depth was the story.",
     ],
     fun: [
-      "Senegal are the reigning Africa Cup of Nations champions — they won their first-ever AFCON title in 2021 (played in 2022), beating Egypt on penalties in the final. A generation of world-class talent finally delivered continental glory.",
-      "Iraq are appearing at only their second-ever World Cup. Their first was Mexico 1986 — where they lost all three group games but qualified from the Asian zone for the first time in history. This 2026 appearance ends a 40-year wait.",
+      "Senegal's 5-0 win gives them GD +2 on the tournament, putting them in credible contention for one of the 8 best-3rd spots. With Bosnia (4 pts), Sweden (4 pts), Ecuador (4 pts) and Paraguay (4 pts) taking the top four 3rd-place slots, Senegal at 3 pts need Group G/H/J/K/L 3rds to score fewer points than them.",
+      "Senegal are the reigning Africa Cup of Nations champions — they won their first-ever AFCON title in Cameroon 2022 (played in January), beating Egypt on penalties in the final. Sadio Mané missed his penalty — and then scored the decisive one to win it.",
+      "Iraq are appearing at only their second-ever World Cup. Their first was Mexico 1986 — where they lost all three group games. This 2026 appearance ends a 40-year wait, and they depart without a win.",
+      "Iraq played 10-men for much of the game after an early red card, which contributed to the heavy scoreline.",
       "Dakar, Senegal's capital, is the westernmost capital city on the African mainland — geographically closer to South America than to many African capitals.",
-      "Kalidou Koulibaly (Senegal captain, Chelsea) is one of the most dominant central defenders of his generation — an imposing physical presence who commands both penalty boxes.",
-      "Iraq's Gulf Cup win in 2023 signalled a footballing resurgence for a nation that has endured decades of political turbulence. Their World Cup qualification is a source of enormous national pride across the region.",
     ],
     color: [
-      "With nothing material on the line for either team's advancement, expect an open, attack-minded game. Both squads will want to end the tournament with a win and avoid leaving empty-handed.",
+      "Senegal entered MD3 with 0 pts and 0 hope of topping the group — but a 5-goal swing gives them GD +2 and a legitimate best-3rd case. Their fate now depends on what the 3rd-place teams in other groups score over the coming days.",
+      "This was the performance of a squad that knows how good it is. If Senegal advance, they go into the R32 as one of the most dangerous 3rd-place teams ever.",
     ],
   },
 
