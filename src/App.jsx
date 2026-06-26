@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Fri, June 26, 2026";
+const DATA_AS_OF = "Fri, June 26, 2026 — Group D final; Groups G/H/I in progress";
 
 const GROUPS = {
   A: [
@@ -22,10 +22,10 @@ const GROUPS = {
     { team: "Haiti", flag: "🇭🇹", P: 3, W: 0, D: 0, L: 3, GF: 2, GA: 8, GD: -6, Pts: 0 },
   ],
   D: [
-    { team: "USA", flag: "🇺🇸", P: 2, W: 2, D: 0, L: 0, GF: 6, GA: 1, GD: 5, Pts: 6 },
-    { team: "Australia", flag: "🇦🇺", P: 2, W: 1, D: 0, L: 1, GF: 2, GA: 2, GD: 0, Pts: 3 },
-    { team: "Paraguay", flag: "🇵🇾", P: 2, W: 1, D: 0, L: 1, GF: 2, GA: 4, GD: -2, Pts: 3 },
-    { team: "Türkiye", flag: "🇹🇷", P: 2, W: 0, D: 0, L: 2, GF: 0, GA: 3, GD: -3, Pts: 0 },
+    { team: "USA", flag: "🇺🇸", P: 3, W: 2, D: 0, L: 1, GF: 8, GA: 4, GD: 4, Pts: 6 },
+    { team: "Australia", flag: "🇦🇺", P: 3, W: 1, D: 1, L: 1, GF: 2, GA: 2, GD: 0, Pts: 4 },
+    { team: "Paraguay", flag: "🇵🇾", P: 3, W: 1, D: 1, L: 1, GF: 2, GA: 4, GD: -2, Pts: 4 },
+    { team: "Türkiye", flag: "🇹🇷", P: 3, W: 1, D: 0, L: 2, GF: 3, GA: 5, GD: -2, Pts: 3 },
   ],
   E: [
     { team: "Germany", flag: "🇩🇪", P: 3, W: 2, D: 0, L: 1, GF: 10, GA: 4, GD: 6, Pts: 6 },
@@ -139,8 +139,8 @@ const MATCHES = [
   { id: 56, group: "E", md: 3, date: "Thu Jun 25", time: "4:00 PM", venue: "MetLife Stadium, East Rutherford", status: "final", home: "Ecuador", away: "Germany", hs: 2, as: 1, odds: { home: 420, draw: 290, away: -170, pct: [18, 25, 57] }, note: "Angulo 7', Plata 77' (Ecu); Germany consolation — Ecuador shock the world and advance as best-3rd candidate (4 pts)" },
   { id: 57, group: "F", md: 3, date: "Thu Jun 25", time: "7:00 PM", venue: "AT&T Stadium, Arlington", status: "final", home: "Japan", away: "Sweden", hs: 1, as: 1, odds: { home: 135, draw: 230, away: 190, pct: [38, 28, 34] }, note: "Maeda 56' (Jpn), Elanga 62' (Swe) — both advance; Sweden through as best-3rd team (4 pts)" },
   { id: 58, group: "F", md: 3, date: "Thu Jun 25", time: "7:00 PM", venue: "Arrowhead Stadium, Kansas City", status: "final", home: "Tunisia", away: "Netherlands", hs: 1, as: 3, odds: { home: 650, draw: 350, away: -260, pct: [12, 22, 66] }, kc: true, note: "OG Skhiri 3', Brobbey 7', van Hecke 62' (Ned); Mastouri 54' (Tun) — Netherlands win Group F with 7 pts" },
-  { id: 59, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "SoFi Stadium, Inglewood", status: "upcoming", home: "Türkiye", away: "USA", hs: null, as: null, odds: { home: 320, draw: 260, away: -130, pct: [23, 27, 50] }, est: true },
-  { id: 60, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "Levi's Stadium, Santa Clara", status: "upcoming", home: "Paraguay", away: "Australia", hs: null, as: null, odds: { home: 180, draw: 215, away: 150, pct: [33, 30, 37] }, est: true },
+  { id: 59, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "SoFi Stadium, Inglewood", status: "final", home: "Türkiye", away: "USA", hs: 3, as: 2, odds: { home: 320, draw: 260, away: -130, pct: [23, 27, 50] }, note: "Trusty 3' (USA); Arda Güler 10', Yılmaz 31' (Tur); S. Berhalter 49' (USA); Kaan Ayhan 90+8' (Tur) — dramatic stoppage-time winner; USA still advance as Group D champions" },
+  { id: 60, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "Levi's Stadium, Santa Clara", status: "final", home: "Paraguay", away: "Australia", hs: 0, as: 0, odds: { home: 180, draw: 215, away: 150, pct: [33, 30, 37] }, note: "Cagey goalless draw — Australia advance 2nd in Group D; Paraguay finish 3rd (4 pts, GD −2) as best-3rd candidate" },
   { id: 61, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "Gillette Stadium, Foxborough", status: "upcoming", home: "Norway", away: "France", hs: null, as: null, odds: { home: 240, draw: 290, away: -110, pct: [27, 25, 48] }, est: true },
   { id: 62, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "BMO Field, Toronto", status: "upcoming", home: "Senegal", away: "Iraq", hs: null, as: null, odds: { home: -240, draw: 300, away: 650, pct: [65, 22, 13] }, est: true },
   { id: 63, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "NRG Stadium, Houston", status: "upcoming", home: "Cabo Verde", away: "Saudi Arabia", hs: null, as: null, odds: { home: 190, draw: 220, away: 150, pct: [34, 29, 37] }, est: true },
@@ -219,7 +219,7 @@ const R32 = [
   // M80b: 3rd from E/H/I/J/K — Austria/Algeria (3 pts if 3rd in J) dominate; Senegal (0 pts) nowhere near 30%
   { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 55 }, { t: "Ghana", pct: 35 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 36 }, { t: "Algeria", pct: 30 }, { t: "Cabo Verde", pct: 18 }, { t: "Uruguay", pct: 10 }] } },
   // M81b: 3rd from B/E/F/I/J — Bosnia (4 pts) is the clear frontrunner, not Ecuador (1 pt); Qatar eliminated so "Bosnia/Qatar" removed
-  { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Bosnia", pct: 45 }, { t: "Algeria", pct: 20 }, { t: "Austria", pct: 18 }, { t: "Sweden", pct: 12 }] } },
+  { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Bosnia", pct: 50 }, { t: "Ecuador", pct: 28 }, { t: "Algeria", pct: 13 }, { t: "Austria", pct: 9 }] } },
   // M82a: Egypt 65% is reasonable; Iran underrated at 10% given they play Egypt directly
   // M82b: 3rd from A/E/H/I/J — Czechia ELIMINATED (4th in A); South Korea is 3rd in A
   { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 62 }, { t: "Iran", pct: 24 }, { t: "Belgium", pct: 14 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 38 }, { t: "Austria", pct: 26 }, { t: "Algeria", pct: 22 }, { t: "Cabo Verde", pct: 10 }] } },
@@ -234,9 +234,9 @@ const R32 = [
   { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { label: "Grp H 2nd", cands: [{ t: "Uruguay", pct: 42 }, { t: "Cabo Verde", pct: 38 }, { t: "Spain", pct: 15 }] } },
   // M87a: Colombia won Group K (6 pts) — confirmed, not probabilistic
   // M87b: 3rd from D/E/I/J/L — Ecuador (4 pts E3rd) is the top candidate; Paraguay (4 pts D3rd) also strong; Austria/Algeria (3 pts J) in the mix
-  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Ecuador", pct: 35 }, { t: "Paraguay", pct: 30 }, { t: "Austria", pct: 20 }, { t: "Algeria", pct: 12 }] } },
+  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Ecuador", pct: 38 }, { t: "Paraguay", pct: 32 }, { t: "Austria", pct: 18 }, { t: "Algeria", pct: 12 }] } },
   // M88b: Egypt (4 pts, group leader) was underrated at 20% for 2nd; Iran plays Egypt directly so both in play
-  { m: 88, date: "Jul 3", venue: "Dallas", a: { label: "Grp D 2nd", cands: [{ t: "Australia", pct: 55 }, { t: "Paraguay", pct: 45 }] }, b: { label: "Grp G 2nd", cands: [{ t: "Egypt", pct: 42 }, { t: "Belgium", pct: 35 }, { t: "Iran", pct: 23 }] } },
+  { m: 88, date: "Jul 3", venue: "Dallas", a: { team: "Australia", flag: "🇦🇺", conf: true }, b: { label: "Grp G 2nd", cands: [{ t: "Egypt", pct: 42 }, { t: "Belgium", pct: 35 }, { t: "Iran", pct: 23 }] } },
 ];
 
 const R16 = [
@@ -271,7 +271,7 @@ const QUALIFICATION = [
   { team: "Canada", flag: "🇨🇦", state: "in", detail: "2nd in Group B (4 pts, GD +5)" },
   { team: "Brazil", flag: "🇧🇷", state: "in", detail: "Won Group C (7 pts), beat Scotland 3-0 on MD3" },
   { team: "Morocco", flag: "🇲🇦", state: "in", detail: "2nd in Group C (7 pts, GD +3), beat Haiti 4-2" },
-  { team: "USA", flag: "🇺🇸", state: "in", detail: "Won Group D — R32 Jul 1, Bay Area; plays Turkey tonight (Jun 25)" },
+  { team: "USA", flag: "🇺🇸", state: "in", detail: "Won Group D (6 pts) — R32 Jul 1, Bay Area vs Bosnia & Herzegovina; lost 2-3 to Turkey on MD3 in a drama-filled final group game" },
   { team: "Germany", flag: "🇩🇪", state: "in", detail: "Won Group E (6 pts) despite shock 1-2 loss to Ecuador on MD3" },
   { team: "France", flag: "🇫🇷", state: "in", detail: "Clinched Group I (6 pts); plays Norway for top spot Jun 26" },
   { team: "Norway", flag: "🇳🇴", state: "in", detail: "Clinched in Group I (6 pts) on Haaland's goals" },
@@ -285,8 +285,8 @@ const QUALIFICATION = [
   { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "likely", detail: "Top of Group L (4 pts)" },
   { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "alive", detail: "3rd in Group B (4 pts) — tracking to advance as best 3rd" },
   { team: "South Korea", flag: "🇰🇷", state: "alive", detail: "3rd in Group A (3 pts, GD −1) — awaiting best-3rd comparison" },
-  { team: "Australia", flag: "🇦🇺", state: "alive", detail: "3 pts in Group D; plays Paraguay tonight (Jun 25) — 2nd place on the line" },
-  { team: "Paraguay", flag: "🇵🇾", state: "alive", detail: "3 pts in Group D; plays Australia tonight (Jun 25) — 2nd place on the line" },
+  { team: "Australia", flag: "🇦🇺", state: "in", detail: "2nd in Group D (4 pts, GD 0) — drew 0-0 with Paraguay on MD3; advance to R32 Jul 3, Dallas" },
+  { team: "Paraguay", flag: "🇵🇾", state: "alive", detail: "3rd in Group D (4 pts, GD −2) — 0-0 draw with Australia keeps them alive as a best-3rd candidate" },
   { team: "Ivory Coast", flag: "🇨🇮", state: "in", detail: "2nd in Group E (6 pts) — Pépé brace vs Curaçao on MD3 sealed 2nd place" },
   { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — through as best-3rd team after 1-1 draw with Japan" },
   { team: "Iran", flag: "🇮🇷", state: "alive", detail: "2 pts in Group G; plays Egypt Jun 26 — winner likely advances" },
@@ -309,7 +309,7 @@ const QUALIFICATION = [
   { team: "Qatar", flag: "🇶🇦", state: "out", detail: "Eliminated — 4th in Group B (1 pt)" },
   { team: "Czechia", flag: "🇨🇿", state: "out", detail: "Eliminated — 4th in Group A (1 pt)" },
   { team: "Tunisia", flag: "🇹🇳", state: "out", detail: "Eliminated — 4th in Group F (0 pts, GD −10)" },
-  { team: "Türkiye", flag: "🇹🇷", state: "out", detail: "Eliminated from Group D — 0 pts after two losses; plays USA tonight (Jun 25)" },
+  { team: "Türkiye", flag: "🇹🇷", state: "out", detail: "Eliminated from Group D — beat USA 3-2 (Kaan Ayhan 90+8') but finish 4th with 3 pts; too little, too late" },
   { team: "Jordan", flag: "🇯🇴", state: "out", detail: "Eliminated from Group J (0 pts)" },
   { team: "Uzbekistan", flag: "🇺🇿", state: "out", detail: "Eliminated from Group K (0 pts)" },
   { team: "Panama", flag: "🇵🇦", state: "out", detail: "Eliminated — 0 pts in Group L; plays England Jun 27" },
@@ -317,15 +317,6 @@ const QUALIFICATION = [
 
 
 const GROUP_SCENARIOS = [
-  {
-    group: "D", date: "Thu Jun 25",
-    teams: [
-      { team: "USA", flag: "🇺🇸", fate: "in", note: "Confirmed group winners (6 pts)" },
-      { team: "Australia", flag: "🇦🇺", fate: "controls", note: "Win or draw vs Paraguay → 2nd place secured" },
-      { team: "Paraguay", flag: "🇵🇾", fate: "controls", note: "Win vs Australia → 2nd place secured" },
-      { team: "Türkiye", flag: "🇹🇷", fate: "out", note: "Eliminated — 0 pts, cannot reach top 2" },
-    ],
-  },
   {
     group: "G", date: "Fri Jun 26",
     teams: [
@@ -383,20 +374,20 @@ const GROUP_SCENARIOS = [
 ];
 
 const NOW_BRIEFING = {
-  headline: "Groups D, E, and F wrap up tonight — USA vs Turkey and Paraguay vs Australia still to play.",
-  body: "Group E and F morning/afternoon matches delivered massive drama. Ecuador shocked Germany 2-1 (Angulo + Plata) — the upset of the tournament so far — while Ivory Coast beat Curaçao 2-0 (Pépé brace) to take 2nd in Group E. In Group F, all three teams advance: Netherlands beat Tunisia 3-1, Japan and Sweden drew 1-1, with Sweden going through as a best-3rd team. Tonight at 10 PM ET the USA faces Turkey (dead rubber for standings, but the US chases a historic 3W-0D-0L group stage record) and Australia plays Paraguay (winner claims 2nd place in Group D). Groups G, H, and I play their final matchday tomorrow.",
+  headline: "Group D wrapped in drama — Turkey stun USA 3-2 in stoppage time; Groups G, H, and I decide their fates today.",
+  body: "Kaan Ayhan's 90+8' header broke American hearts as Turkey completed a 3-2 comeback win over the USA at SoFi Stadium — the wildest result of the tournament. Auston Trusty gave the US a 3rd-minute lead, but Turkey flipped it through Arda Güler and Barış Alper Yılmaz. Sebastian Berhalter (son of coach Gregg) leveled at 2-2 before Ayhan struck in deep stoppage time. The USA still advance as Group D winners. Paraguay and Australia played out a careful 0-0 draw — Australia are through 2nd, Paraguay 3rd in the best-3rd race. Today: France vs Norway (3 PM ET, Boston — Mbappé vs Haaland for Group I 1st place); Uruguay vs Spain and Cabo Verde vs Saudi Arabia (8 PM ET, Group H); Egypt vs Iran and Belgium vs New Zealand (11 PM ET, Group G).",
   threads: [
-    "Confirmed in the Round of 32: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal.",
-    "Ecuador shock: 2-1 over Germany (Angulo 7', Plata 77') — Germany still tops Group E on head-to-head; Ecuador alive as best-3rd candidate (4 pts).",
-    "Group F: all three teams advance — Netherlands 1st (7 pts), Japan 2nd (5 pts), Sweden through as best-3rd (4 pts).",
-    "USA tonight: Turkey at 10 PM ET, SoFi Stadium — chasing the first-ever 3W-0D-0L group stage in US World Cup history.",
-    "Australia vs Paraguay at 10 PM ET: a draw sends Australia through 2nd; Paraguay needs the win to finish top 2.",
+    "Turkey 3-2 USA: Kaan Ayhan 90+8' stoppage-time header is the goal of the tournament — Turkey's only win, but they were already eliminated. USA advance as Group D winners.",
+    "Paraguay 0-0 Australia: cagey draw as expected — Australia finish 2nd (4 pts, GD 0); Paraguay 3rd (4 pts, GD −2) and in the best-3rd race.",
+    "Confirmed in the Round of 32: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia (18 of 32 confirmed).",
+    "Group I at 3 PM ET: France vs Norway — Mbappé vs Haaland, both on 4 goals each. Winner gets more favorable bracket position; a draw means France finish 1st on goal difference.",
+    "Groups H (8 PM ET) and G (11 PM ET) decide 6 more knockout spots today. Spain, Uruguay, Cabo Verde, Egypt, Belgium, and Iran all fighting for survival.",
   ],
 };
 
 const DAY_SUMMARIES = {
-  "Fri Jun 26": "Groups G, H, and I play their simultaneous final matchday. Norway vs France and Senegal vs Iraq kick off at 3 PM ET; Cabo Verde vs Saudi Arabia and Uruguay vs Spain at 8 PM; Egypt vs Iran and New Zealand vs Belgium at 11 PM. Results from USA vs Turkey and Paraguay vs Australia (both Jun 25 10 PM ET) will also be confirmed.",
-  "Thu Jun 25": "Groups E and F completed. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace) — both advance from Group E, Germany tops the group on head-to-head. Japan 1-1 Sweden; Netherlands 3-1 Tunisia — all three Group F teams advance: Netherlands 1st (7 pts), Japan 2nd (5 pts), Sweden through as best-3rd (4 pts). USA vs Turkey and Paraguay vs Australia kick off at 10 PM ET.",
+  "Fri Jun 26": "Groups G, H, and I final matchday — six matches, six knockout spots decided. 3 PM ET: Norway vs France (Group I 1st place — Mbappé vs Haaland) and Senegal vs Iraq. 8 PM ET: Uruguay vs Spain and Cabo Verde vs Saudi Arabia (Group H). 11 PM ET: Egypt vs Iran and New Zealand vs Belgium (Group G).",
+  "Thu Jun 25": "Group E and F completed early; Group D late drama. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace). Netherlands 3-1 Tunisia; Japan 1-1 Sweden — all three Group F teams advance. Late: Turkey 3-2 USA (Trusty 3'; Arda Güler 10', Yılmaz 31'; S. Berhalter 49'; Kaan Ayhan 90+8') — wild finish at SoFi; USA still group winners. Paraguay 0-0 Australia — Australia through 2nd.",
   "Wed Jun 24": "Groups A, B, and C wrapped. South Africa's 1-0 win over South Korea was the shock of the day, knocking the Koreans to 3rd. Mexico swept the group 3-0 over Czechia. Switzerland edged Canada 2-1 to top Group B; Bosnia beat Qatar 3-1. Brazil 3-0 Scotland, Morocco 4-2 Haiti — both advance from Group C.",
   "Tue Jun 23": "Matchday 2 wrapped for Groups K and L. Portugal exploded for 5-0; England held 0-0 by Ghana; Croatia revived with a narrow win.",
   "Mon Jun 22": "A day for the legends. Messi scored his 17th and 18th WC goals to pass Klose as all-time leading scorer. Mbappé brace, Haaland brace.",
@@ -423,53 +414,46 @@ const MATCH_DETAILS = {
   35: { watch: ["Eloy Room (Curaçao) — 15 saves, the most in a 90-minute World Cup match since records began in 1966."], fun: ["Curaçao (population ~150,000) is the smallest nation by population ever to play at a World Cup.", "Room also made 9 saves to hold Switzerland in the Caribbean qualifiers. He is a genuine World Cup legend from a micro-nation."] },
   41: { watch: ["Lionel Messi (Argentina) — scores 17th & 18th WC goals, passes Klose as all-time leading scorer."], fun: ["Argentina are reigning champions (2022) and Messi, at ~38, is chasing an unprecedented second straight title.", "Argentina has won three World Cups (1978, 1986, 2022). Messi's 2022 title in Qatar was widely regarded as the greatest individual World Cup performance ever."] },
 
-  // ── Tonight: Group D (Jun 25, 10 PM ET) ────────────────────────────────────
+  // ── Group D MD3 result: Turkey 3-2 USA ──────────────────────────────────────
   59: {
     watch: [
-      "Arda Güler (Turkey, Real Madrid) — 21-year-old phenom who won the Champions League Revelation of the Season award in 2025-26. Led Real Madrid in chances created all season with 111 key passes and 20 goal contributions. Turkey's only realistic path to any joy runs through him.",
-      "Ricardo Pepi (USA, PSV Eindhoven) — the likely starting striker with Pulisic potentially returning from his calf issue. Pepi has been one of the Eredivisie's top scorers over two seasons at PSV. A strong finish here sharpens his knockout-round credentials.",
-      "Kenan Yıldız (Turkey, Juventus) — 20 years old, Juventus forward averaging 3.5 completed dribbles per 90 minutes in qualifiers. Held dual Turkish-German citizenship and chose Turkey. One of Serie A's most exciting young talents.",
-    ],
-    stakes: [
-      "Turkey are eliminated — 0 pts and 0 goals in two games. This is mathematically a dead rubber, but Arda Güler and the squad play for pride.",
-      "The USA can become the first USMNT in World Cup history to win all three group games. No US team has ever gone 3W-0D-0L in the group stage — a historic milestone is 90 minutes away.",
+      "Arda Güler (Turkey, Real Madrid) — 21-year-old phenom who delivered in the big moment. He scored Turkey's equalizer (10') with a curling finish after a swift counter, then was the creative force all game. Won the Champions League Revelation of the Season award in 2025-26.",
+      "Kaan Ayhan (Turkey) — the unsung hero. His 90+8' header from a set piece completed the most dramatic comeback of the group stage. A moment that will be remembered for years.",
+      "Sebastian Berhalter (USA) — son of head coach Gregg Berhalter, scored the 49th-minute equalizer from a set-piece — one of the most surreal subplot moments of this World Cup.",
+      "Auston Trusty (USA, Sheffield United) — center-back who gave the USA a dream 3rd-minute lead with a headed goal. Trusty has become a reliable contributor on set pieces.",
     ],
     fun: [
-      "Hakan Şükür scored after just 10.8 seconds against South Korea in the 2002 World Cup third-place match — the fastest goal in World Cup history. The record still stands today.",
-      "Turkey finished 3rd at the 2002 World Cup in South Korea/Japan — beating Senegal, Brazil (semi) loss, then 3rd-place win over hosts South Korea. Still their greatest football achievement.",
-      "Istanbul, Turkey's largest city (15+ million people), is the only major city in the world straddling two continents — the Bosphorus strait divides the European and Asian sides. The Bosphorus Bridge connects them.",
-      "Turkey has a population of over 85 million, making it one of Europe's largest nations. Yet 2026 is only their 4th World Cup finals appearance.",
-      "The new FIFA rule that got Almirón red-carded was pushed by president Gianni Infantino specifically after Benfica's Prestianni hid verbal insults toward Vinícius Jr. in a Champions League match.",
-      "SoFi Stadium (Inglewood, CA) cost $5.5 billion to build — the most expensive stadium ever constructed. It will host the 2028 Los Angeles Olympic opening ceremony and Super Bowl LXI.",
+      "Turkey's 3-2 win was their first-ever win over the USA at a World Cup — and Turkey's first win of this tournament after 0 pts in their first two games.",
+      "Sebastian Berhalter became one of the few players in World Cup history to score with his own father on the touchline as head coach. Gregg Berhalter named him in the XI despite the personal optics — and he delivered.",
+      "Kaan Ayhan's goal came in the 98th minute — one of the latest decisive goals in World Cup group stage history. The stadium (which seats 70,000) was predominantly USMNT fans; the silence after the final whistle was deafening.",
+      "Hakan Şükür scored after just 10.8 seconds against South Korea in the 2002 World Cup third-place match — the fastest goal in World Cup history. Turkey's tradition of dramatic WC moments continues.",
+      "Istanbul, Turkey's largest city (15+ million people), is the only major city in the world straddling two continents — the Bosphorus strait divides the European and Asian sides.",
+      "SoFi Stadium (Inglewood, CA) cost $5.5 billion to build — the most expensive stadium ever constructed. It will host the 2028 Los Angeles Olympic opening ceremony.",
     ],
     color: [
-      "Turkey are coached by Italian Vincenzo Montella — the same man who guided them to the Euro 2024 quarterfinals, their best European Championship run in years. Their failure to score a single goal in 2026 is baffling given the attacking talent available.",
-      "Gio Reyna (USA, Nottingham Forest) was one of the most highly-touted American prospects of his generation — son of US legend Claudio Reyna — but injuries have stunted his career. This tournament is his chance to prove he belongs at the highest level.",
+      "The USA came into this game as comfortable favorites despite Turkey being eliminated. Resting key players and going 3-2 down in stoppage time is a story Berhalter will have to manage carefully heading into the knockout rounds.",
+      "Turkey got the win they craved — but exit the tournament 4th in Group D with 3 pts. Arda Güler's display showed exactly why Real Madrid treasure him, even if the outcome means little in terms of their World Cup campaign.",
     ],
   },
 
-  // ── Tonight: Group D (Jun 25, 10 PM ET) ────────────────────────────────────
+  // ── Group D MD3 result: Paraguay 0-0 Australia ──────────────────────────────
   60: {
     watch: [
-      "Julio Enciso (Paraguay, Brighton) — the 22-year-old creative engine must carry Paraguay's attack without the suspended Almirón. Known for explosive shooting — he scored one of the goals of the 2022-23 Premier League season with a 35-yard thunderbolt vs Man City.",
-      "Jackson Irvine (Australia, St. Pauli) — tireless captain and midfield leader, born in Brisbane but made his name in Germany's Bundesliga. Sets the tempo for everything the Socceroos do.",
-      "Mat Ryan (Australia, Real Sociedad) — veteran goalkeeper and Australia's most-capped 'keeper. Decisive saves could keep Socceroos alive and through.",
-    ],
-    stakes: [
-      "A draw sends Australia through 2nd on goal difference. Paraguay must win to finish top 2 automatically — otherwise they drop to 3rd and depend on the best-3rd results.",
-      "Paraguay are playing without star midfielder Miguel Almirón — suspended for the first red card under FIFA's new mouth-covering rule. Almirón was sent off vs Turkey for covering his mouth while speaking to an opponent.",
+      "Julio Enciso (Paraguay, Brighton) — carried Paraguay's attack without the suspended Almirón but couldn't find a breakthrough. His 35-yard thunderbolt vs Man City in 2022-23 remains one of the Premier League's great goals — he couldn't replicate the magic here.",
+      "Mat Ryan (Australia, Real Sociedad) — veteran goalkeeper was largely untested in a cautious game. Australia's most-capped 'keeper; his leadership kept the backline disciplined.",
+      "Jackson Irvine (Australia, St. Pauli) — tireless captain set the tactical tone, helping Australia see out the goalless draw they needed to advance.",
     ],
     fun: [
-      "Miguel Almirón became the first player ever sent off under FIFA's new 'mouth-covering' rule — introduced to stop players hiding verbal abuse. He covered his mouth while talking to a Turkish player; the referee reviewed the footage and issued a straight red.",
-      "Paraguay is one of only two landlocked countries in all of South America (the other is Bolivia). Completely surrounded by Argentina, Brazil, and Bolivia.",
+      "Miguel Almirón's absence loomed large — he became the first player ever sent off under FIFA's new 'mouth-covering' rule (suspended for covering his mouth while speaking to a Turkish player in the previous game). The rule was introduced to stop hidden verbal abuse.",
+      "Paraguay is one of only two landlocked countries in South America (the other is Bolivia). Both of their opponents in the group stage — USA and Australia — border the world's two largest oceans.",
       "Paraguay's official languages are Spanish and Guaraní — one of the few countries in the world where an indigenous language has equal official status. About half the population speaks Guaraní as their primary language.",
-      "This is Paraguay's first World Cup since 2010. In South Africa that year, they reached the quarterfinals before losing to eventual runners-up Spain. A 16-year absence ends here.",
-      "Australia's best-ever World Cup performance was the quarterfinals in Qatar 2022 — beating Denmark and holding on through a dramatic run before losing to Argentina. They are bidding for back-to-back knockout appearances for the first time.",
-      "Mathew Leckie — Australia's most experienced right winger — is out with a hamstring injury suffered against the USA. Tony Popovic made six lineup changes for this game.",
+      "Australia becomes the first team in history to reach consecutive World Cup knockout rounds while co-hosting (as a non-host) — having reached the QF in Qatar 2022. Back-to-back knockouts for the first time ever.",
+      "Jordan Bos had the best chance of the game in the 90th minute — his shot went narrowly wide. One touch differently and Paraguay would have been through instead of Australia.",
+      "Both sides were managed by South Americans: Paraguay's Gustavo Alfaro (Argentine) and Australia's Tony Popovic (Melbourne-born of Croatian heritage). Two defensive tacticians produced the draw both needed.",
     ],
     color: [
-      "A draw suits Australia and a win suits Paraguay — which creates a fascinating tactical asymmetry: one team defending, the other forced to attack. Expect a cagey opening then an open second half.",
-      "Both nations are coached by South Americans: Paraguay's Gustavo Alfaro (Argentine) and Australia's Tony Popovic (born in Melbourne to Croatian parents, former Crystal Palace defender). Two very different footballing philosophies.",
+      "The tactical setup was almost perfectly self-defeating: Australia wanted a draw, Paraguay needed a win but feared conceding. The result — 0 shots on target in 90 minutes — was the most predictable 'event' of the group stage.",
+      "Australia now face a R32 game on July 3 in Dallas. Paraguay sit in the best-3rd race at 4 pts, GD −2 — weaker than Sweden, Ecuador and Bosnia but there are 12 groups, so 8 advance as best-3rds.",
     ],
   },
 
