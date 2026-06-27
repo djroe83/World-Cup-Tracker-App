@@ -976,30 +976,87 @@ function TitleOddsView({ odds, note }) {
   );
 }
 
+function VenueMap({ venuesData, activeVenue, setActiveVenue }) {
+  const LAT_MIN = 18, LAT_MAX = 50, LNG_MIN = -125, LNG_MAX = -65;
+  const VW = 600, VH = 320;
+  const px = (lat, lng) => [
+    Math.round(((lng - LNG_MIN) / (LNG_MAX - LNG_MIN)) * VW),
+    Math.round(((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * VH),
+  ];
+  const poly = (...coords) => coords.map(([la, ln]) => px(la, ln).join(",")).join(" ");
+
+  // Simplified country outlines (approximate coastlines + borders)
+  const US = poly(
+    [49,-124.7],[49,-95],[48,-88],[46,-84],[43,-79],[45,-75.5],[47.5,-67.5],
+    [44.5,-67],[42,-70],[40.5,-74],[38.9,-75.2],[37,-76],[35.2,-75.5],[33.8,-78],[31.5,-81],
+    [28.5,-80.5],[25.8,-80.1],[24.5,-81.8],[27.9,-82.4],
+    [30,-87],[29.9,-89.7],[29.7,-93.8],[29,-95],[26,-97.2],
+    [27.8,-99.7],[29.7,-104.7],[31.7,-106.5],[31.3,-111],[32.5,-117.2],
+    [34.4,-120.5],[37.8,-122.5],[42,-124.2],[46.2,-124],[48.5,-124.7],
+  );
+  const MX = poly(
+    [32.5,-117.2],[31.3,-111],[31.7,-106.5],[29.7,-104.7],[27.8,-99.7],[25.9,-97.3],
+    [22.3,-97.9],[19.2,-96.1],[18,-95],[18,-104],
+    [20.6,-105.2],[22.9,-109.9],[27,-114],[30,-115.5],
+  );
+  const CA = poly(
+    [50,-125],[50,-65],[48,-67],[47.5,-67.5],
+    [45,-75.5],[43,-79],[46,-84],[48,-88],[49,-95],[49,-124.7],
+  );
+  const US_MX_BORDER = poly([32.5,-117.2],[31.3,-111],[31.7,-106.5],[29.7,-104.7],[27.8,-99.7],[25.9,-97.3]);
+  const US_CA_BORDER = poly([49,-124.7],[49,-95],[48,-88],[46,-84],[43,-79],[45,-75.5],[47.5,-67.5]);
+
+  return (
+    <div style={{ marginBottom: 12, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", position: "relative" }}>
+      <svg viewBox={`0 0 ${VW} ${VH}`} style={{ width: "100%", display: "block" }} aria-hidden="true">
+        {/* Ocean */}
+        <rect width={VW} height={VH} fill="#b8d4e8" />
+        {/* Canada (southern strip) */}
+        <polygon points={CA} fill="#d0dfc8" />
+        {/* USA */}
+        <polygon points={US} fill="#e8e2d4" />
+        {/* Mexico */}
+        <polygon points={MX} fill="#e0d8c8" />
+        {/* Gulf of Mexico tint */}
+        <ellipse cx="360" cy="268" rx="82" ry="38" fill="#b8d4e8" opacity="0.7" />
+        {/* Great Lakes */}
+        <ellipse cx="415" cy="43" rx="26" ry="13" fill="#b8d4e8" />
+        <ellipse cx="456" cy="64" rx="13" ry="9" fill="#b8d4e8" />
+        <ellipse cx="432" cy="77" rx="13" ry="6" fill="#b8d4e8" />
+        <ellipse cx="478" cy="57" rx="10" ry="6" fill="#b8d4e8" />
+        {/* Country borders */}
+        <polyline points={US_CA_BORDER} fill="none" stroke="#aaa" strokeWidth="0.8" />
+        <polyline points={US_MX_BORDER} fill="none" stroke="#aaa" strokeWidth="0.8" />
+        {/* Venue dots */}
+        {venuesData.map((v) => {
+          if (!v.meta.lat || !v.meta.lng) return null;
+          const [cx, cy] = px(v.meta.lat, v.meta.lng);
+          const isKC = v.meta.city === "Kansas City";
+          const hasLive = v.games.some((g) => g.status === "live");
+          const isActive = activeVenue === v.venue;
+          return (
+            <g key={v.venue} style={{ cursor: "pointer" }} onClick={() => setActiveVenue(isActive ? null : v.venue)}>
+              {isActive && <circle cx={cx} cy={cy} r={13} fill={T.blue} opacity={0.2} />}
+              <circle cx={cx} cy={cy} r={isActive ? 9 : 7} fill={hasLive ? T.red : isKC ? T.amber : T.blue} stroke="#fff" strokeWidth={2} />
+              <title>{v.meta.city}</title>
+            </g>
+          );
+        })}
+      </svg>
+      <div style={{ position: "absolute", bottom: 8, left: 10, fontSize: 10, color: T.textMid, display: "flex", gap: 12, background: "rgba(255,255,255,0.85)", padding: "3px 8px", borderRadius: 6 }}>
+        <span><span style={{ color: T.blue }}>●</span> host city</span>
+        <span><span style={{ color: T.amber }}>●</span> Kansas City</span>
+        <span><span style={{ color: T.red }}>●</span> live now</span>
+      </div>
+    </div>
+  );
+}
+
 function VenuesView({ venuesData, activeVenue, setActiveVenue, expanded, toggle }) {
-  const LAT_MIN = 18, LAT_MAX = 50, LNG_MIN = -125, LNG_MAX = -78;
-  const proj = (lat, lng) => ({ x: ((lng - LNG_MIN) / (LNG_MAX - LNG_MIN)) * 100, y: ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * 100 });
   return (
     <div>
       <div style={{ fontSize: 12, color: T.textDim, marginBottom: 14 }}>16 host stadiums across 3 countries. Tap a dot or city to see every match there.</div>
-      <div style={{ position: "relative", width: "100%", paddingBottom: "62%", background: "#dde6f0", border: `1px solid ${T.border}`, borderRadius: 14, marginBottom: 12, overflow: "hidden" }}>
-        {venuesData.map((v) => {
-          if (!v.meta.lat) return null;
-          const { x, y } = proj(v.meta.lat, v.meta.lng);
-          const hasLive = v.games.some((g) => g.status === "live");
-          const isActive = activeVenue === v.venue;
-          const isKC = v.meta.city === "Kansas City";
-          return (
-            <button key={v.venue} onClick={() => setActiveVenue(isActive ? null : v.venue)} title={v.meta.city}
-              style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)", width: isActive ? 16 : 12, height: isActive ? 16 : 12, borderRadius: 999, background: hasLive ? T.red : isKC ? T.amber : T.blue, border: isActive ? `2px solid ${T.text}` : `2px solid ${T.cardBg}`, cursor: "pointer", padding: 0 }} />
-          );
-        })}
-        <div style={{ position: "absolute", bottom: 8, left: 10, fontSize: 10, color: T.textMid, display: "flex", gap: 12, background: "rgba(255,255,255,0.7)", padding: "3px 8px", borderRadius: 6 }}>
-          <span><span style={{ color: T.blue }}>●</span> host city</span>
-          <span><span style={{ color: T.amber }}>●</span> Kansas City</span>
-          <span><span style={{ color: T.red }}>●</span> live now</span>
-        </div>
-      </div>
+      <VenueMap venuesData={venuesData} activeVenue={activeVenue} setActiveVenue={setActiveVenue} />
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {venuesData.map((v) => {
           const isActive = activeVenue === v.venue;
