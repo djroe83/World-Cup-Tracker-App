@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Sat, June 27, 2026 — Groups D, H & I final; G (11 PM ET Jun 26, results pending) & J/K/L (Jun 27) upcoming";
+const DATA_AS_OF = "Sat, June 27, 2026 — Groups A–I all complete; J/K/L final matchday underway (5 PM, 7:30 PM, 10 PM ET)";
 
 const GROUPS = {
   A: [
@@ -40,10 +40,10 @@ const GROUPS = {
     { team: "Tunisia", flag: "🇹🇳", P: 3, W: 0, D: 0, L: 3, GF: 2, GA: 12, GD: -10, Pts: 0 },
   ],
   G: [
-    { team: "Egypt", flag: "🇪🇬", P: 2, W: 1, D: 1, L: 0, GF: 4, GA: 2, GD: 2, Pts: 4 },
-    { team: "Belgium", flag: "🇧🇪", P: 2, W: 0, D: 2, L: 0, GF: 1, GA: 1, GD: 0, Pts: 2 },
-    { team: "Iran", flag: "🇮🇷", P: 2, W: 0, D: 2, L: 0, GF: 2, GA: 2, GD: 0, Pts: 2 },
-    { team: "New Zealand", flag: "🇳🇿", P: 2, W: 0, D: 1, L: 1, GF: 3, GA: 5, GD: -2, Pts: 1 },
+    { team: "Belgium", flag: "🇧🇪", P: 3, W: 1, D: 2, L: 0, GF: 6, GA: 2, GD: 4, Pts: 5 },
+    { team: "Egypt", flag: "🇪🇬", P: 3, W: 1, D: 2, L: 0, GF: 5, GA: 3, GD: 2, Pts: 5 },
+    { team: "Iran", flag: "🇮🇷", P: 3, W: 0, D: 3, L: 0, GF: 3, GA: 3, GD: 0, Pts: 3 },
+    { team: "New Zealand", flag: "🇳🇿", P: 3, W: 0, D: 1, L: 2, GF: 4, GA: 10, GD: -6, Pts: 1 },
   ],
   H: [
     { team: "Spain", flag: "🇪🇸", P: 3, W: 2, D: 1, L: 0, GF: 5, GA: 0, GD: 5, Pts: 7 },
@@ -145,8 +145,8 @@ const MATCHES = [
   { id: 62, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "BMO Field, Toronto", status: "final", home: "Senegal", away: "Iraq", hs: 5, as: 0, odds: { home: -240, draw: 300, away: 650, pct: [65, 22, 13] }, note: "H. Diarra 4', I. Sarr 56', Pape Gueye 59' & 71', Ndiaye 82' — Senegal 5-0 rout keeps best-3rd hopes alive; Iraq finish 4th (0 pts)" },
   { id: 63, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "NRG Stadium, Houston", status: "final", home: "Cabo Verde", away: "Saudi Arabia", hs: 0, as: 0, odds: { home: 190, draw: 220, away: 150, pct: [34, 29, 37] }, note: "Goalless stalemate sends Cabo Verde through as Group H runners-up (3 pts, 3 draws) — historic feat for the 530k-population Atlantic islands" },
   { id: 64, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "Estadio Akron, Zapopan", status: "final", home: "Uruguay", away: "Spain", hs: 0, as: 1, odds: { home: 270, draw: 250, away: -115, pct: [25, 28, 47] }, note: "Álex Baena 42' (crossed into box, Muslera fumbled in) — Spain top Group H 7 pts; Uruguay eliminated (2 pts, GD −1)" },
-  { id: 65, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "Lumen Field, Seattle", status: "upcoming", home: "Egypt", away: "Iran", hs: null, as: null, odds: { home: 150, draw: 220, away: 180, pct: [37, 29, 34] }, est: true },
-  { id: 66, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "BC Place, Vancouver", status: "upcoming", home: "New Zealand", away: "Belgium", hs: null, as: null, odds: { home: 500, draw: 320, away: -200, pct: [15, 24, 61] }, est: true },
+  { id: 65, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "Lumen Field, Seattle", status: "final", home: "Egypt", away: "Iran", hs: 1, as: 1, odds: { home: 150, draw: 220, away: 180, pct: [37, 29, 34] }, note: "Saber 5' (deflected off Beiranvand); Rezaeian 14' (EGY) — Iran thought they won it (Khalilzadeh 90+3') but VAR overturned for offside. Egypt advance 2nd — first time ever past group stage in WC history" },
+  { id: 66, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "BC Place, Vancouver", status: "final", home: "New Zealand", away: "Belgium", hs: 1, as: 5, odds: { home: 500, draw: 320, away: -200, pct: [15, 24, 61] }, note: "Trossard 28' & 50'; De Bruyne 66'; Just 84' (NZL); Lukaku 86'; Saelemaekers 90+' — Belgium overtake Egypt on GD to win Group G; De Bruyne scores in his international farewell" },
   { id: 67, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "MetLife Stadium, East Rutherford", status: "upcoming", home: "Panama", away: "England", hs: null, as: null, odds: { home: 700, draw: 360, away: -280, pct: [11, 21, 68] }, est: true },
   { id: 68, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "Lincoln Financial Field, Philadelphia", status: "upcoming", home: "Croatia", away: "Ghana", hs: null, as: null, odds: { home: -120, draw: 240, away: 320, pct: [49, 27, 24] }, est: true },
   { id: 69, group: "K", md: 3, date: "Sat Jun 27", time: "7:30 PM", venue: "Hard Rock Stadium, Miami Gardens", status: "upcoming", home: "Colombia", away: "Portugal", hs: null, as: null, odds: { home: 190, draw: 230, away: 145, pct: [34, 28, 38] }, est: true },
@@ -220,25 +220,25 @@ const R32 = [
   { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 55 }, { t: "Ghana", pct: 35 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 38 }, { t: "Algeria", pct: 32 }, { t: "Senegal", pct: 20 }, { t: "Ecuador", pct: 10 }] } },
   // M81b: 3rd from B/E/F/I/J — Bosnia (4 pts) is the clear frontrunner, not Ecuador (1 pt); Qatar eliminated so "Bosnia/Qatar" removed
   { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Bosnia", pct: 50 }, { t: "Ecuador", pct: 28 }, { t: "Algeria", pct: 13 }, { t: "Austria", pct: 9 }] } },
-  // M82a: Egypt 65% is reasonable; Iran underrated at 10% given they play Egypt directly
-  // M82b: 3rd from A/E/H/I/J — Czechia ELIMINATED (4th in A); South Korea is 3rd in A
-  { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 62 }, { t: "Iran", pct: 24 }, { t: "Belgium", pct: 14 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 36 }, { t: "Austria", pct: 28 }, { t: "Algeria", pct: 24 }, { t: "Senegal", pct: 12 }] } },
+  // M82a: Belgium confirmed Group G winner (5 pts, GD+4, overtook Egypt on final day 5-1 vs NZ)
+  // M82b: 3rd from A/E/H/I/J — Sweden (4 pts F) & Senegal (3 pts I) are confirmed; Group J 3rd TBD; Iran (3 pts G3rd) also in race
+  { m: 82, date: "Jul 1", venue: "Seattle", a: { team: "Belgium", flag: "🇧🇪", conf: true }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 34 }, { t: "Austria", pct: 26 }, { t: "Algeria", pct: 24 }, { t: "Senegal", pct: 16 }] } },
   // M83a: Grp K 2nd — Colombia confirmed 1st (6 pts), cannot be 2nd; Portugal (4 pts) is near-certain 2nd
   // M83b: England and Ghana both 4 pts — England at 15% for 2nd was wrong
   { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "Portugal", pct: 88 }, { t: "DR Congo", pct: 12 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 42 }, { t: "England", pct: 30 }, { t: "Croatia", pct: 28 }] } },
   // M84a: Spain confirmed Group H winner (7 pts)
   // M84b: Grp J 2nd — Argentina confirmed 1st (6 pts), cannot be 2nd; it's Austria vs Algeria only
   { m: 84, date: "Jul 2", venue: "Los Angeles", a: { team: "Spain", flag: "🇪🇸", conf: true }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 52 }, { t: "Algeria", pct: 48 }] } },
-  // M85b: 3rd from E/F/G/I/J — Sweden (4 pts F3rd) leads; Ecuador (4 pts E3rd) strong; Belgium/Iran (G 3rd TBD); Senegal (3 pts I3rd)
-  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Sweden", pct: 30 }, { t: "Ecuador", pct: 28 }, { t: "Belgium", pct: 22 }, { t: "Iran", pct: 20 }] } },
+  // M85b: 3rd from E/F/G/I/J — Sweden (4 pts F3rd) & Ecuador (4 pts E3rd) lead; Iran (3 pts G3rd) & Senegal (3 pts I3rd) also in race; Group J 3rd TBD
+  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Sweden", pct: 32 }, { t: "Ecuador", pct: 28 }, { t: "Iran", pct: 22 }, { t: "Senegal", pct: 18 }] } },
   // M86a: Argentina won Group J — confirmed, not probabilistic
   // M86b: Cabo Verde confirmed Group H runner-up (3 pts, 3 draws) — historic
   { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { team: "Cabo Verde", flag: "🇨🇻", conf: true } },
   // M87a: Colombia won Group K (6 pts) — confirmed, not probabilistic
   // M87b: 3rd from D/E/I/J/L — Ecuador (4 pts E3rd) is the top candidate; Paraguay (4 pts D3rd) also strong; Austria/Algeria (3 pts J) in the mix
   { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Ecuador", pct: 38 }, { t: "Paraguay", pct: 32 }, { t: "Austria", pct: 18 }, { t: "Algeria", pct: 12 }] } },
-  // M88b: Egypt (4 pts, group leader) was underrated at 20% for 2nd; Iran plays Egypt directly so both in play
-  { m: 88, date: "Jul 3", venue: "Dallas", a: { team: "Australia", flag: "🇦🇺", conf: true }, b: { label: "Grp G 2nd", cands: [{ t: "Egypt", pct: 42 }, { t: "Belgium", pct: 35 }, { t: "Iran", pct: 23 }] } },
+  // M88b: Egypt confirmed 2nd in Group G (5 pts, GD+2; Belgium won group on better GD +4)
+  { m: 88, date: "Jul 3", venue: "Dallas", a: { team: "Australia", flag: "🇦🇺", conf: true }, b: { team: "Egypt", flag: "🇪🇬", conf: true } },
 ];
 
 const R16 = [
@@ -283,7 +283,8 @@ const QUALIFICATION = [
   { team: "Japan", flag: "🇯🇵", state: "in", detail: "2nd in Group F (5 pts) — drew 1-1 with Sweden on MD3; R32 Jun 29, Houston vs Brazil" },
   { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K — 6 pts, 3 wins; R32 Jul 3, Kansas City" },
   { team: "Portugal", flag: "🇵🇹", state: "in", detail: "Confirmed Group K (4 pts, GD +5); can't be overtaken by DR Congo" },
-  { team: "Egypt", flag: "🇪🇬", state: "likely", detail: "Leads Group G (4 pts)" },
+  { team: "Egypt", flag: "🇪🇬", state: "in", detail: "2nd in Group G (5 pts) — drew 1-1 with Iran (Saber 5'; VAR drama at end); R32 Jul 3, Dallas vs Australia. First time Egypt has EVER advanced past the World Cup group stage" },
+  { team: "Belgium", flag: "🇧🇪", state: "in", detail: "Won Group G (5 pts, GD +4) — 5-1 rout of New Zealand (Trossard ×2, De Bruyne, Lukaku, Saelemaekers) overtook Egypt on final day; R32 Jul 1, Seattle vs 3rd-place team" },
   { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "likely", detail: "Top of Group L (4 pts)" },
   { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "alive", detail: "3rd in Group B (4 pts) — tracking to advance as best 3rd" },
   { team: "South Korea", flag: "🇰🇷", state: "alive", detail: "3rd in Group A (3 pts, GD −1) — awaiting best-3rd comparison" },
@@ -291,8 +292,8 @@ const QUALIFICATION = [
   { team: "Paraguay", flag: "🇵🇾", state: "alive", detail: "3rd in Group D (4 pts, GD −2) — 0-0 draw with Australia keeps them alive as a best-3rd candidate" },
   { team: "Ivory Coast", flag: "🇨🇮", state: "in", detail: "2nd in Group E (6 pts) — Pépé brace vs Curaçao on MD3 sealed 2nd place" },
   { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — through as best-3rd team after 1-1 draw with Japan" },
-  { team: "Iran", flag: "🇮🇷", state: "alive", detail: "2 pts in Group G; plays Egypt Jun 26 — winner likely advances" },
-  { team: "New Zealand", flag: "🇳🇿", state: "alive", detail: "1 pt in Group G; needs a win vs Belgium Jun 26 to stay alive" },
+  { team: "Iran", flag: "🇮🇷", state: "alive", detail: "3rd in Group G (3 pts, GD 0) — all three games drawn; thought they won vs Egypt (Khalilzadeh 90+3') but VAR ruled offside; alive as best-3rd candidate" },
+  { team: "New Zealand", flag: "🇳🇿", state: "out", detail: "Eliminated — 4th in Group G (1 pt, GD −6); lost 1-5 to Belgium on final day (Elijah Just 84' was only consolation)" },
   { team: "Cabo Verde", flag: "🇨🇻", state: "in", detail: "2nd in Group H (3 pts, 3 draws) — drew vs Spain, Uruguay, Saudi Arabia; R32 Jul 2, Miami vs Argentina. First-ever World Cup, pop. 530k — one of the tournament's great stories" },
   { team: "Saudi Arabia", flag: "🇸🇦", state: "out", detail: "Eliminated — 4th in Group H (2 pts, GD −4); drew 0-0 with Cabo Verde on final day; beaten 4-0 by Spain. Exit despite 2-time WC winner ambitions under Mancini" },
   { team: "Austria", flag: "🇦🇹", state: "alive", detail: "3 pts in Group J, needs a result vs Algeria Jun 27" },
@@ -300,7 +301,6 @@ const QUALIFICATION = [
   { team: "Ghana", flag: "🇬🇭", state: "alive", detail: "4 pts in Group L, in good shape for Jun 27" },
   { team: "Croatia", flag: "🇭🇷", state: "alive", detail: "3 pts; revived after beating Panama; plays Ghana Jun 27" },
   { team: "Uruguay", flag: "🇺🇾", state: "out", detail: "Eliminated — 3rd in Group H (2 pts, GD −1); lost 0-1 to Spain (Álex Baena 42'); two-time WC champions exit in group stage" },
-  { team: "Belgium", flag: "🇧🇪", state: "alive", detail: "2 pts, winless; needs to beat New Zealand Jun 26" },
   { team: "DR Congo", flag: "🇨🇩", state: "alive", detail: "1 pt in Group K; plays Uzbekistan Jun 27 — needs a win" },
   { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "3rd in Group I (3 pts, GD +2) — 5-0 rout of Iraq (Diarra, Sarr, Gueye×2, Ndiaye); alive as best-3rd candidate" },
   { team: "Ecuador", flag: "🇪🇨", state: "alive", detail: "3rd in Group E (4 pts, GD 0) — shocked Germany 2-1; strong best-3rd candidate" },
@@ -319,15 +319,6 @@ const QUALIFICATION = [
 
 
 const GROUP_SCENARIOS = [
-  {
-    group: "G", date: "Fri Jun 26",
-    teams: [
-      { team: "Egypt", flag: "🇪🇬", fate: "controls", note: "Win vs Iran → 1st place guaranteed (7 pts)" },
-      { team: "Iran", flag: "🇮🇷", fate: "controls", note: "Win vs Egypt → 5 pts, top 2 very likely" },
-      { team: "Belgium", flag: "🇧🇪", fate: "controls", note: "Win vs New Zealand → 5 pts, top 2 secured" },
-      { team: "New Zealand", flag: "🇳🇿", fate: "needs", note: "Win + Egypt beats Iran → could sneak into 2nd" },
-    ],
-  },
   {
     group: "J", date: "Sat Jun 27",
     teams: [
@@ -358,19 +349,20 @@ const GROUP_SCENARIOS = [
 ];
 
 const NOW_BRIEFING = {
-  headline: "Groups H & I done — Cabo Verde through to face Argentina; Group G results awaited; J/K/L play today.",
-  body: "The day ended with one of the World Cup's great stories complete: Cabo Verde — population 530,000 — drew 0-0 with Saudi Arabia to qualify from Group H as runners-up. Vozinha, the 40-year-old goalkeeper whose mother needed a viral GoFundMe to afford a US visa, will now face Lionel Messi and Argentina in Miami on July 2. Spain topped the group 7 pts, eliminating two-time champions Uruguay (0-1). Meanwhile Group G (Egypt vs Iran and Belgium vs New Zealand, 11 PM ET Jun 26) results are still being confirmed. Today brings the final group matches in Groups J, K, and L.",
+  headline: "Groups A–I complete — Belgium stuns, Egypt makes history, Cabo Verde face Messi. Final group day: J/K/L today.",
+  body: "The group stage drama peaked overnight: Belgium — who hadn't won in two games — exploded with a 5-1 win over New Zealand to overtake Egypt on goal difference and win Group G. De Bruyne scored in what is almost certainly his last international game. Even more emotional: Egypt advance to the knockout rounds of a World Cup for the FIRST TIME IN THEIR HISTORY — drawing 1-1 with Iran, with Iran's stoppage-time winner cruelly ruled out by VAR. Now the final matchday: all six games of Groups J, K, and L play today (Jun 27). England and Ghana have both already secured spots; the rest is wide open.",
   threads: [
-    "Cabo Verde 0-0 Saudi Arabia: Vozinha's clean sheet completes a remarkable Group H campaign — 3 draws from 3 games, including holding Spain 0-0 in their World Cup debut. Cabo Verde (pop. 530k) vs Argentina (Messi) in Miami is the Round of 32's most captivating matchup.",
-    "Spain 1-0 Uruguay (Baena 42'): La Roja top Group H with a perfect defensive record (5G, 0GA). Uruguay — two-time World Cup champions — exit in the group stage. Marcelo Bielsa's project ends early.",
-    "Groups H & I confirmed qualifiers: Spain (H1st) and Cabo Verde (H2nd) join France and Norway from Group I. Round of 32 confirmed: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia, Spain, Cabo Verde (20 of 32).",
-    "Group G (11 PM ET Jun 26): Egypt vs Iran and Belgium vs New Zealand — results pending. Egypt (4 pts) lead; Belgium (2 pts) must win to survive. Both games are complete but not yet confirmed here.",
-    "Today — Groups J, K, L final day: Argentina vs Jordan, Algeria vs Austria (Group J); Colombia vs Portugal, DR Congo vs Uzbekistan (Group K); Panama vs England, Croatia vs Ghana (Group L).",
+    "Belgium 5-1 New Zealand (Trossard 28' & 50', De Bruyne 66', Lukaku 86', Saelemaekers 90+') — De Bruyne goes out on a high in his final international. Belgium win Group G on GD (+4 vs Egypt's +2). R32: Belgium vs best-3rd in Seattle, Jul 1.",
+    "Egypt 1-1 Iran (Saber 5', Rezaeian 14') — Iran's Khalilzadeh scored in the 90+3' to win it, but VAR overturned the goal for offside. Ezatolahi then hit the crossbar in the final seconds. Egypt advance 2nd in Group G — their FIRST knockout stage appearance in World Cup history. R32: Egypt vs Australia, Jul 3 Dallas.",
+    "Cabo Verde 0-0 Saudi Arabia & Spain 1-0 Uruguay (Baena 42') — Cabo Verde (pop. 530k) through on 3 draws, now face Argentina and Messi in Miami Jul 2. Spain top Group H 7 pts, 0 GA. Uruguay — 2× World Cup champions — exit in groups.",
+    "Confirmed in the Round of 32 (22 of 32): Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia, Spain, Cabo Verde, Belgium, Egypt.",
+    "TODAY (Jun 27): Group L 5 PM ET — Panama vs England (MetLife), Croatia vs Ghana (Lincoln Financial); Group K 7:30 PM ET — Colombia vs Portugal (Miami), DR Congo vs Uzbekistan (Atlanta); Group J 10 PM ET — Algeria vs Austria (Arrowhead KC), Jordan vs Argentina (AT&T Arlington).",
   ],
 };
 
 const DAY_SUMMARIES = {
-  "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32'; Aasgaard 26'; Doué 90+') — France win group 9 pts. Senegal 5-0 Iraq (Diarra 4', Sarr 56', Gueye 59' & 71', Ndiaye 82'). Group H: Spain 1-0 Uruguay (Álex Baena 42'), Cabo Verde 0-0 Saudi Arabia — Spain top group 7 pts; Cabo Verde 2nd (3 draws, 3 pts); Uruguay & Saudi Arabia eliminated. Group G (11 PM ET): Egypt vs Iran, Belgium vs New Zealand — results pending confirmation.",
+  "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32'; Aasgaard 26'; Doué 90+'). Senegal 5-0 Iraq. Group H: Spain 1-0 Uruguay (Baena 42'), Cabo Verde 0-0 Saudi Arabia — Spain top, Cabo Verde through on 3 draws. Group G (11 PM): Belgium 5-1 New Zealand (Trossard 28' & 50', De Bruyne 66', Lukaku 86', Saelemaekers 90+'), Egypt 1-1 Iran (Saber 5', Rezaeian 14'; Iran's Khalilzadeh goal overturned by VAR 90+3') — Belgium win group GD tiebreaker; Egypt advance to knockouts for first time in their history.",
+  "Sat Jun 27": "Group L (5 PM ET): Panama vs England; Croatia vs Ghana. Group K (7:30 PM ET): Colombia vs Portugal; DR Congo vs Uzbekistan. Group J (10 PM ET): Algeria vs Austria; Jordan vs Argentina.",
   "Thu Jun 25": "Group E and F completed early; Group D late drama. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace). Netherlands 3-1 Tunisia; Japan 1-1 Sweden — all three Group F teams advance. Late: Turkey 3-2 USA (Trusty 3'; Arda Güler 10', Yılmaz 31'; S. Berhalter 49'; Kaan Ayhan 90+8') — wild finish at SoFi; USA still group winners. Paraguay 0-0 Australia — Australia through 2nd.",
   "Wed Jun 24": "Groups A, B, and C wrapped. South Africa's 1-0 win over South Korea was the shock of the day, knocking the Koreans to 3rd. Mexico swept the group 3-0 over Czechia. Switzerland edged Canada 2-1 to top Group B; Bosnia beat Qatar 3-1. Brazil 3-0 Scotland, Morocco 4-2 Haiti — both advance from Group C.",
   "Tue Jun 23": "Matchday 2 wrapped for Groups K and L. Portugal exploded for 5-0; England held 0-0 by Ghana; Croatia revived with a narrow win.",
@@ -521,52 +513,46 @@ const MATCH_DETAILS = {
     ],
   },
 
-  // ── Friday June 26: Group G (11 PM ET) ─────────────────────────────────────
+  // ── Group G MD3 result: Egypt 1-1 Iran (VAR drama) ──────────────────────────
   65: {
     watch: [
-      "Mohamed Salah (Egypt, Liverpool) — Egypt's captain and talisman, widely regarded as the best African footballer ever. Scored his 68th international goal vs New Zealand and is closing in on Egypt's all-time record. For 107 million Egyptians, a Salah performance at the knockouts is the dream.",
-      "Mehdi Taremi (Iran) — captain and Iran's most dangerous attacker. Has endured a chaotic tournament — Iran's assistant coach was detained at a US airport before a match. On the pitch, Taremi's movement and hold-up play are Iran's best weapons in attack.",
-    ],
-    stakes: [
-      "Egypt (4 pts, Group G leaders) can clinch 1st place with a win. A draw keeps them in 2nd but leaves the door open for Belgium.",
-      "Iran (2 pts) must at minimum draw to survive. A win sends them to the Round of 32 for the first time in their World Cup history. A loss likely eliminates them.",
+      "Saber (Egypt) — bundled in the opening goal after Beiranvand, Iran's goalkeeper, fumbled Mohamed Salah's powerful 5th-minute shot. A scrambled goal that set Egypt on the path to historic qualification.",
+      "Ramin Rezaeian (Iran) — replied instantly, firing into the roof of the net at 14' to level. Iran's right-back was the unlikely match-leveller who gave his side a fighting chance all game.",
+      "Shojae Khalilzadeh (Iran) — thought he had won it in the 90+3' with a header into the roof of the net — scenes of jubilation on the Iran bench. But VAR reviewed for over two minutes and ruled him marginally offside. The cruelest possible exit for Iran.",
+      "Alireza Ezatolahi (Iran) — in the dying seconds, with the disallowed goal the last chance, rattled the crossbar from six yards. Iran fell agonisingly short of one of the greatest World Cup dramatic endings.",
     ],
     fun: [
-      "Egypt are the most successful nation in African football history — they have won the Africa Cup of Nations a record 7 times, including 3 in a row (2006, 2008, 2010).",
-      "Egypt's total World Cup appearances before 2026: just 3 (1934, 1990, 2018). For a nation of 107 million people with the continent's richest football history, their scarcity at the World Cup is remarkable.",
-      "Mehdi Taremi himself said the team's tournament experience in the US has been 'a disaster' — pointing to travel complications, visa issues for staff, and logistical disruptions that disrupted preparation for every match.",
-      "Iran became the first Asian team to beat USA at a World Cup — their 2-1 win in France 1998 (the famous political context match) is still one of the most charged fixtures in international football history.",
-      "The Pyramids of Giza, just outside Cairo, are the only surviving wonder of the ancient Seven Wonders of the World — built around 2560 BC. Egypt's civilization is one of the oldest continuous ones on Earth.",
-      "Salah scored his 67th international goal in the 67th minute vs New Zealand — a coincidence that only superstars achieve. He has scored in back-to-back World Cup matches.",
+      "Egypt advance to the knockout rounds of the World Cup for the FIRST TIME IN THEIR HISTORY. They appeared in 1934, 1990, and 2018 — never making it out of the group stage. For 107 million Egyptians, this is a historic milestone.",
+      "Iran's VAR disallowed goal will be remembered as one of the most heartbreaking moments in their football history. The Iranian FA had already flagged issues with travel and visa logistics for the tournament — this VAR call added another layer of painful tournament trauma.",
+      "Mehdi Taremi (Iran's captain) said before the tournament their US preparation had been 'a disaster' due to logistical disruptions. On the pitch, he battled hard throughout but couldn't find the winner Iran desperately needed.",
+      "Lumen Field in Seattle had a raucous atmosphere for what turned out to be a dramatic and politically charged game between two historic nations.",
+      "Egypt's history at the World Cup makes this particularly remarkable: they won the 1934 tournament's first round (against Hungary) before eventually being eliminated, and didn't return until 1990. Their knockout-stage debut in 2026 is a generational achievement.",
     ],
     color: [
-      "Egypt has 107 million people watching Salah's every move. The pressure and passion surrounding this game in Cairo is almost incomprehensible — Salah qualifying Egypt for the 2018 World Cup with a last-minute penalty against Congo is still replayed daily on Egyptian TV.",
-      "Lumen Field in Seattle is known for generating some of the loudest crowd noise in any sport — the Seattle Seahawks' fans once set the official Guinness World Record for loudest crowd roar. Iran vs Egypt will be played in an unforgettable atmosphere.",
+      "Egypt go into the R32 (Jul 3, Dallas vs Australia) with momentum and a nation of 107 million behind them. Salah, still searching for a goal in this game, will want to deliver in the knockouts.",
+      "Iran's exit — especially with the disallowed goal — will be controversial. They were arguably the better team in the second half. Their best-3rd hopes are alive (3 pts, GD 0) but they need results elsewhere to go their way.",
     ],
   },
 
-  // ── Friday June 26: Group G (11 PM ET) ─────────────────────────────────────
+  // ── Group G MD3 result: New Zealand 1-5 Belgium (De Bruyne farewell) ─────────
   66: {
     watch: [
-      "Kevin De Bruyne (Belgium, Man City) — at 34, this is almost certainly his last World Cup. One of the greatest midfielders of his generation — 6 Premier League titles, 1 Champions League with Man City in their historic 2023 treble. Belgium need his vision and passing range to unlock New Zealand.",
-      "Chris Wood (New Zealand, Nottingham Forest) — the All Whites' talismanic striker and an underrated Premier League goal scorer (15+ goals in each of his best PL seasons). New Zealand's only realistic path to any result runs through him.",
-      "Romelu Lukaku (Belgium) — still prolific as a pure penalty-box striker; Belgium's all-time leading scorer. If De Bruyne can find him, chances will come.",
-    ],
-    stakes: [
-      "Belgium (2 pts, winless) need a win to advance. Their campaign has been the tournament's biggest underperformance relative to talent and ranking.",
-      "New Zealand (1 pt) are mathematically eliminated but can cause a historic upset and end on the highest note possible.",
+      "Leandro Trossard (Belgium, Arsenal) — the unlikely hero of Belgium's tournament-saving performance. Two goals (28', 50') in BC Place — a brace that turned the tide and, combined with Egypt's draw, put Belgium ahead on goal difference. Trossard had been one of Belgium's quieter performers until this game.",
+      "Kevin De Bruyne (Belgium, Man City) — scored in the 66th minute in what was almost certainly his last international appearance. The greatest midfielder of his generation, who announced before the tournament this World Cup would be his last. He walked off to a standing ovation from the Vancouver crowd.",
+      "Romelu Lukaku (Belgium) — added the 4th goal (86') with typical penalty-box predatory instinct. Belgium's all-time leading scorer, who had been quiet in earlier matches, delivering when it truly mattered.",
+      "Alexis Saelemaekers (Belgium) — completed the 5-1 rout in stoppage time, confirming Belgium's stunning goal difference turnaround.",
+      "Elijah Just (New Zealand) — scored a late consolation in the 84th minute but the match was long since over. New Zealand's best moment was during the 2026 group stage overall — three competitive performances despite the final elimination.",
     ],
     fun: [
-      "Belgium were ranked #1 in the FIFA world rankings for a record 68 consecutive months (2018-2022) — yet have never won a major international trophy. It is arguably the longest gap between ranking and achievement in international football history.",
-      "Belgium's 'Golden Generation' — De Bruyne, Hazard, Lukaku, Courtois, Alderweireld, Vertonghen — finished 3rd at the 2018 Russia World Cup, defeating Brazil and England on the way. Eden Hazard has since retired. This is their last stand.",
-      "New Zealand went unbeaten at the 2010 World Cup (South Africa) — three draws including a memorable 1-1 with Italy, the reigning world champions. They still failed to advance. They remain the only team in history to go unbeaten at a World Cup without advancing from the group stage.",
-      "New Zealand are internationally far more famous for their All Blacks rugby team — 3-time Rugby World Cup winners (1987, 2011, 2015). Football is a distant second sport in a rugby-mad nation.",
-      "Belgium is one of the world's most politically unusual countries — formally divided between Dutch-speaking Flanders and French-speaking Wallonia, with Brussels officially bilingual. The country went 541 days without a federal government in 2010-11, a world record at the time.",
-      "De Bruyne's agent confirmed he will retire from international football after this World Cup. He won 6 Premier League titles and is considered the greatest player in Man City's history.",
+      "Belgium went into this game with 1 goal in 2 matches (their weakest output since 2002). They scored 5 — the biggest single-game turnaround of the 2026 group stage. They won Group G on goal difference (+4 vs Egypt's +2).",
+      "Kevin De Bruyne's international career ends with a goal in his final game. He won 6 Premier League titles, 1 Champions League, and was a 2026 World Cup group-stage qualifier. His legacy as one of the best midfielders in football history is secure.",
+      "Belgium were ranked #1 in the FIFA world rankings for a record 68 consecutive months (2018-2022) without winning a major trophy. This 'Golden Generation's' final WC was almost a group-stage disaster — rescued by 90 minutes of brilliance.",
+      "New Zealand end their World Cup with 1 point — the same return as 2010 South Africa (3 draws, 0 wins). They leave with pride but without the victory that would have made this historic.",
+      "BC Place in Vancouver is the host stadium of the 2026 World Cup final on July 19. The city of Vancouver will get to see the very best of the tournament — Belgium have now ensured they experienced it first with the best performance of the night.",
     ],
     color: [
-      "Belgium have drawn both games and have not won a single match in the tournament. They could exit without scoring more than 1 goal (vs Egypt MD1) despite having De Bruyne, Lukaku, and Amadou Onana. The squad's quality makes their output one of the most baffling stories of this World Cup.",
-      "This is almost certainly De Bruyne's last 90 minutes in international football. Whatever happens, Belgium and a generation of football fans around the world will want to see him produce something extraordinary in his farewell.",
+      "The scenes at BC Place at full time — De Bruyne holding the ball, saluting the crowd, Belgium players embracing — were some of the most emotional of the tournament. A 'Golden Generation' goes out alive rather than in shame.",
+      "Belgium face a 3rd-place team in the Round of 32 on July 1 in Seattle — in the very stadium where Egypt drew 1-1 with Iran hours before. The football symmetry is striking.",
     ],
   },
 
