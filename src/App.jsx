@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Fri, June 26, 2026 — Groups D & I final; H (8 PM ET) & G (11 PM ET) in progress";
+const DATA_AS_OF = "Sat, June 27, 2026 — Groups D, H & I final; G (11 PM ET Jun 26, results pending) & J/K/L (Jun 27) upcoming";
 
 const GROUPS = {
   A: [
@@ -46,10 +46,10 @@ const GROUPS = {
     { team: "New Zealand", flag: "🇳🇿", P: 2, W: 0, D: 1, L: 1, GF: 3, GA: 5, GD: -2, Pts: 1 },
   ],
   H: [
-    { team: "Spain", flag: "🇪🇸", P: 2, W: 1, D: 1, L: 0, GF: 4, GA: 0, GD: 4, Pts: 4 },
-    { team: "Uruguay", flag: "🇺🇾", P: 2, W: 0, D: 2, L: 0, GF: 3, GA: 3, GD: 0, Pts: 2 },
-    { team: "Cabo Verde", flag: "🇨🇻", P: 2, W: 0, D: 2, L: 0, GF: 2, GA: 2, GD: 0, Pts: 2 },
-    { team: "Saudi Arabia", flag: "🇸🇦", P: 2, W: 0, D: 1, L: 1, GF: 1, GA: 5, GD: -4, Pts: 1 },
+    { team: "Spain", flag: "🇪🇸", P: 3, W: 2, D: 1, L: 0, GF: 5, GA: 0, GD: 5, Pts: 7 },
+    { team: "Cabo Verde", flag: "🇨🇻", P: 3, W: 0, D: 3, L: 0, GF: 2, GA: 2, GD: 0, Pts: 3 },
+    { team: "Uruguay", flag: "🇺🇾", P: 3, W: 0, D: 2, L: 1, GF: 3, GA: 4, GD: -1, Pts: 2 },
+    { team: "Saudi Arabia", flag: "🇸🇦", P: 3, W: 0, D: 2, L: 1, GF: 1, GA: 5, GD: -4, Pts: 2 },
   ],
   I: [
     { team: "France", flag: "🇫🇷", P: 3, W: 3, D: 0, L: 0, GF: 10, GA: 2, GD: 8, Pts: 9 },
@@ -143,8 +143,8 @@ const MATCHES = [
   { id: 60, group: "D", md: 3, date: "Thu Jun 25", time: "10:00 PM", venue: "Levi's Stadium, Santa Clara", status: "final", home: "Paraguay", away: "Australia", hs: 0, as: 0, odds: { home: 180, draw: 215, away: 150, pct: [33, 30, 37] }, note: "Cagey goalless draw — Australia advance 2nd in Group D; Paraguay finish 3rd (4 pts, GD −2) as best-3rd candidate" },
   { id: 61, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "Gillette Stadium, Foxborough", status: "final", home: "Norway", away: "France", hs: 1, as: 4, odds: { home: 240, draw: 290, away: -110, pct: [27, 25, 48] }, note: "Dembélé hat-trick 7', 20', 32' (second-fastest in WC history); Aasgaard 26' (Nor); Doué 90+' — France win Group I with 9 pts" },
   { id: 62, group: "I", md: 3, date: "Fri Jun 26", time: "3:00 PM", venue: "BMO Field, Toronto", status: "final", home: "Senegal", away: "Iraq", hs: 5, as: 0, odds: { home: -240, draw: 300, away: 650, pct: [65, 22, 13] }, note: "H. Diarra 4', I. Sarr 56', Pape Gueye 59' & 71', Ndiaye 82' — Senegal 5-0 rout keeps best-3rd hopes alive; Iraq finish 4th (0 pts)" },
-  { id: 63, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "NRG Stadium, Houston", status: "upcoming", home: "Cabo Verde", away: "Saudi Arabia", hs: null, as: null, odds: { home: 190, draw: 220, away: 150, pct: [34, 29, 37] }, est: true },
-  { id: 64, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "Estadio Akron, Zapopan", status: "upcoming", home: "Uruguay", away: "Spain", hs: null, as: null, odds: { home: 270, draw: 250, away: -115, pct: [25, 28, 47] }, est: true },
+  { id: 63, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "NRG Stadium, Houston", status: "final", home: "Cabo Verde", away: "Saudi Arabia", hs: 0, as: 0, odds: { home: 190, draw: 220, away: 150, pct: [34, 29, 37] }, note: "Goalless stalemate sends Cabo Verde through as Group H runners-up (3 pts, 3 draws) — historic feat for the 530k-population Atlantic islands" },
+  { id: 64, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "Estadio Akron, Zapopan", status: "final", home: "Uruguay", away: "Spain", hs: 0, as: 1, odds: { home: 270, draw: 250, away: -115, pct: [25, 28, 47] }, note: "Álex Baena 42' (crossed into box, Muslera fumbled in) — Spain top Group H 7 pts; Uruguay eliminated (2 pts, GD −1)" },
   { id: 65, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "Lumen Field, Seattle", status: "upcoming", home: "Egypt", away: "Iran", hs: null, as: null, odds: { home: 150, draw: 220, away: 180, pct: [37, 29, 34] }, est: true },
   { id: 66, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "BC Place, Vancouver", status: "upcoming", home: "New Zealand", away: "Belgium", hs: null, as: null, odds: { home: 500, draw: 320, away: -200, pct: [15, 24, 61] }, est: true },
   { id: 67, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "MetLife Stadium, East Rutherford", status: "upcoming", home: "Panama", away: "England", hs: null, as: null, odds: { home: 700, draw: 360, away: -280, pct: [11, 21, 68] }, est: true },
@@ -208,30 +208,32 @@ const R32 = [
   { m: 75, date: "Jun 30", venue: "Guadalajara", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
   { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { team: "Japan", flag: "🇯🇵", conf: true } },
   // M77a: France won Group I (9 pts) — confirmed
-  // M77b: 3rd from C/D/F/G/H — Sweden (4 pts, F3rd) & Paraguay (4 pts, D3rd) confirmed; Belgium/Iran (G) & Cabo Verde/Uruguay (H) TBD tonight
-  { m: 77, date: "Jun 30", venue: "New York NJ", a: { team: "France", flag: "🇫🇷", conf: true }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Sweden", pct: 36 }, { t: "Paraguay", pct: 28 }, { t: "Belgium", pct: 20 }, { t: "Uruguay", pct: 12 }] } },
+  // M77b: 3rd from C/D/F/G/H — Sweden (4 pts F3rd) & Paraguay (4 pts D3rd) lead; Belgium/Iran (G 3rd TBD); Uruguay/Saudi Arabia (H) both at 2 pts, unlikely to advance
+  { m: 77, date: "Jun 30", venue: "New York NJ", a: { team: "France", flag: "🇫🇷", conf: true }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Sweden", pct: 42 }, { t: "Paraguay", pct: 34 }, { t: "Belgium", pct: 16 }, { t: "Iran", pct: 8 }] } },
   // M78a: Ivory Coast confirmed 2nd in Group E
   // M78b: Norway finished 2nd in Group I — confirmed
   { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
-  // M79b: 3rd from C/E/F/H/I — Sweden (3 pts) and Scotland (3 pts) lead; Ecuador/Curaçao/Senegal/Iraq (0-1 pt) very weak
-  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Sweden", pct: 35 }, { t: "Scotland", pct: 22 }, { t: "Cabo Verde", pct: 22 }, { t: "Uruguay", pct: 12 }] } },
+  // M79b: 3rd from C/E/F/H/I — Sweden (4 pts F3rd) leads; Senegal (3 pts I3rd) the dark horse; Uruguay (2 pts H3rd) very unlikely; Cabo Verde confirmed 2nd in H not applicable
+  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Sweden", pct: 48 }, { t: "Senegal", pct: 28 }, { t: "Scotland", pct: 14 }, { t: "Ecuador", pct: 10 }] } },
   // M80a: England & Ghana both 4 pts — Ghana 8% was far too low; England plays Panama, Ghana plays Croatia
   // M80b: 3rd from E/H/I/J/K — Austria/Algeria (3 pts if 3rd in J) dominate; Senegal (0 pts) nowhere near 30%
-  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 55 }, { t: "Ghana", pct: 35 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 36 }, { t: "Algeria", pct: 30 }, { t: "Cabo Verde", pct: 18 }, { t: "Uruguay", pct: 10 }] } },
+  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 55 }, { t: "Ghana", pct: 35 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 38 }, { t: "Algeria", pct: 32 }, { t: "Senegal", pct: 20 }, { t: "Ecuador", pct: 10 }] } },
   // M81b: 3rd from B/E/F/I/J — Bosnia (4 pts) is the clear frontrunner, not Ecuador (1 pt); Qatar eliminated so "Bosnia/Qatar" removed
   { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Bosnia", pct: 50 }, { t: "Ecuador", pct: 28 }, { t: "Algeria", pct: 13 }, { t: "Austria", pct: 9 }] } },
   // M82a: Egypt 65% is reasonable; Iran underrated at 10% given they play Egypt directly
   // M82b: 3rd from A/E/H/I/J — Czechia ELIMINATED (4th in A); South Korea is 3rd in A
-  { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 62 }, { t: "Iran", pct: 24 }, { t: "Belgium", pct: 14 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 38 }, { t: "Austria", pct: 26 }, { t: "Algeria", pct: 22 }, { t: "Cabo Verde", pct: 10 }] } },
+  { m: 82, date: "Jul 1", venue: "Seattle", a: { label: "Grp G 1st", cands: [{ t: "Egypt", pct: 62 }, { t: "Iran", pct: 24 }, { t: "Belgium", pct: 14 }] }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 36 }, { t: "Austria", pct: 28 }, { t: "Algeria", pct: 24 }, { t: "Senegal", pct: 12 }] } },
   // M83a: Grp K 2nd — Colombia confirmed 1st (6 pts), cannot be 2nd; Portugal (4 pts) is near-certain 2nd
   // M83b: England and Ghana both 4 pts — England at 15% for 2nd was wrong
   { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "Portugal", pct: 88 }, { t: "DR Congo", pct: 12 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 42 }, { t: "England", pct: 30 }, { t: "Croatia", pct: 28 }] } },
+  // M84a: Spain confirmed Group H winner (7 pts)
   // M84b: Grp J 2nd — Argentina confirmed 1st (6 pts), cannot be 2nd; it's Austria vs Algeria only
-  { m: 84, date: "Jul 2", venue: "Los Angeles", a: { label: "Grp H 1st", cands: [{ t: "Spain", pct: 78 }, { t: "Uruguay", pct: 14 }, { t: "Cabo Verde", pct: 8 }] }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 52 }, { t: "Algeria", pct: 48 }] } },
-  // M85b: 3rd from E/F/G/I/J — Sweden (3 pts) and Belgium/Iran (2 pts from G) realistic; Senegal (0 pts) removed
-  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Sweden", pct: 32 }, { t: "Belgium", pct: 24 }, { t: "Iran", pct: 22 }, { t: "Algeria", pct: 14 }] } },
+  { m: 84, date: "Jul 2", venue: "Los Angeles", a: { team: "Spain", flag: "🇪🇸", conf: true }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 52 }, { t: "Algeria", pct: 48 }] } },
+  // M85b: 3rd from E/F/G/I/J — Sweden (4 pts F3rd) leads; Ecuador (4 pts E3rd) strong; Belgium/Iran (G 3rd TBD); Senegal (3 pts I3rd)
+  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Sweden", pct: 30 }, { t: "Ecuador", pct: 28 }, { t: "Belgium", pct: 22 }, { t: "Iran", pct: 20 }] } },
   // M86a: Argentina won Group J — confirmed, not probabilistic
-  { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { label: "Grp H 2nd", cands: [{ t: "Uruguay", pct: 42 }, { t: "Cabo Verde", pct: 38 }, { t: "Spain", pct: 15 }] } },
+  // M86b: Cabo Verde confirmed Group H runner-up (3 pts, 3 draws) — historic
+  { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { team: "Cabo Verde", flag: "🇨🇻", conf: true } },
   // M87a: Colombia won Group K (6 pts) — confirmed, not probabilistic
   // M87b: 3rd from D/E/I/J/L — Ecuador (4 pts E3rd) is the top candidate; Paraguay (4 pts D3rd) also strong; Austria/Algeria (3 pts J) in the mix
   { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Ecuador", pct: 38 }, { t: "Paraguay", pct: 32 }, { t: "Austria", pct: 18 }, { t: "Algeria", pct: 12 }] } },
@@ -276,7 +278,7 @@ const QUALIFICATION = [
   { team: "France", flag: "🇫🇷", state: "in", detail: "Won Group I (9 pts, GD +8) — Dembélé first-half hat-trick (7', 20', 32') in 4-1 win over Norway; R32 Jun 30, New York NJ" },
   { team: "Norway", flag: "🇳🇴", state: "in", detail: "2nd in Group I (6 pts) — lost 1-4 to France; Haaland scoreless in MD3; R32 Jun 30, Dallas vs Ivory Coast" },
   { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J; Messi is now all-time WC top scorer (18)" },
-  { team: "Spain", flag: "🇪🇸", state: "likely", detail: "Leads Group H (4 pts); playing Uruguay Jun 26 8 PM ET (in progress)" },
+  { team: "Spain", flag: "🇪🇸", state: "in", detail: "Won Group H (7 pts, GD +5) — Álex Baena 42' sealed 1-0 win over Uruguay; R32 Jul 2, Los Angeles vs Group J runner-up (Austria or Algeria)" },
   { team: "Netherlands", flag: "🇳🇱", state: "in", detail: "Won Group F (7 pts) — beat Tunisia 3-1 on MD3; R32 Jun 30, Guadalajara vs Morocco" },
   { team: "Japan", flag: "🇯🇵", state: "in", detail: "2nd in Group F (5 pts) — drew 1-1 with Sweden on MD3; R32 Jun 29, Houston vs Brazil" },
   { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K — 6 pts, 3 wins; R32 Jul 3, Kansas City" },
@@ -291,13 +293,13 @@ const QUALIFICATION = [
   { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — through as best-3rd team after 1-1 draw with Japan" },
   { team: "Iran", flag: "🇮🇷", state: "alive", detail: "2 pts in Group G; plays Egypt Jun 26 — winner likely advances" },
   { team: "New Zealand", flag: "🇳🇿", state: "alive", detail: "1 pt in Group G; needs a win vs Belgium Jun 26 to stay alive" },
-  { team: "Cabo Verde", flag: "🇨🇻", state: "alive", detail: "Shock 2 pts; in a knockout spot as things stand; plays Jun 26" },
-  { team: "Saudi Arabia", flag: "🇸🇦", state: "alive", detail: "1 pt in Group H; plays Cabo Verde Jun 26 — needs win and help" },
+  { team: "Cabo Verde", flag: "🇨🇻", state: "in", detail: "2nd in Group H (3 pts, 3 draws) — drew vs Spain, Uruguay, Saudi Arabia; R32 Jul 2, Miami vs Argentina. First-ever World Cup, pop. 530k — one of the tournament's great stories" },
+  { team: "Saudi Arabia", flag: "🇸🇦", state: "out", detail: "Eliminated — 4th in Group H (2 pts, GD −4); drew 0-0 with Cabo Verde on final day; beaten 4-0 by Spain. Exit despite 2-time WC winner ambitions under Mancini" },
   { team: "Austria", flag: "🇦🇹", state: "alive", detail: "3 pts in Group J, needs a result vs Algeria Jun 27" },
   { team: "Algeria", flag: "🇩🇿", state: "alive", detail: "3 pts after comeback win; alive in Group J" },
   { team: "Ghana", flag: "🇬🇭", state: "alive", detail: "4 pts in Group L, in good shape for Jun 27" },
   { team: "Croatia", flag: "🇭🇷", state: "alive", detail: "3 pts; revived after beating Panama; plays Ghana Jun 27" },
-  { team: "Uruguay", flag: "🇺🇾", state: "alive", detail: "2 pts; must get a result vs Spain Jun 26" },
+  { team: "Uruguay", flag: "🇺🇾", state: "out", detail: "Eliminated — 3rd in Group H (2 pts, GD −1); lost 0-1 to Spain (Álex Baena 42'); two-time WC champions exit in group stage" },
   { team: "Belgium", flag: "🇧🇪", state: "alive", detail: "2 pts, winless; needs to beat New Zealand Jun 26" },
   { team: "DR Congo", flag: "🇨🇩", state: "alive", detail: "1 pt in Group K; plays Uzbekistan Jun 27 — needs a win" },
   { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "3rd in Group I (3 pts, GD +2) — 5-0 rout of Iraq (Diarra, Sarr, Gueye×2, Ndiaye); alive as best-3rd candidate" },
@@ -324,15 +326,6 @@ const GROUP_SCENARIOS = [
       { team: "Iran", flag: "🇮🇷", fate: "controls", note: "Win vs Egypt → 5 pts, top 2 very likely" },
       { team: "Belgium", flag: "🇧🇪", fate: "controls", note: "Win vs New Zealand → 5 pts, top 2 secured" },
       { team: "New Zealand", flag: "🇳🇿", fate: "needs", note: "Win + Egypt beats Iran → could sneak into 2nd" },
-    ],
-  },
-  {
-    group: "H", date: "Fri Jun 26",
-    teams: [
-      { team: "Spain", flag: "🇪🇸", fate: "controls", note: "Win vs Uruguay → 1st guaranteed (7 pts)" },
-      { team: "Cabo Verde", flag: "🇨🇻", fate: "controls", note: "Win vs Saudi → 5 pts, likely 2nd or 1st" },
-      { team: "Uruguay", flag: "🇺🇾", fate: "controls", note: "Win vs Spain → through as 1st or 2nd" },
-      { team: "Saudi Arabia", flag: "🇸🇦", fate: "needs", note: "Win + Spain beats Uruguay → 4 pts clears them to 2nd" },
     ],
   },
   {
@@ -365,19 +358,19 @@ const GROUP_SCENARIOS = [
 ];
 
 const NOW_BRIEFING = {
-  headline: "Group I done — Dembélé hat-trick destroys Norway 4-1; Group H (8 PM ET) and Group G (11 PM ET) still to finish.",
-  body: "Ousmane Dembélé — reigning Ballon d'Or winner — put on a show for the ages: three goals in 32 minutes (7', 20', 32') gave France an unassailable 3-1 half-time lead against Norway. It was the second-fastest hat-trick in World Cup history, and Désiré Doué added a late fourth. Haaland was kept quiet throughout. Senegal also won 5-0 over Iraq (Diarra, Sarr, Gueye ×2, Ndiaye) to stay alive in the best-3rd race. Now: Spain vs Uruguay and Cabo Verde vs Saudi Arabia kick off at 8 PM ET (Group H — winner-take-all in Guadalajara); Egypt vs Iran and Belgium vs New Zealand at 11 PM ET (Group G). Groups J, K, L complete tomorrow.",
+  headline: "Groups H & I done — Cabo Verde through to face Argentina; Group G results awaited; J/K/L play today.",
+  body: "The day ended with one of the World Cup's great stories complete: Cabo Verde — population 530,000 — drew 0-0 with Saudi Arabia to qualify from Group H as runners-up. Vozinha, the 40-year-old goalkeeper whose mother needed a viral GoFundMe to afford a US visa, will now face Lionel Messi and Argentina in Miami on July 2. Spain topped the group 7 pts, eliminating two-time champions Uruguay (0-1). Meanwhile Group G (Egypt vs Iran and Belgium vs New Zealand, 11 PM ET Jun 26) results are still being confirmed. Today brings the final group matches in Groups J, K, and L.",
   threads: [
-    "France 4-1 Norway: Dembélé hat-trick (7', 20', 32') is the statement performance of the tournament. France win Group I with a perfect 9 pts. Norway 2nd, R32 vs Ivory Coast.",
-    "Senegal 5-0 Iraq: massive statement win — 5 goals in 90 min puts Senegal in the best-3rd race at 3 pts, GD +2. Iraq eliminated (0 pts).",
-    "Confirmed in the Round of 32: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia (18 of 32).",
-    "Group H at 8 PM ET: Spain vs Uruguay and Cabo Verde vs Saudi Arabia — Spain virtually through; Uruguay need to beat Spain to secure their spot. Cabo Verde could sneak through with a win and Spain result.",
-    "Group G at 11 PM ET: Egypt vs Iran (winner likely 1st in group); Belgium vs New Zealand (Belgium need the win to survive after two draws).",
+    "Cabo Verde 0-0 Saudi Arabia: Vozinha's clean sheet completes a remarkable Group H campaign — 3 draws from 3 games, including holding Spain 0-0 in their World Cup debut. Cabo Verde (pop. 530k) vs Argentina (Messi) in Miami is the Round of 32's most captivating matchup.",
+    "Spain 1-0 Uruguay (Baena 42'): La Roja top Group H with a perfect defensive record (5G, 0GA). Uruguay — two-time World Cup champions — exit in the group stage. Marcelo Bielsa's project ends early.",
+    "Groups H & I confirmed qualifiers: Spain (H1st) and Cabo Verde (H2nd) join France and Norway from Group I. Round of 32 confirmed: Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia, Spain, Cabo Verde (20 of 32).",
+    "Group G (11 PM ET Jun 26): Egypt vs Iran and Belgium vs New Zealand — results pending. Egypt (4 pts) lead; Belgium (2 pts) must win to survive. Both games are complete but not yet confirmed here.",
+    "Today — Groups J, K, L final day: Argentina vs Jordan, Algeria vs Austria (Group J); Colombia vs Portugal, DR Congo vs Uzbekistan (Group K); Panama vs England, Croatia vs Ghana (Group L).",
   ],
 };
 
 const DAY_SUMMARIES = {
-  "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32' — second-fastest in WC history; Aasgaard 26' Nor; Doué 90+'), France win group 9 pts. Senegal 5-0 Iraq (Diarra 4', Sarr 56', Gueye 59' & 71', Ndiaye 82'). Group H (8 PM ET): Spain vs Uruguay; Cabo Verde vs Saudi Arabia. Group G (11 PM ET): Egypt vs Iran; Belgium vs New Zealand.",
+  "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32'; Aasgaard 26'; Doué 90+') — France win group 9 pts. Senegal 5-0 Iraq (Diarra 4', Sarr 56', Gueye 59' & 71', Ndiaye 82'). Group H: Spain 1-0 Uruguay (Álex Baena 42'), Cabo Verde 0-0 Saudi Arabia — Spain top group 7 pts; Cabo Verde 2nd (3 draws, 3 pts); Uruguay & Saudi Arabia eliminated. Group G (11 PM ET): Egypt vs Iran, Belgium vs New Zealand — results pending confirmation.",
   "Thu Jun 25": "Group E and F completed early; Group D late drama. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace). Netherlands 3-1 Tunisia; Japan 1-1 Sweden — all three Group F teams advance. Late: Turkey 3-2 USA (Trusty 3'; Arda Güler 10', Yılmaz 31'; S. Berhalter 49'; Kaan Ayhan 90+8') — wild finish at SoFi; USA still group winners. Paraguay 0-0 Australia — Australia through 2nd.",
   "Wed Jun 24": "Groups A, B, and C wrapped. South Africa's 1-0 win over South Korea was the shock of the day, knocking the Koreans to 3rd. Mexico swept the group 3-0 over Czechia. Switzerland edged Canada 2-1 to top Group B; Bosnia beat Qatar 3-1. Brazil 3-0 Scotland, Morocco 4-2 Haiti — both advance from Group C.",
   "Tue Jun 23": "Matchday 2 wrapped for Groups K and L. Portugal exploded for 5-0; England held 0-0 by Ghana; Croatia revived with a narrow win.",
@@ -490,53 +483,41 @@ const MATCH_DETAILS = {
     ],
   },
 
-  // ── Friday June 26: Group H (8 PM ET) ──────────────────────────────────────
+  // ── Group H MD3 result: Cabo Verde 0-0 Saudi Arabia ────────────────────────
   63: {
     watch: [
-      "Vozinha (Cabo Verde, 40) — real name Josimar Évora. Already made 8 saves to deny Spain in their historic 0-0 debut. His mother Ana Cândida couldn't afford the US visa bond — a GoFundMe campaign went viral, a US Congressman intervened, and she was granted a visa in time to see her son play. One of the tournament's great human stories.",
-      "Firas Al-Buraikan (Saudi Arabia) — the 24-year-old striker who scored vs Uruguay. Saudi Arabia's primary attacking threat and their best hope of a tournament-saving win.",
-    ],
-    stakes: [
-      "Cabo Verde (2 pts, Group H 3rd) can potentially advance if they get a result and Spain beats Uruguay. They are already guaranteed a place in World Cup history as giant-killers.",
-      "Saudi Arabia (1 pt) need a win AND Uruguay to lose — an almost impossible combination. This is likely their final match of the tournament.",
+      "Vozinha (Cabo Verde, 40) — another clean sheet. Three goalless matches in a row (vs Spain, Uruguay by proxy, and now Saudi Arabia) from a 40-year-old goalkeeper who plays semi-pro football in Portugal. His mother Ana Cândida — who needed a viral GoFundMe to afford the US visa bond — was watching in Houston. One of sport's great human stories played out to its conclusion.",
+      "Firas Al-Buraikan (Saudi Arabia) — Saudi Arabia's primary attacking threat was unable to find a way past Vozinha. A disappointing end to a campaign that promised more after their 2022 win over Argentina.",
     ],
     fun: [
-      "Cabo Verde (official name: República de Cabo Verde) is an archipelago of 10 volcanic islands in the Atlantic, ~570 km west of Senegal — population ~530,000. Among the smallest-ever nations in a World Cup.",
-      "This is Cabo Verde's first-ever World Cup. They qualified on 13 October 2025 by beating Eswatini 3-0, ending decades of near-misses. The islands erupted in celebration.",
-      "Vozinha is 40 years old — thought to be one of the oldest goalkeepers ever to play at a World Cup. He plays his club football in the lower reaches of Portuguese football and has a day job. He is an absolute cult hero.",
-      "Saudi Arabia's 2-1 win over Argentina in Qatar 2022 — after being 1-0 down at half time — ranks among the greatest World Cup upsets in history. They are looking for another miracle performance.",
-      "Cabo Verde's culture blends West African and Portuguese influences — the islands were uninhabited before Portuguese explorers arrived in the 1460s. Their most famous cultural export is morna music — a melancholy yet beautiful genre. Cesária Évora, the 'Barefoot Diva,' brought it to global audiences.",
-      "Roberto Mancini, Saudi Arabia's Italian coach, won Euro 2020 with Italy after one of the most remarkable tournament coaching performances in decades. He was hired as Saudi manager in a highly lucrative deal as part of the kingdom's Vision 2030 sports investment push.",
+      "Cabo Verde join the Round of 32 as Group H runners-up (3 pts, 3 draws). Their opponent: Argentina and Lionel Messi — the reigning world champions. July 2, Miami.",
+      "Vozinha became the oldest outfield player or goalkeeper to keep three clean sheets at a World Cup in his nation's first-ever World Cup appearance — a feat that may never be replicated.",
+      "Saudi Arabia's Vision 2030 plan includes hosting the 2034 World Cup. Their group-stage exit — despite Roberto Mancini, hundreds of millions in Pro League investment, and ambitions of global football relevance — is a significant setback.",
+      "Cabo Verde's culture is built on saudade — the Portuguese-influenced concept of melancholy longing and resilience. Their qualification story, Vozinha's age, and his mother's visa journey embodied saudade's more joyful face: hardship ending in triumph.",
     ],
     color: [
-      "Saudi Arabia's Vision 2030 includes hosting the 2034 World Cup and a bid for the 2036 Olympics. The kingdom has spent billions attracting star players (Ronaldo, Benzema, Neymar) to the Saudi Pro League. This World Cup is their proof-of-concept moment for football on the world stage.",
-      "A Cabo Verde victory here — the tiny Atlantic island nation outlasting the Middle East's biggest footballing nation — would be one of the most extraordinary group stage results in World Cup history.",
+      "Saudi Arabia needed Uruguay to lose AND to win themselves — Spain's victory in Guadalajara at exactly the same time meant Cabo Verde were through the moment Baena scored at 42'. The NRG Stadium game became almost academic after half time.",
+      "This was Cabo Verde's third draw in a row at a World Cup — they came in as a nation of 530,000 people; they leave the group stage having never lost. Whatever happens next against Argentina, they have already written one of the great World Cup underdog chapters.",
     ],
   },
 
-  // ── Friday June 26: Group H (8 PM ET) ──────────────────────────────────────
+  // ── Group H MD3 result: Uruguay 0-1 Spain (Baena 42') ──────────────────────
   64: {
     watch: [
-      "Lamine Yamal (Spain, Barcelona) — born 13 July 2007. At 18, already the second-youngest player to score at a World Cup (behind Pelé in 1958). Runner-up for the 2025 Ballon d'Or. His ability to cut inside from the right and create with both feet in tight spaces is freakish for someone his age.",
-      "Darwin Núñez (Uruguay, Liverpool) — the explosive Liverpool striker with pace and aerial power to trouble any backline. Uruguay need him to deliver against Spain's high defensive line.",
-      "Rodri (Spain, Man City) — reigning 2024 Ballon d'Or winner and the supreme midfielder. Controls possession, covers enormous ground, and executes the highest-level game management.",
-      "Federico Valverde (Uruguay, Real Madrid) — box-to-box engine for both club and country. Capable of changing a game with one moment of individual brilliance.",
-    ],
-    stakes: [
-      "Spain (4 pts) can clinch Group H 1st with a win. A draw may also be enough depending on the Cabo Verde-Saudi Arabia result.",
-      "Uruguay (2 pts) must get something. A loss, combined with Cabo Verde winning, could eliminate the 2-time World Cup winners in the group stage.",
+      "Álex Baena (Spain, Villarreal) — scored the only goal of the game in the 42nd minute, meeting a cross inside the area and firing a shot that Fernando Muslera fumbled into his own net. Baena had a quiet tournament to this point but delivered the decisive moment to send Spain through as group winners.",
+      "Lamine Yamal (Spain, Barcelona) — another impressive shift from the 18-year-old. His creative play down the right continued to torture Uruguay's defence throughout.",
+      "Fernando Muslera (Uruguay, Galatasaray) — the veteran goalkeeper's error on Baena's shot proved costly. At 38, this was almost certainly his last World Cup match.",
     ],
     fun: [
-      "Uruguay won the very first World Cup in 1930 — hosted and won on home soil in Montevideo. They beat Argentina 4-2 in the final in front of 93,000 fans at the Estadio Centenario.",
-      "Spain are unbeaten in their last 10 meetings with Uruguay across 76 years, winning 5 and drawing 5. Their previous World Cup encounters: 2-2 in 1950 and 0-0 in 1990.",
-      "Lamine Yamal won a European Championship the day after his 17th birthday — Spain beat England 2-1 in the Euro 2024 final in Berlin, with Yamal providing the crucial assist. He also won the Kopa Trophy in 2024 and 2025.",
-      "Uruguay's concept of 'garra charrúa' — the fighting spirit of the indigenous Charrúa people — is central to their football identity. They are defined by resilience, fight, and refusing to accept defeat.",
-      "Uruguay has about 3.4 million people — one of the smallest nations ever to win the World Cup. Pound-for-pound, they are arguably the greatest football nation in history (2 WCs, 15 Copa Américas).",
-      "Pedri (Spain, Barcelona) is compared to Xavi and Iniesta — the latest in Spain's legendary lineage of technically perfect interior midfielders. At 23, he is already a Barcelona icon.",
+      "Spain finish Group H with 5 goals scored and 0 conceded — the only team in the 2026 World Cup to go through the group stage without conceding. Three wins including a 4-0 demolition of Saudi Arabia.",
+      "Uruguay exit as two-time World Cup champions (1930, 1950) in the group stage. For a nation of 3.4 million with more cup-per-capita success than almost any other, this is a painful defeat.",
+      "Marcelo Bielsa's Uruguay never found a way to break down Spain's structured defence. 'El Loco' built his reputation on relentless pressing and attacking football — this campaign ended without a win.",
+      "Spain are unbeaten in their last 11 meetings with Uruguay. Their World Cup encounters: 2-2 in 1950, 0-0 in 1990, and now 1-0 in 2026.",
+      "Darwin Núñez (Uruguay) went quiet throughout — Rodri and the Spanish midfield nullified his usual directness. Núñez had scored 4 goals in the first two group matches but was held scoreless in this decisive game.",
     ],
     color: [
-      "Marcelo Bielsa manages Uruguay — 'El Loco' is one of football's most intense and intellectually rigorous managers. His teams press relentlessly and demand maximum physical commitment. Against Spain's technical superiority, this could be a fascinating battle of philosophies.",
-      "This match is at Estadio Akron in Guadalajara, Mexico — the same city where Spain and Uruguay last met in a World Cup in 1990. A full-circle moment for both football nations.",
+      "This was Guadalajara's biggest game of the tournament — the Estadio Akron was split between pro-Uruguay Latin American fans and Spanish travelling support. Baena's goal silenced the noise.",
+      "Spain are now in the Round of 32 (Jul 2, Los Angeles) against the winner of Algeria vs Austria from Group J. A tough but winnable tie for the defending European champions.",
     ],
   },
 
