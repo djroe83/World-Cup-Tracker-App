@@ -203,40 +203,40 @@ const TITLE_ODDS_NOTE = "Pre-tournament line from the December draw vs. current 
 
 const R32 = [
   { m: 73, date: "Jun 28", venue: "Los Angeles", a: { team: "South Africa", flag: "🇿🇦", conf: true }, b: { team: "Canada", flag: "🇨🇦", conf: true } },
-  // M74b: 3rd from A/B/C/D/F — Sweden (4 pts F3rd) and Paraguay (4 pts D3rd) lead; Bosnia (4 pts B3rd) also in; South Korea (3 pts A3rd) long shot
-  { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { label: "3rd A/B/C/D/F", cands: [{ t: "Sweden", pct: 38 }, { t: "Paraguay", pct: 30 }, { t: "Bosnia", pct: 22 }, { t: "South Korea", pct: 10 }] } },
+  // M74b: Paraguay confirmed — Sweden (F3rd) goes to M77, Bosnia (B3rd) goes to M81; Paraguay (D3rd, 4 pts) is next best from A/B/C/D/F pool
+  { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { team: "Paraguay", flag: "🇵🇾", conf: true } },
   { m: 75, date: "Jun 30", venue: "Guadalajara", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
   { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { team: "Japan", flag: "🇯🇵", conf: true } },
   // M77a: France won Group I (9 pts) — confirmed
-  // M77b: 3rd from C/D/F/G/H — Sweden (4 pts F3rd) & Paraguay (4 pts D3rd) lead; Belgium/Iran (G 3rd TBD); Uruguay/Saudi Arabia (H) both at 2 pts, unlikely to advance
-  { m: 77, date: "Jun 30", venue: "New York NJ", a: { team: "France", flag: "🇫🇷", conf: true }, b: { label: "3rd C/D/F/G/H", cands: [{ t: "Sweden", pct: 42 }, { t: "Paraguay", pct: 34 }, { t: "Belgium", pct: 16 }, { t: "Iran", pct: 8 }] } },
+  // M77b: Sweden confirmed — after Paraguay (D3rd) goes to M74, Sweden (F3rd, 4 pts GD 0) is best remaining from C/D/F/G/H pool
+  { m: 77, date: "Jun 30", venue: "New York NJ", a: { team: "France", flag: "🇫🇷", conf: true }, b: { team: "Sweden", flag: "🇸🇪", conf: true } },
   // M78a: Ivory Coast confirmed 2nd in Group E
   // M78b: Norway finished 2nd in Group I — confirmed
   { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
-  // M79b: 3rd from C/E/F/H/I — Sweden (4 pts F3rd) leads; Senegal (3 pts I3rd) the dark horse; Uruguay (2 pts H3rd) very unlikely; Cabo Verde confirmed 2nd in H not applicable
-  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { label: "3rd C/E/F/H/I", cands: [{ t: "Sweden", pct: 48 }, { t: "Senegal", pct: 28 }, { t: "Scotland", pct: 14 }, { t: "Ecuador", pct: 10 }] } },
-  // M80a: England & Ghana both 4 pts — Ghana 8% was far too low; England plays Panama, Ghana plays Croatia
-  // M80b: 3rd from E/H/I/J/K — Austria/Algeria (3 pts if 3rd in J) dominate; Senegal (0 pts) nowhere near 30%
-  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 55 }, { t: "Ghana", pct: 35 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Austria", pct: 38 }, { t: "Algeria", pct: 32 }, { t: "Senegal", pct: 20 }, { t: "Ecuador", pct: 10 }] } },
-  // M81b: 3rd from B/E/F/I/J — Bosnia (4 pts) is the clear frontrunner, not Ecuador (1 pt); Qatar eliminated so "Bosnia/Qatar" removed
-  { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { label: "3rd B/E/F/I/J", cands: [{ t: "Bosnia", pct: 50 }, { t: "Ecuador", pct: 28 }, { t: "Algeria", pct: 13 }, { t: "Austria", pct: 9 }] } },
+  // M79b: Ecuador confirmed — after Sweden (F3rd) goes to M77, Ecuador (E3rd, 4 pts GD 0) is best remaining from C/E/F/H/I pool
+  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { team: "Ecuador", flag: "🇪🇨", conf: true } },
+  // M80a: Group L 1st — England (4 pts) slight favorite over Ghana (4 pts) heading into today's games
+  // M80b: 3rd from E/H/I/J/K — Ecuador (E3rd) goes to M79; Senegal (I3rd, 3 pts GD+2) now leads; J3rd (Austria or Algeria, 3 pts) also in pool
+  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 52 }, { t: "Ghana", pct: 38 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Senegal", pct: 48 }, { t: "Austria", pct: 28 }, { t: "Algeria", pct: 24 }] } },
+  // M81b: Bosnia confirmed — B3rd (4 pts GD-1) fills this slot after Sweden (F3rd) goes to M77 and Ecuador (E3rd) goes to M79
+  { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { team: "Bosnia & Herzegovina", flag: "🇧🇦", conf: true } },
   // M82a: Belgium confirmed Group G winner (5 pts, GD+4, overtook Egypt on final day 5-1 vs NZ)
-  // M82b: 3rd from A/E/H/I/J — Sweden (4 pts F) & Senegal (3 pts I) are confirmed; Group J 3rd TBD; Iran (3 pts G3rd) also in race
-  { m: 82, date: "Jul 1", venue: "Seattle", a: { team: "Belgium", flag: "🇧🇪", conf: true }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 34 }, { t: "Austria", pct: 26 }, { t: "Algeria", pct: 24 }, { t: "Senegal", pct: 16 }] } },
+  // M82b: 3rd from A/E/H/I/J — Ecuador (E3rd) goes to M79, Senegal (I3rd) likely to M80; South Korea (A3rd, 3 pts GD-1) leads this pool; J3rd (Austria or Algeria) also in play
+  { m: 82, date: "Jul 1", venue: "Seattle", a: { team: "Belgium", flag: "🇧🇪", conf: true }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 44 }, { t: "Austria", pct: 32 }, { t: "Algeria", pct: 24 }] } },
   // M83a: Grp K 2nd — Colombia confirmed 1st (6 pts), cannot be 2nd; Portugal (4 pts) is near-certain 2nd
   // M83b: England and Ghana both 4 pts — England at 15% for 2nd was wrong
   { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "Portugal", pct: 88 }, { t: "DR Congo", pct: 12 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 42 }, { t: "England", pct: 30 }, { t: "Croatia", pct: 28 }] } },
   // M84a: Spain confirmed Group H winner (7 pts)
   // M84b: Grp J 2nd — Argentina confirmed 1st (6 pts), cannot be 2nd; it's Austria vs Algeria only
   { m: 84, date: "Jul 2", venue: "Los Angeles", a: { team: "Spain", flag: "🇪🇸", conf: true }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 52 }, { t: "Algeria", pct: 48 }] } },
-  // M85b: 3rd from E/F/G/I/J — Sweden (4 pts F3rd) & Ecuador (4 pts E3rd) lead; Iran (3 pts G3rd) & Senegal (3 pts I3rd) also in race; Group J 3rd TBD
-  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Sweden", pct: 32 }, { t: "Ecuador", pct: 28 }, { t: "Iran", pct: 22 }, { t: "Senegal", pct: 18 }] } },
+  // M85b: 3rd from E/F/G/I/J — Sweden (F3rd)→M77, Ecuador (E3rd)→M79, Senegal (I3rd) likely→M80; Iran (G3rd, 3 pts GD 0) leads remaining pool; J3rd also in mix
+  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Iran", pct: 52 }, { t: "Austria", pct: 28 }, { t: "Algeria", pct: 20 }] } },
   // M86a: Argentina won Group J — confirmed, not probabilistic
   // M86b: Cabo Verde confirmed Group H runner-up (3 pts, 3 draws) — historic
   { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { team: "Cabo Verde", flag: "🇨🇻", conf: true } },
   // M87a: Colombia won Group K (6 pts) — confirmed, not probabilistic
-  // M87b: 3rd from D/E/I/J/L — Ecuador (4 pts E3rd) is the top candidate; Paraguay (4 pts D3rd) also strong; Austria/Algeria (3 pts J) in the mix
-  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Ecuador", pct: 38 }, { t: "Paraguay", pct: 32 }, { t: "Austria", pct: 18 }, { t: "Algeria", pct: 12 }] } },
+  // M87b: 3rd from D/E/I/J/L — Paraguay (D3rd)→M74, Ecuador (E3rd)→M79, Senegal (I3rd)→M80; J3rd or L3rd fills this slot (Croatia 3rd in L if they lose today? or J loser)
+  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Austria", pct: 40 }, { t: "Algeria", pct: 36 }, { t: "Croatia", pct: 24 }] } },
   // M88b: Egypt confirmed 2nd in Group G (5 pts, GD+2; Belgium won group on better GD +4)
   { m: 88, date: "Jul 3", venue: "Dallas", a: { team: "Australia", flag: "🇦🇺", conf: true }, b: { team: "Egypt", flag: "🇪🇬", conf: true } },
 ];
@@ -286,12 +286,12 @@ const QUALIFICATION = [
   { team: "Egypt", flag: "🇪🇬", state: "in", detail: "2nd in Group G (5 pts) — drew 1-1 with Iran (Saber 5'; VAR drama at end); R32 Jul 3, Dallas vs Australia. First time Egypt has EVER advanced past the World Cup group stage" },
   { team: "Belgium", flag: "🇧🇪", state: "in", detail: "Won Group G (5 pts, GD +4) — 5-1 rout of New Zealand (Trossard ×2, De Bruyne, Lukaku, Saelemaekers) overtook Egypt on final day; R32 Jul 1, Seattle vs 3rd-place team" },
   { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "likely", detail: "Top of Group L (4 pts)" },
-  { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "alive", detail: "3rd in Group B (4 pts) — tracking to advance as best 3rd" },
+  { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "in", detail: "3rd in Group B (4 pts, GD −1) — confirmed best-3rd qualifier; R32 Jul 1 Bay Area vs USA" },
   { team: "South Korea", flag: "🇰🇷", state: "alive", detail: "3rd in Group A (3 pts, GD −1) — awaiting best-3rd comparison" },
   { team: "Australia", flag: "🇦🇺", state: "in", detail: "2nd in Group D (4 pts, GD 0) — drew 0-0 with Paraguay on MD3; advance to R32 Jul 3, Dallas" },
-  { team: "Paraguay", flag: "🇵🇾", state: "alive", detail: "3rd in Group D (4 pts, GD −2) — 0-0 draw with Australia keeps them alive as a best-3rd candidate" },
+  { team: "Paraguay", flag: "🇵🇾", state: "in", detail: "3rd in Group D (4 pts, GD −2) — confirmed best-3rd qualifier; R32 Jun 29 Boston vs Germany" },
   { team: "Ivory Coast", flag: "🇨🇮", state: "in", detail: "2nd in Group E (6 pts) — Pépé brace vs Curaçao on MD3 sealed 2nd place" },
-  { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — through as best-3rd team after 1-1 draw with Japan" },
+  { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — confirmed best-3rd qualifier; R32 Jun 30 New York NJ vs France" },
   { team: "Iran", flag: "🇮🇷", state: "alive", detail: "3rd in Group G (3 pts, GD 0) — all three games drawn; thought they won vs Egypt (Khalilzadeh 90+3') but VAR ruled offside; alive as best-3rd candidate" },
   { team: "New Zealand", flag: "🇳🇿", state: "out", detail: "Eliminated — 4th in Group G (1 pt, GD −6); lost 1-5 to Belgium on final day (Elijah Just 84' was only consolation)" },
   { team: "Cabo Verde", flag: "🇨🇻", state: "in", detail: "2nd in Group H (3 pts, 3 draws) — drew vs Spain, Uruguay, Saudi Arabia; R32 Jul 2, Miami vs Argentina. First-ever World Cup, pop. 530k — one of the tournament's great stories" },
@@ -303,7 +303,7 @@ const QUALIFICATION = [
   { team: "Uruguay", flag: "🇺🇾", state: "out", detail: "Eliminated — 3rd in Group H (2 pts, GD −1); lost 0-1 to Spain (Álex Baena 42'); two-time WC champions exit in group stage" },
   { team: "DR Congo", flag: "🇨🇩", state: "alive", detail: "1 pt in Group K; plays Uzbekistan Jun 27 — needs a win" },
   { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "3rd in Group I (3 pts, GD +2) — 5-0 rout of Iraq (Diarra, Sarr, Gueye×2, Ndiaye); alive as best-3rd candidate" },
-  { team: "Ecuador", flag: "🇪🇨", state: "alive", detail: "3rd in Group E (4 pts, GD 0) — shocked Germany 2-1; strong best-3rd candidate" },
+  { team: "Ecuador", flag: "🇪🇨", state: "in", detail: "3rd in Group E (4 pts, GD 0) — confirmed best-3rd qualifier; R32 Jul 1 Mexico City vs Mexico" },
   { team: "Curaçao", flag: "🇨🇼", state: "out", detail: "Eliminated — 4th in Group E (1 pt, GD −8)" },
   { team: "Iraq", flag: "🇮🇶", state: "out", detail: "Eliminated — 4th in Group I (0 pts, GD −11); lost 0-5 to Senegal on final day" },
   { team: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", state: "out", detail: "Eliminated — 3rd in Group C; 3 pts, GD −3" },
