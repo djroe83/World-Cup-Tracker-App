@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Sat, June 27, 2026 — Groups A–I all complete; J/K/L final matchday underway (5 PM, 7:30 PM, 10 PM ET)";
+const DATA_AS_OF = "Sun, June 28, 2026 — All 12 groups complete. All 32 Round of 32 matchups confirmed. Play begins Jun 28.";
 
 const GROUPS = {
   A: [
@@ -58,22 +58,22 @@ const GROUPS = {
     { team: "Iraq", flag: "🇮🇶", P: 3, W: 0, D: 0, L: 3, GF: 1, GA: 12, GD: -11, Pts: 0 },
   ],
   J: [
-    { team: "Argentina", flag: "🇦🇷", P: 2, W: 2, D: 0, L: 0, GF: 5, GA: 0, GD: 5, Pts: 6 },
-    { team: "Austria", flag: "🇦🇹", P: 2, W: 1, D: 0, L: 1, GF: 3, GA: 3, GD: 0, Pts: 3 },
-    { team: "Algeria", flag: "🇩🇿", P: 2, W: 1, D: 0, L: 1, GF: 2, GA: 4, GD: -2, Pts: 3 },
-    { team: "Jordan", flag: "🇯🇴", P: 2, W: 0, D: 0, L: 2, GF: 2, GA: 5, GD: -3, Pts: 0 },
+    { team: "Argentina", flag: "🇦🇷", P: 3, W: 3, D: 0, L: 0, GF: 8, GA: 1, GD: 7, Pts: 9 },
+    { team: "Austria", flag: "🇦🇹", P: 3, W: 1, D: 1, L: 1, GF: 6, GA: 6, GD: 0, Pts: 4 },
+    { team: "Algeria", flag: "🇩🇿", P: 3, W: 1, D: 1, L: 1, GF: 5, GA: 7, GD: -2, Pts: 4 },
+    { team: "Jordan", flag: "🇯🇴", P: 3, W: 0, D: 0, L: 3, GF: 3, GA: 8, GD: -5, Pts: 0 },
   ],
   K: [
-    { team: "Colombia", flag: "🇨🇴", P: 2, W: 2, D: 0, L: 0, GF: 4, GA: 1, GD: 3, Pts: 6 },
-    { team: "Portugal", flag: "🇵🇹", P: 2, W: 1, D: 1, L: 0, GF: 6, GA: 1, GD: 5, Pts: 4 },
-    { team: "DR Congo", flag: "🇨🇩", P: 2, W: 0, D: 1, L: 1, GF: 1, GA: 2, GD: -1, Pts: 1 },
-    { team: "Uzbekistan", flag: "🇺🇿", P: 2, W: 0, D: 0, L: 2, GF: 1, GA: 8, GD: -7, Pts: 0 },
+    { team: "Colombia", flag: "🇨🇴", P: 3, W: 2, D: 1, L: 0, GF: 4, GA: 1, GD: 3, Pts: 7 },
+    { team: "Portugal", flag: "🇵🇹", P: 3, W: 1, D: 2, L: 0, GF: 6, GA: 1, GD: 5, Pts: 5 },
+    { team: "DR Congo", flag: "🇨🇩", P: 3, W: 1, D: 1, L: 1, GF: 4, GA: 3, GD: 1, Pts: 4 },
+    { team: "Uzbekistan", flag: "🇺🇿", P: 3, W: 0, D: 0, L: 3, GF: 2, GA: 11, GD: -9, Pts: 0 },
   ],
   L: [
-    { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", P: 2, W: 1, D: 1, L: 0, GF: 4, GA: 2, GD: 2, Pts: 4 },
-    { team: "Croatia", flag: "🇭🇷", P: 2, W: 1, D: 0, L: 1, GF: 3, GA: 4, GD: -1, Pts: 3 },
-    { team: "Ghana", flag: "🇬🇭", P: 2, W: 1, D: 1, L: 0, GF: 1, GA: 0, GD: 1, Pts: 4 },
-    { team: "Panama", flag: "🇵🇦", P: 2, W: 0, D: 0, L: 2, GF: 0, GA: 2, GD: -2, Pts: 0 },
+    { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", P: 3, W: 2, D: 1, L: 0, GF: 6, GA: 2, GD: 4, Pts: 7 },
+    { team: "Croatia", flag: "🇭🇷", P: 3, W: 2, D: 0, L: 1, GF: 5, GA: 5, GD: 0, Pts: 6 },
+    { team: "Ghana", flag: "🇬🇭", P: 3, W: 1, D: 1, L: 1, GF: 2, GA: 2, GD: 0, Pts: 4 },
+    { team: "Panama", flag: "🇵🇦", P: 3, W: 0, D: 0, L: 3, GF: 0, GA: 4, GD: -4, Pts: 0 },
   ],
 };
 
@@ -147,12 +147,12 @@ const MATCHES = [
   { id: 64, group: "H", md: 3, date: "Fri Jun 26", time: "8:00 PM", venue: "Estadio Akron, Zapopan", status: "final", home: "Uruguay", away: "Spain", hs: 0, as: 1, odds: { home: 270, draw: 250, away: -115, pct: [25, 28, 47] }, note: "Álex Baena 42' (crossed into box, Muslera fumbled in) — Spain top Group H 7 pts; Uruguay eliminated (2 pts, GD −1)" },
   { id: 65, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "Lumen Field, Seattle", status: "final", home: "Egypt", away: "Iran", hs: 1, as: 1, odds: { home: 150, draw: 220, away: 180, pct: [37, 29, 34] }, note: "Saber 5' (deflected off Beiranvand); Rezaeian 14' (EGY) — Iran thought they won it (Khalilzadeh 90+3') but VAR overturned for offside. Egypt advance 2nd — first time ever past group stage in WC history" },
   { id: 66, group: "G", md: 3, date: "Fri Jun 26", time: "11:00 PM", venue: "BC Place, Vancouver", status: "final", home: "New Zealand", away: "Belgium", hs: 1, as: 5, odds: { home: 500, draw: 320, away: -200, pct: [15, 24, 61] }, note: "Trossard 28' & 50'; De Bruyne 66'; Just 84' (NZL); Lukaku 86'; Saelemaekers 90+' — Belgium overtake Egypt on GD to win Group G; De Bruyne scores in his international farewell" },
-  { id: 67, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "MetLife Stadium, East Rutherford", status: "upcoming", home: "Panama", away: "England", hs: null, as: null, odds: { home: 700, draw: 360, away: -280, pct: [11, 21, 68] }, est: true },
-  { id: 68, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "Lincoln Financial Field, Philadelphia", status: "upcoming", home: "Croatia", away: "Ghana", hs: null, as: null, odds: { home: -120, draw: 240, away: 320, pct: [49, 27, 24] }, est: true },
-  { id: 69, group: "K", md: 3, date: "Sat Jun 27", time: "7:30 PM", venue: "Hard Rock Stadium, Miami Gardens", status: "upcoming", home: "Colombia", away: "Portugal", hs: null, as: null, odds: { home: 190, draw: 230, away: 145, pct: [34, 28, 38] }, est: true },
-  { id: 70, group: "K", md: 3, date: "Sat Jun 27", time: "7:30 PM", venue: "Mercedes-Benz Stadium, Atlanta", status: "upcoming", home: "DR Congo", away: "Uzbekistan", hs: null, as: null, odds: { home: 140, draw: 220, away: 190, pct: [38, 29, 33] }, est: true },
-  { id: 71, group: "J", md: 3, date: "Sat Jun 27", time: "10:00 PM", venue: "Arrowhead Stadium, Kansas City", status: "upcoming", home: "Algeria", away: "Austria", hs: null, as: null, odds: { home: 210, draw: 240, away: 130, pct: [30, 28, 42] }, est: true, kc: true },
-  { id: 72, group: "J", md: 3, date: "Sat Jun 27", time: "10:00 PM", venue: "AT&T Stadium, Arlington", status: "upcoming", home: "Jordan", away: "Argentina", hs: null, as: null, odds: { home: 900, draw: 420, away: -360, pct: [9, 18, 73] }, est: true },
+  { id: 67, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "MetLife Stadium, East Rutherford", status: "final", home: "Panama", away: "England", hs: 0, as: 2, note: "Bellingham 62', Kane 67' (header) — England top Group L; Kane passes Lineker as England's all-time WC top scorer" },
+  { id: 68, group: "L", md: 3, date: "Sat Jun 27", time: "5:00 PM", venue: "Lincoln Financial Field, Philadelphia", status: "final", home: "Croatia", away: "Ghana", hs: 2, as: 1, note: "Sučić 31'; Luckassen 73' (GHA eq); Vlašić 83' (header from Modric corner) — Croatia through as Group L runners-up" },
+  { id: 69, group: "K", md: 3, date: "Sat Jun 27", time: "7:30 PM", venue: "Hard Rock Stadium, Miami Gardens", status: "final", home: "Colombia", away: "Portugal", hs: 0, as: 0, note: "Goalless draw — Colombia win Group K (7 pts); Portugal through as runners-up (5 pts)" },
+  { id: 70, group: "K", md: 3, date: "Sat Jun 27", time: "7:30 PM", venue: "Mercedes-Benz Stadium, Atlanta", status: "final", home: "DR Congo", away: "Uzbekistan", hs: 3, as: 1, note: "Shomurodov 10' (UZB); Wissa 68' pen, Mayele 78', Wissa 90+1' (DRC) — DR Congo's first-ever World Cup knockout stage appearance; three late goals overturn early Uzbekistan lead" },
+  { id: 71, group: "J", md: 3, date: "Sat Jun 27", time: "10:00 PM", venue: "Arrowhead Stadium, Kansas City", status: "final", home: "Algeria", away: "Austria", hs: 3, as: 3, kc: true, note: "Arnautovic 28' (AUT); Belghali 41' (ALG); Sabitzer 55' (AUT); Mahrez 60' (ALG); Mahrez 90+3' (ALG); Kalajdzić 90+5' (AUT) — Algeria thought they'd won it; Austria equalized in the 96th minute; both teams advance" },
+  { id: 72, group: "J", md: 3, date: "Sat Jun 27", time: "10:00 PM", venue: "AT&T Stadium, Arlington", status: "final", home: "Jordan", away: "Argentina", hs: 1, as: 3, note: "Lo Celso 19' (free kick); Lautaro ~35' pen; Al-Tamari ~55' (JOR); Messi 80' (free kick) — Messi becomes first player to score in 7 consecutive World Cup tournaments; Argentina perfect 3-0-0" },
 ];
 
 const RANKINGS = [
@@ -205,7 +205,7 @@ const R32 = [
   { m: 73, date: "Jun 28", venue: "Los Angeles", a: { team: "South Africa", flag: "🇿🇦", conf: true }, b: { team: "Canada", flag: "🇨🇦", conf: true } },
   // M74b: Paraguay confirmed — Sweden (F3rd) goes to M77, Bosnia (B3rd) goes to M81; Paraguay (D3rd, 4 pts) is next best from A/B/C/D/F pool
   { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { team: "Paraguay", flag: "🇵🇾", conf: true } },
-  { m: 75, date: "Jun 30", venue: "Guadalajara", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
+  { m: 75, date: "Jun 30", venue: "Monterrey", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
   { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { team: "Japan", flag: "🇯🇵", conf: true } },
   // M77a: France won Group I (9 pts) — confirmed
   // M77b: Sweden confirmed — after Paraguay (D3rd) goes to M74, Sweden (F3rd, 4 pts GD 0) is best remaining from C/D/F/G/H pool
@@ -215,28 +215,17 @@ const R32 = [
   { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
   // M79b: Ecuador confirmed — after Sweden (F3rd) goes to M77, Ecuador (E3rd, 4 pts GD 0) is best remaining from C/E/F/H/I pool
   { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { team: "Ecuador", flag: "🇪🇨", conf: true } },
-  // M80a: Group L 1st — England (4 pts) slight favorite over Ghana (4 pts) heading into today's games
-  // M80b: 3rd from E/H/I/J/K — Ecuador (E3rd) goes to M79; Senegal (I3rd, 3 pts GD+2) now leads; J3rd (Austria or Algeria, 3 pts) also in pool
-  { m: 80, date: "Jul 1", venue: "Atlanta", a: { label: "Grp L 1st", cands: [{ t: "England", pct: 52 }, { t: "Ghana", pct: 38 }, { t: "Croatia", pct: 10 }] }, b: { label: "3rd E/H/I/J/K", cands: [{ t: "Senegal", pct: 48 }, { t: "Austria", pct: 28 }, { t: "Algeria", pct: 24 }] } },
+  { m: 80, date: "Jul 1", venue: "Atlanta", a: { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", conf: true }, b: { team: "DR Congo", flag: "🇨🇩", conf: true } },
   // M81b: Bosnia confirmed — B3rd (4 pts GD-1) fills this slot after Sweden (F3rd) goes to M77 and Ecuador (E3rd) goes to M79
   { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { team: "Bosnia & Herzegovina", flag: "🇧🇦", conf: true } },
-  // M82a: Belgium confirmed Group G winner (5 pts, GD+4, overtook Egypt on final day 5-1 vs NZ)
-  // M82b: 3rd from A/E/H/I/J — Ecuador (E3rd) goes to M79, Senegal (I3rd) likely to M80; South Korea (A3rd, 3 pts GD-1) leads this pool; J3rd (Austria or Algeria) also in play
-  { m: 82, date: "Jul 1", venue: "Seattle", a: { team: "Belgium", flag: "🇧🇪", conf: true }, b: { label: "3rd A/E/H/I/J", cands: [{ t: "South Korea", pct: 44 }, { t: "Austria", pct: 32 }, { t: "Algeria", pct: 24 }] } },
-  // M83a: Grp K 2nd — Colombia confirmed 1st (6 pts), cannot be 2nd; Portugal (4 pts) is near-certain 2nd
-  // M83b: England and Ghana both 4 pts — England at 15% for 2nd was wrong
-  { m: 83, date: "Jul 2", venue: "Toronto", a: { label: "Grp K 2nd", cands: [{ t: "Portugal", pct: 88 }, { t: "DR Congo", pct: 12 }] }, b: { label: "Grp L 2nd", cands: [{ t: "Ghana", pct: 42 }, { t: "England", pct: 30 }, { t: "Croatia", pct: 28 }] } },
-  // M84a: Spain confirmed Group H winner (7 pts)
-  // M84b: Grp J 2nd — Argentina confirmed 1st (6 pts), cannot be 2nd; it's Austria vs Algeria only
-  { m: 84, date: "Jul 2", venue: "Los Angeles", a: { team: "Spain", flag: "🇪🇸", conf: true }, b: { label: "Grp J 2nd", cands: [{ t: "Austria", pct: 52 }, { t: "Algeria", pct: 48 }] } },
-  // M85b: 3rd from E/F/G/I/J — Sweden (F3rd)→M77, Ecuador (E3rd)→M79, Senegal (I3rd) likely→M80; Iran (G3rd, 3 pts GD 0) leads remaining pool; J3rd also in mix
-  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { label: "3rd E/F/G/I/J", cands: [{ t: "Iran", pct: 52 }, { t: "Austria", pct: 28 }, { t: "Algeria", pct: 20 }] } },
+  { m: 82, date: "Jul 1", venue: "Seattle", a: { team: "Belgium", flag: "🇧🇪", conf: true }, b: { team: "Senegal", flag: "🇸🇳", conf: true } },
+  { m: 83, date: "Jul 2", venue: "Toronto", a: { team: "Portugal", flag: "🇵🇹", conf: true }, b: { team: "Croatia", flag: "🇭🇷", conf: true } },
+  { m: 84, date: "Jul 2", venue: "Los Angeles", a: { team: "Spain", flag: "🇪🇸", conf: true }, b: { team: "Austria", flag: "🇦🇹", conf: true } },
+  { m: 85, date: "Jul 2", venue: "Vancouver", a: { team: "Switzerland", flag: "🇨🇭", conf: true }, b: { team: "Algeria", flag: "🇩🇿", conf: true } },
   // M86a: Argentina won Group J — confirmed, not probabilistic
   // M86b: Cabo Verde confirmed Group H runner-up (3 pts, 3 draws) — historic
   { m: 86, date: "Jul 2", venue: "Miami", a: { team: "Argentina", flag: "🇦🇷", conf: true }, b: { team: "Cabo Verde", flag: "🇨🇻", conf: true } },
-  // M87a: Colombia won Group K (6 pts) — confirmed, not probabilistic
-  // M87b: 3rd from D/E/I/J/L — Paraguay (D3rd)→M74, Ecuador (E3rd)→M79, Senegal (I3rd)→M80; J3rd or L3rd fills this slot (Croatia 3rd in L if they lose today? or J loser)
-  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { label: "3rd D/E/I/J/L", cands: [{ t: "Austria", pct: 40 }, { t: "Algeria", pct: 36 }, { t: "Croatia", pct: 24 }] } },
+  { m: 87, date: "Jul 3", venue: "Kansas City", kc: true, a: { team: "Colombia", flag: "🇨🇴", conf: true }, b: { team: "Ghana", flag: "🇬🇭", conf: true } },
   // M88b: Egypt confirmed 2nd in Group G (5 pts, GD+2; Belgium won group on better GD +4)
   { m: 88, date: "Jul 3", venue: "Dallas", a: { team: "Australia", flag: "🇦🇺", conf: true }, b: { team: "Egypt", flag: "🇪🇬", conf: true } },
 ];
@@ -277,32 +266,32 @@ const QUALIFICATION = [
   { team: "Germany", flag: "🇩🇪", state: "in", detail: "Won Group E (6 pts) despite shock 1-2 loss to Ecuador on MD3" },
   { team: "France", flag: "🇫🇷", state: "in", detail: "Won Group I (9 pts, GD +8) — Dembélé first-half hat-trick (7', 20', 32') in 4-1 win over Norway; R32 Jun 30, New York NJ" },
   { team: "Norway", flag: "🇳🇴", state: "in", detail: "2nd in Group I (6 pts) — lost 1-4 to France; Haaland scoreless in MD3; R32 Jun 30, Dallas vs Ivory Coast" },
-  { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J; Messi is now all-time WC top scorer (18)" },
-  { team: "Spain", flag: "🇪🇸", state: "in", detail: "Won Group H (7 pts, GD +5) — Álex Baena 42' sealed 1-0 win over Uruguay; R32 Jul 2, Los Angeles vs Group J runner-up (Austria or Algeria)" },
-  { team: "Netherlands", flag: "🇳🇱", state: "in", detail: "Won Group F (7 pts) — beat Tunisia 3-1 on MD3; R32 Jun 30, Guadalajara vs Morocco" },
+  { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J (9 pts, 3-0-0) — Messi 80' free kick vs Jordan; first player to score in 7 consecutive World Cup tournaments; R32 Jul 2 Miami vs Cabo Verde" },
+  { team: "Spain", flag: "🇪🇸", state: "in", detail: "Won Group H (7 pts, GD +5) — Álex Baena 42' sealed 1-0 win over Uruguay; R32 Jul 2, Los Angeles vs Austria" },
+  { team: "Netherlands", flag: "🇳🇱", state: "in", detail: "Won Group F (7 pts) — beat Tunisia 3-1 on MD3; R32 Jun 30, Monterrey vs Morocco" },
   { team: "Japan", flag: "🇯🇵", state: "in", detail: "2nd in Group F (5 pts) — drew 1-1 with Sweden on MD3; R32 Jun 29, Houston vs Brazil" },
-  { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K — 6 pts, 3 wins; R32 Jul 3, Kansas City" },
-  { team: "Portugal", flag: "🇵🇹", state: "in", detail: "Confirmed Group K (4 pts, GD +5); can't be overtaken by DR Congo" },
+  { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K (7 pts) — 0-0 draw with Portugal on MD3; R32 Jul 3, Kansas City vs Ghana" },
+  { team: "Portugal", flag: "🇵🇹", state: "in", detail: "2nd in Group K (5 pts, GD +5) — drew 0-0 with Colombia (MD3); R32 Jul 2, Toronto vs Croatia" },
   { team: "Egypt", flag: "🇪🇬", state: "in", detail: "2nd in Group G (5 pts) — drew 1-1 with Iran (Saber 5'; VAR drama at end); R32 Jul 3, Dallas vs Australia. First time Egypt has EVER advanced past the World Cup group stage" },
   { team: "Belgium", flag: "🇧🇪", state: "in", detail: "Won Group G (5 pts, GD +4) — 5-1 rout of New Zealand (Trossard ×2, De Bruyne, Lukaku, Saelemaekers) overtook Egypt on final day; R32 Jul 1, Seattle vs 3rd-place team" },
-  { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "likely", detail: "Top of Group L (4 pts)" },
+  { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "in", detail: "Won Group L (7 pts) — Bellingham 62', Kane 67' beat Panama 2-0; Kane passes Lineker as England's all-time WC top scorer; R32 Jul 1 Atlanta vs DR Congo" },
   { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "in", detail: "3rd in Group B (4 pts, GD −1) — confirmed best-3rd qualifier; R32 Jul 1 Bay Area vs USA" },
-  { team: "South Korea", flag: "🇰🇷", state: "alive", detail: "3rd in Group A (3 pts, GD −1) — awaiting best-3rd comparison" },
+  { team: "South Korea", flag: "🇰🇷", state: "out", detail: "Eliminated — 3rd in Group A (3 pts, GD −1); did not advance as best-3rd (outranked by 7 teams with 4 pts and Senegal with GD +2)" },
   { team: "Australia", flag: "🇦🇺", state: "in", detail: "2nd in Group D (4 pts, GD 0) — drew 0-0 with Paraguay on MD3; advance to R32 Jul 3, Dallas" },
   { team: "Paraguay", flag: "🇵🇾", state: "in", detail: "3rd in Group D (4 pts, GD −2) — confirmed best-3rd qualifier; R32 Jun 29 Boston vs Germany" },
   { team: "Ivory Coast", flag: "🇨🇮", state: "in", detail: "2nd in Group E (6 pts) — Pépé brace vs Curaçao on MD3 sealed 2nd place" },
   { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — confirmed best-3rd qualifier; R32 Jun 30 New York NJ vs France" },
-  { team: "Iran", flag: "🇮🇷", state: "alive", detail: "3rd in Group G (3 pts, GD 0) — all three games drawn; thought they won vs Egypt (Khalilzadeh 90+3') but VAR ruled offside; alive as best-3rd candidate" },
+  { team: "Iran", flag: "🇮🇷", state: "out", detail: "Eliminated — 3rd in Group G (3 pts, GD 0); did not advance as best-3rd (outranked by Senegal on GD); VAR denied them victory vs Egypt in heartbreaking fashion" },
   { team: "New Zealand", flag: "🇳🇿", state: "out", detail: "Eliminated — 4th in Group G (1 pt, GD −6); lost 1-5 to Belgium on final day (Elijah Just 84' was only consolation)" },
   { team: "Cabo Verde", flag: "🇨🇻", state: "in", detail: "2nd in Group H (3 pts, 3 draws) — drew vs Spain, Uruguay, Saudi Arabia; R32 Jul 2, Miami vs Argentina. First-ever World Cup, pop. 530k — one of the tournament's great stories" },
   { team: "Saudi Arabia", flag: "🇸🇦", state: "out", detail: "Eliminated — 4th in Group H (2 pts, GD −4); drew 0-0 with Cabo Verde on final day; beaten 4-0 by Spain. Exit despite 2-time WC winner ambitions under Mancini" },
-  { team: "Austria", flag: "🇦🇹", state: "alive", detail: "3 pts in Group J, needs a result vs Algeria Jun 27" },
-  { team: "Algeria", flag: "🇩🇿", state: "alive", detail: "3 pts after comeback win; alive in Group J" },
-  { team: "Ghana", flag: "🇬🇭", state: "alive", detail: "4 pts in Group L, in good shape for Jun 27" },
-  { team: "Croatia", flag: "🇭🇷", state: "alive", detail: "3 pts; revived after beating Panama; plays Ghana Jun 27" },
+  { team: "Austria", flag: "🇦🇹", state: "in", detail: "2nd in Group J (4 pts, GD 0) — survived 3-3 thriller vs Algeria (Kalajdzić 90+5' equalizer); R32 Jul 2 Los Angeles vs Spain" },
+  { team: "Algeria", flag: "🇩🇿", state: "in", detail: "3rd in Group J (4 pts, GD −2) — best-3rd qualifier; Mahrez brace inc 90+3' in 3-3 draw with Austria; R32 Jul 2 Vancouver vs Switzerland" },
+  { team: "Ghana", flag: "🇬🇭", state: "in", detail: "3rd in Group L (4 pts, GD 0) — best-3rd qualifier; lost 1-2 to Croatia (Luckassen eq, Vlašić 83'); R32 Jul 3 Kansas City vs Colombia" },
+  { team: "Croatia", flag: "🇭🇷", state: "in", detail: "2nd in Group L (6 pts) — Sučić 31' & Vlašić 83' beat Ghana 2-1; R32 Jul 2 Toronto vs Portugal" },
   { team: "Uruguay", flag: "🇺🇾", state: "out", detail: "Eliminated — 3rd in Group H (2 pts, GD −1); lost 0-1 to Spain (Álex Baena 42'); two-time WC champions exit in group stage" },
-  { team: "DR Congo", flag: "🇨🇩", state: "alive", detail: "1 pt in Group K; plays Uzbekistan Jun 27 — needs a win" },
-  { team: "Senegal", flag: "🇸🇳", state: "alive", detail: "3rd in Group I (3 pts, GD +2) — 5-0 rout of Iraq (Diarra, Sarr, Gueye×2, Ndiaye); alive as best-3rd candidate" },
+  { team: "DR Congo", flag: "🇨🇩", state: "in", detail: "3rd in Group K (4 pts, GD +1) — best-3rd qualifier; Wissa brace & Mayele overturned Uzbekistan for historic first WC knockout stage appearance; R32 Jul 1 Atlanta vs England" },
+  { team: "Senegal", flag: "🇸🇳", state: "in", detail: "3rd in Group I (3 pts, GD +2) — confirmed best-3rd qualifier (best among 3-pt teams on GD); R32 Jul 1 Seattle vs Belgium" },
   { team: "Ecuador", flag: "🇪🇨", state: "in", detail: "3rd in Group E (4 pts, GD 0) — confirmed best-3rd qualifier; R32 Jul 1 Mexico City vs Mexico" },
   { team: "Curaçao", flag: "🇨🇼", state: "out", detail: "Eliminated — 4th in Group E (1 pt, GD −8)" },
   { team: "Iraq", flag: "🇮🇶", state: "out", detail: "Eliminated — 4th in Group I (0 pts, GD −11); lost 0-5 to Senegal on final day" },
@@ -312,57 +301,31 @@ const QUALIFICATION = [
   { team: "Czechia", flag: "🇨🇿", state: "out", detail: "Eliminated — 4th in Group A (1 pt)" },
   { team: "Tunisia", flag: "🇹🇳", state: "out", detail: "Eliminated — 4th in Group F (0 pts, GD −10)" },
   { team: "Türkiye", flag: "🇹🇷", state: "out", detail: "Eliminated from Group D — beat USA 3-2 (Kaan Ayhan 90+8') but finish 4th with 3 pts; too little, too late" },
-  { team: "Jordan", flag: "🇯🇴", state: "out", detail: "Eliminated from Group J (0 pts)" },
-  { team: "Uzbekistan", flag: "🇺🇿", state: "out", detail: "Eliminated from Group K (0 pts)" },
-  { team: "Panama", flag: "🇵🇦", state: "out", detail: "Eliminated — 0 pts in Group L; plays England Jun 27" },
+  { team: "Jordan", flag: "🇯🇴", state: "out", detail: "Eliminated — 4th in Group J (0 pts); lost 1-3 Austria, 1-2 Algeria, 1-3 Argentina" },
+  { team: "Uzbekistan", flag: "🇺🇿", state: "out", detail: "Eliminated — 4th in Group K (0 pts, GD −9); conceded 3 late goals to DR Congo after taking the lead" },
+  { team: "Panama", flag: "🇵🇦", state: "out", detail: "Eliminated — 4th in Group L (0 pts, GD −4); first team at 2026 WC without scoring a goal; lost 0-2 to England (Bellingham, Kane)" },
 ];
 
 
-const GROUP_SCENARIOS = [
-  {
-    group: "J", date: "Sat Jun 27",
-    teams: [
-      { team: "Argentina", flag: "🇦🇷", fate: "in", note: "Confirmed group winners (6 pts, Messi record 18 WC goals)" },
-      { team: "Austria", flag: "🇦🇹", fate: "controls", note: "Win vs Algeria → 6 pts, 2nd place secured" },
-      { team: "Algeria", flag: "🇩🇿", fate: "controls", note: "Win vs Austria → 6 pts, 2nd place secured" },
-      { team: "Jordan", flag: "🇯🇴", fate: "out", note: "Eliminated — 0 pts, cannot advance" },
-    ],
-  },
-  {
-    group: "K", date: "Sat Jun 27",
-    teams: [
-      { team: "Colombia", flag: "🇨🇴", fate: "in", note: "Confirmed group winners (6 pts)" },
-      { team: "Portugal", flag: "🇵🇹", fate: "in", note: "Confirmed through — DR Congo cannot catch (4 pts guaranteed)" },
-      { team: "DR Congo", flag: "🇨🇩", fate: "needs", note: "Win vs Uzbekistan + become best 3rd — long odds" },
-      { team: "Uzbekistan", flag: "🇺🇿", fate: "out", note: "Eliminated — 0 pts" },
-    ],
-  },
-  {
-    group: "L", date: "Sat Jun 27",
-    teams: [
-      { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", fate: "controls", note: "Win vs Panama → top 2 confirmed (7 pts)" },
-      { team: "Ghana", flag: "🇬🇭", fate: "controls", note: "Win vs Croatia → top 2 confirmed (7 pts)" },
-      { team: "Croatia", flag: "🇭🇷", fate: "controls", note: "Win vs Ghana → 6 pts, through regardless of England result" },
-      { team: "Panama", flag: "🇵🇦", fate: "out", note: "Eliminated — 0 pts" },
-    ],
-  },
-];
+const GROUP_SCENARIOS = [];
 
 const NOW_BRIEFING = {
-  headline: "Groups A–I complete — Belgium stuns, Egypt makes history, Cabo Verde face Messi. Final group day: J/K/L today.",
-  body: "The group stage drama peaked overnight: Belgium — who hadn't won in two games — exploded with a 5-1 win over New Zealand to overtake Egypt on goal difference and win Group G. De Bruyne scored in what is almost certainly his last international game. Even more emotional: Egypt advance to the knockout rounds of a World Cup for the FIRST TIME IN THEIR HISTORY — drawing 1-1 with Iran, with Iran's stoppage-time winner cruelly ruled out by VAR. Now the final matchday: all six games of Groups J, K, and L play today (Jun 27). England and Ghana have both already secured spots; the rest is wide open.",
+  headline: "All 32 teams confirmed — Round of 32 begins TODAY. Messi makes history, Kane breaks a record, DR Congo shocks.",
+  body: "The group stage is over. All 32 Round of 32 matchups are locked and the knockout tournament begins Jun 28. Saturday's finale delivered: Argentina perfect at 3-0-0 as Messi scored in his 7th straight World Cup tournament (a record). England topped Group L with Kane passing Gary Lineker as England's all-time WC top scorer. DR Congo staged a stunning three-goal comeback to beat Uzbekistan and reach the knockout stage for the FIRST TIME IN THEIR HISTORY. The best-3rd race produced seven 4-pt qualifiers (Bosnia, Paraguay, Sweden, Ecuador, DR Congo, Algeria, Ghana) and Senegal (3 pts, GD+2) as the eighth — edging out South Korea, Iran, and Scotland.",
   threads: [
-    "Belgium 5-1 New Zealand (Trossard 28' & 50', De Bruyne 66', Lukaku 86', Saelemaekers 90+') — De Bruyne goes out on a high in his final international. Belgium win Group G on GD (+4 vs Egypt's +2). R32: Belgium vs best-3rd in Seattle, Jul 1.",
-    "Egypt 1-1 Iran (Saber 5', Rezaeian 14') — Iran's Khalilzadeh scored in the 90+3' to win it, but VAR overturned the goal for offside. Ezatolahi then hit the crossbar in the final seconds. Egypt advance 2nd in Group G — their FIRST knockout stage appearance in World Cup history. R32: Egypt vs Australia, Jul 3 Dallas.",
-    "Cabo Verde 0-0 Saudi Arabia & Spain 1-0 Uruguay (Baena 42') — Cabo Verde (pop. 530k) through on 3 draws, now face Argentina and Messi in Miami Jul 2. Spain top Group H 7 pts, 0 GA. Uruguay — 2× World Cup champions — exit in groups.",
-    "Confirmed in the Round of 32 (22 of 32): Mexico, South Africa, Switzerland, Canada, Brazil, Morocco, USA, Germany, Ivory Coast, Netherlands, Japan, Sweden, France, Norway, Argentina, Colombia, Portugal, Australia, Spain, Cabo Verde, Belgium, Egypt.",
-    "TODAY (Jun 27): Group L 5 PM ET — Panama vs England (MetLife), Croatia vs Ghana (Lincoln Financial); Group K 7:30 PM ET — Colombia vs Portugal (Miami), DR Congo vs Uzbekistan (Atlanta); Group J 10 PM ET — Algeria vs Austria (Arrowhead KC), Jordan vs Argentina (AT&T Arlington).",
+    "Algeria 3-3 Austria (KC — Arnautovic 28', Belghali 41', Sabitzer 55', Mahrez 60', Mahrez 90+3', Kalajdzić 90+5') — Algeria led 3-2 deep into stoppage time before Austria's Kalajdzić equalized in the 96th minute. Both teams advance: Austria 2nd in Group J (R32 vs Spain, LA Jul 2), Algeria 3rd-best qualifier (R32 vs Switzerland, Vancouver Jul 2).",
+    "Jordan 1-3 Argentina (Lo Celso 19' free kick, Lautaro ~35' pen, Al-Tamari ~55', Messi 80' free kick) — Messi's late free kick made him the first player to score in seven consecutive World Cup tournaments. Argentina finish 3-0-0, 9 pts, the only perfect record in the tournament. R32: Argentina vs Cabo Verde, Miami Jul 2.",
+    "Panama 0-2 England (Bellingham 62', Kane 67' header) — Harry Kane's header passed Gary Lineker as England's all-time World Cup top scorer. England top Group L (7 pts). R32: England vs DR Congo, Atlanta Jul 1.",
+    "Croatia 2-1 Ghana (Sučić 31', Luckassen 73' eq, Vlašić 83' from Modric corner) — Croatia's Vlašić broke Ghanaian hearts late to clinch 2nd place in Group L (6 pts). Both teams advance: Croatia (R32 vs Portugal, Toronto Jul 2), Ghana as best-3rd qualifier (R32 vs Colombia, Kansas City Jul 3).",
+    "DR Congo 3-1 Uzbekistan (Shomurodov 10', Wissa 68' pen, Mayele 78', Wissa 90+1') — DR Congo trailed at half-time but turned it around with three second-half goals. Their FIRST EVER World Cup knockout stage appearance. R32: DR Congo vs England, Atlanta Jul 1.",
+    "Colombia 0-0 Portugal — A tense, goalless draw saw Colombia win Group K (7 pts) and Portugal advance as runners-up (5 pts). R32: Colombia vs Ghana (KC Jul 3), Portugal vs Croatia (Toronto Jul 2).",
+    "ROUND OF 32 SCHEDULE: Jun 28 LA — South Africa vs Canada | Jun 29 Boston — Germany vs Paraguay | Jun 29 Houston — Brazil vs Japan | Jun 30 Monterrey — Netherlands vs Morocco | Jun 30 NY/NJ — France vs Sweden | Jun 30 Dallas — Ivory Coast vs Norway | Jul 1 Mexico City — Mexico vs Ecuador | Jul 1 Atlanta — England vs DR Congo | Jul 1 Bay Area — USA vs Bosnia | Jul 1 Seattle — Belgium vs Senegal | Jul 2 Toronto — Portugal vs Croatia | Jul 2 LA — Spain vs Austria | Jul 2 Vancouver — Switzerland vs Algeria | Jul 2 Miami — Argentina vs Cabo Verde | Jul 3 Dallas — Australia vs Egypt | Jul 3 KC — Colombia vs Ghana.",
   ],
 };
 
 const DAY_SUMMARIES = {
   "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32'; Aasgaard 26'; Doué 90+'). Senegal 5-0 Iraq. Group H: Spain 1-0 Uruguay (Baena 42'), Cabo Verde 0-0 Saudi Arabia — Spain top, Cabo Verde through on 3 draws. Group G (11 PM): Belgium 5-1 New Zealand (Trossard 28' & 50', De Bruyne 66', Lukaku 86', Saelemaekers 90+'), Egypt 1-1 Iran (Saber 5', Rezaeian 14'; Iran's Khalilzadeh goal overturned by VAR 90+3') — Belgium win group GD tiebreaker; Egypt advance to knockouts for first time in their history.",
-  "Sat Jun 27": "Group L (5 PM ET): Panama vs England; Croatia vs Ghana. Group K (7:30 PM ET): Colombia vs Portugal; DR Congo vs Uzbekistan. Group J (10 PM ET): Algeria vs Austria; Jordan vs Argentina.",
+  "Sat Jun 27": "All groups complete. Group L (5 PM ET): England 2-0 Panama (Bellingham 62', Kane 67' — Kane passes Lineker as England's all-time WC top scorer); Croatia 2-1 Ghana (Sučić 31', Vlašić 83'). Group K (7:30 PM ET): Colombia 0-0 Portugal (Colombia win group 7 pts); DR Congo 3-1 Uzbekistan (Wissa brace, Mayele — historic first WC KO appearance for DRC). Group J (10 PM ET): Algeria 3-3 Austria (Mahrez 90+3', Kalajdzić 90+5' — frantic finish, both advance); Jordan 1-3 Argentina (Messi 80' free kick — 7th straight WC tournament scorer, all-time record).",
   "Thu Jun 25": "Group E and F completed early; Group D late drama. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace). Netherlands 3-1 Tunisia; Japan 1-1 Sweden — all three Group F teams advance. Late: Turkey 3-2 USA (Trusty 3'; Arda Güler 10', Yılmaz 31'; S. Berhalter 49'; Kaan Ayhan 90+8') — wild finish at SoFi; USA still group winners. Paraguay 0-0 Australia — Australia through 2nd.",
   "Wed Jun 24": "Groups A, B, and C wrapped. South Africa's 1-0 win over South Korea was the shock of the day, knocking the Koreans to 3rd. Mexico swept the group 3-0 over Czechia. Switzerland edged Canada 2-1 to top Group B; Bosnia beat Qatar 3-1. Brazil 3-0 Scotland, Morocco 4-2 Haiti — both advance from Group C.",
   "Tue Jun 23": "Matchday 2 wrapped for Groups K and L. Portugal exploded for 5-0; England held 0-0 by Ghana; Croatia revived with a narrow win.",
