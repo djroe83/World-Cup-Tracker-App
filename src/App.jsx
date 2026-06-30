@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 
-const DATA_AS_OF = "Sun, June 28, 2026 — All 12 groups complete. All 32 Round of 32 matchups confirmed. Play begins Jun 28.";
+const DATA_AS_OF = "Tue, June 30, 2026 — R32 Day 3. 4 of 16 R32 matches complete. Canada, Paraguay, Brazil, Morocco through to R16.";
 
 const GROUPS = {
   A: [
@@ -153,6 +153,23 @@ const MATCHES = [
   { id: 70, group: "K", md: 3, date: "Sat Jun 27", time: "7:30 PM", venue: "Mercedes-Benz Stadium, Atlanta", status: "final", home: "DR Congo", away: "Uzbekistan", hs: 3, as: 1, note: "Shomurodov 10' (UZB); Wissa 68' pen, Mayele 78', Wissa 90+1' (DRC) — DR Congo's first-ever World Cup knockout stage appearance; three late goals overturn early Uzbekistan lead" },
   { id: 71, group: "J", md: 3, date: "Sat Jun 27", time: "10:00 PM", venue: "Arrowhead Stadium, Kansas City", status: "final", home: "Algeria", away: "Austria", hs: 3, as: 3, kc: true, note: "Arnautovic 28' (AUT); Belghali 41' (ALG); Sabitzer 55' (AUT); Mahrez 60' (ALG); Mahrez 90+3' (ALG); Kalajdzić 90+5' (AUT) — Algeria thought they'd won it; Austria equalized in the 96th minute; both teams advance" },
   { id: 72, group: "J", md: 3, date: "Sat Jun 27", time: "10:00 PM", venue: "AT&T Stadium, Arlington", status: "final", home: "Jordan", away: "Argentina", hs: 1, as: 3, note: "Lo Celso 19' (free kick); Lautaro ~35' pen; Al-Tamari ~55' (JOR); Messi 80' (free kick) — Messi becomes first player to score in 7 consecutive World Cup tournaments; Argentina perfect 3-0-0" },
+  // ── Round of 32 ─────────────────────────────────────────────────────────────
+  { id: 73, round: "R32", md: "R32", date: "Sun Jun 28", time: "3:00 PM", venue: "SoFi Stadium, Inglewood", status: "final", home: "South Africa", away: "Canada", hs: 0, as: 1, note: "Eustáquio 90+4' stunning volley from outside the box — Canada reach the Round of 16 for the first time in their history; South Africa eliminated" },
+  { id: 74, round: "R32", md: "R32", date: "Mon Jun 29", time: "3:00 PM", venue: "Gillette Stadium, Foxborough", status: "final", home: "Germany", away: "Paraguay", hs: 1, as: 1, pens: "b", note: "Enciso 42' header (PAR), Havertz 54' header (GER). Paraguay win 4-3 on penalties — Gill saves Havertz & Woltemade; Tah hits the bar. First-ever WC shootout loss for Germany. Paraguay declare a national holiday. One of the greatest upsets in World Cup history." },
+  { id: 76, round: "R32", md: "R32", date: "Mon Jun 29", time: "7:00 PM", venue: "NRG Stadium, Houston", status: "final", home: "Brazil", away: "Japan", hs: 2, as: 1, note: "Sano (JPN, first half), Casemiro header (BRA), Martinelli 96' curler after Guimarães through-ball (BRA) — Japan led but Brazil's Gabriel Martinelli curled in a dramatic stoppage-time winner" },
+  { id: 75, round: "R32", md: "R32", date: "Tue Jun 30", time: "12:00 PM", venue: "Estadio BBVA, Monterrey", status: "final", home: "Netherlands", away: "Morocco", hs: 1, as: 1, pens: "b", note: "Gakpo 72' (NED), Diop 90+1' header (MAR). Morocco win 3-2 on penalties — Bounou saves Summerville; Kluivert & Timber miss; Saibari scores the winner. Netherlands eliminated via shootout for the 3rd consecutive World Cup." },
+  { id: 78, round: "R32", md: "R32", date: "Tue Jun 30", time: "1:00 PM", venue: "AT&T Stadium, Arlington", status: "upcoming", home: "Ivory Coast", away: "Norway" },
+  { id: 77, round: "R32", md: "R32", date: "Tue Jun 30", time: "5:00 PM", venue: "MetLife Stadium, East Rutherford", status: "upcoming", home: "France", away: "Sweden" },
+  { id: 79, round: "R32", md: "R32", date: "Tue Jun 30", time: "9:00 PM", venue: "Estadio Azteca, Mexico City", status: "upcoming", home: "Mexico", away: "Ecuador" },
+  { id: 80, round: "R32", md: "R32", date: "Wed Jul 1", time: "3:00 PM", venue: "Mercedes-Benz Stadium, Atlanta", status: "upcoming", home: "England", away: "DR Congo", est: true },
+  { id: 81, round: "R32", md: "R32", date: "Wed Jul 1", time: "6:00 PM", venue: "Levi's Stadium, Santa Clara", status: "upcoming", home: "USA", away: "Bosnia & Herzegovina", est: true },
+  { id: 82, round: "R32", md: "R32", date: "Wed Jul 1", time: "9:00 PM", venue: "Lumen Field, Seattle", status: "upcoming", home: "Belgium", away: "Senegal", est: true },
+  { id: 83, round: "R32", md: "R32", date: "Thu Jul 2", time: "12:00 PM", venue: "BMO Field, Toronto", status: "upcoming", home: "Portugal", away: "Croatia", est: true },
+  { id: 84, round: "R32", md: "R32", date: "Thu Jul 2", time: "3:00 PM", venue: "SoFi Stadium, Inglewood", status: "upcoming", home: "Spain", away: "Austria", est: true },
+  { id: 85, round: "R32", md: "R32", date: "Thu Jul 2", time: "6:00 PM", venue: "BC Place, Vancouver", status: "upcoming", home: "Switzerland", away: "Algeria", est: true },
+  { id: 86, round: "R32", md: "R32", date: "Thu Jul 2", time: "9:00 PM", venue: "Hard Rock Stadium, Miami Gardens", status: "upcoming", home: "Argentina", away: "Cabo Verde", est: true },
+  { id: 87, round: "R32", md: "R32", date: "Fri Jul 3", time: "3:00 PM", venue: "Arrowhead Stadium, Kansas City", status: "upcoming", home: "Colombia", away: "Ghana", kc: true, est: true },
+  { id: 88, round: "R32", md: "R32", date: "Fri Jul 3", time: "7:00 PM", venue: "AT&T Stadium, Arlington", status: "upcoming", home: "Australia", away: "Egypt", est: true },
 ];
 
 const RANKINGS = [
@@ -214,7 +231,7 @@ const R32 = [
   // M78b: Norway finished 2nd in Group I — confirmed
   { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
   // M79b: Ecuador confirmed — after Sweden (F3rd) goes to M77, Ecuador (E3rd, 4 pts GD 0) is best remaining from C/E/F/H/I pool
-  { m: 79, date: "Jul 1", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { team: "Ecuador", flag: "🇪🇨", conf: true } },
+  { m: 79, date: "Jun 30", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { team: "Ecuador", flag: "🇪🇨", conf: true } },
   { m: 80, date: "Jul 1", venue: "Atlanta", a: { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", conf: true }, b: { team: "DR Congo", flag: "🇨🇩", conf: true } },
   // M81b: Bosnia confirmed — B3rd (4 pts GD-1) fills this slot after Sweden (F3rd) goes to M77 and Ecuador (E3rd) goes to M79
   { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { team: "Bosnia & Herzegovina", flag: "🇧🇦", conf: true } },
@@ -257,28 +274,28 @@ const FINAL = { m: 104, date: "Jul 19", venue: "New York NJ", from: [101, 102] }
 
 const QUALIFICATION = [
   { team: "Mexico", flag: "🇲🇽", state: "in", detail: "Won Group A 3-0-0 — perfect record, 9 pts" },
-  { team: "South Africa", flag: "🇿🇦", state: "in", detail: "2nd in Group A — shock 1-0 win over South Korea clinched it" },
+  { team: "South Africa", flag: "🇿🇦", state: "out", detail: "ELIMINATED — Lost to Canada 0-1 in R32 (Los Angeles). Eustáquio's 90+4' volley ended South Africa's run; Canada reach the R16 for the first time." },
   { team: "Switzerland", flag: "🇨🇭", state: "in", detail: "Won Group B (7 pts), edged Canada 2-1 on MD3" },
-  { team: "Canada", flag: "🇨🇦", state: "in", detail: "2nd in Group B (4 pts, GD +5)" },
-  { team: "Brazil", flag: "🇧🇷", state: "in", detail: "Won Group C (7 pts), beat Scotland 3-0 on MD3" },
-  { team: "Morocco", flag: "🇲🇦", state: "in", detail: "2nd in Group C (7 pts, GD +3), beat Haiti 4-2" },
+  { team: "Canada", flag: "🇨🇦", state: "in", detail: "R16 bound — beat South Africa 1-0 in R32 (Eustáquio 90+4' volley). First knockout stage win in Canadian World Cup history. R16 vs Morocco, Houston Jul 4." },
+  { team: "Brazil", flag: "🇧🇷", state: "in", detail: "R16 bound — beat Japan 2-1 in R32 (Martinelli 96' winner). Japan led early (Sano), Casemiro equalized, then Martinelli curled in a dramatic last-gasp winner. R16 vs Ivory Coast/Norway winner, NY/NJ Jul 5." },
+  { team: "Morocco", flag: "🇲🇦", state: "in", detail: "R16 bound — beat Netherlands 3-2 on penalties in R32 (1-1 AET, Monterrey). Gakpo 72', Diop 90+1'. Bounou heroics in shootout; Saibari scored the winner. Netherlands exit in shootout for 3rd straight WC. R16 vs Canada, Houston Jul 4." },
   { team: "USA", flag: "🇺🇸", state: "in", detail: "Won Group D (6 pts) — R32 Jul 1, Bay Area vs Bosnia & Herzegovina; lost 2-3 to Turkey on MD3 in a drama-filled final group game" },
-  { team: "Germany", flag: "🇩🇪", state: "in", detail: "Won Group E (6 pts) despite shock 1-2 loss to Ecuador on MD3" },
+  { team: "Germany", flag: "🇩🇪", state: "out", detail: "ELIMINATED — Lost to Paraguay on penalties in R32 (1-1 AET; Paraguay 4-3 pens). Enciso 42', Havertz 54'. Havertz missed Germany's first penalty; Tah hit the bar. First-ever WC shootout loss for Germany." },
   { team: "France", flag: "🇫🇷", state: "in", detail: "Won Group I (9 pts, GD +8) — Dembélé first-half hat-trick (7', 20', 32') in 4-1 win over Norway; R32 Jun 30, New York NJ" },
   { team: "Norway", flag: "🇳🇴", state: "in", detail: "2nd in Group I (6 pts) — lost 1-4 to France; Haaland scoreless in MD3; R32 Jun 30, Dallas vs Ivory Coast" },
   { team: "Argentina", flag: "🇦🇷", state: "in", detail: "Won Group J (9 pts, 3-0-0) — Messi 80' free kick vs Jordan; first player to score in 7 consecutive World Cup tournaments; R32 Jul 2 Miami vs Cabo Verde" },
   { team: "Spain", flag: "🇪🇸", state: "in", detail: "Won Group H (7 pts, GD +5) — Álex Baena 42' sealed 1-0 win over Uruguay; R32 Jul 2, Los Angeles vs Austria" },
-  { team: "Netherlands", flag: "🇳🇱", state: "in", detail: "Won Group F (7 pts) — beat Tunisia 3-1 on MD3; R32 Jun 30, Monterrey vs Morocco" },
-  { team: "Japan", flag: "🇯🇵", state: "in", detail: "2nd in Group F (5 pts) — drew 1-1 with Sweden on MD3; R32 Jun 29, Houston vs Brazil" },
+  { team: "Netherlands", flag: "🇳🇱", state: "out", detail: "ELIMINATED — Lost to Morocco on penalties in R32 (1-1 AET; Morocco 3-2 pens). Gakpo 72', Diop 90+1'. Kluivert & Timber missed; Bounou saved Summerville. Netherlands exit WC in shootout for 3rd consecutive tournament." },
+  { team: "Japan", flag: "🇯🇵", state: "out", detail: "ELIMINATED — Lost to Brazil 1-2 in R32 (Houston). Sano gave Japan an early lead, but Casemiro equalized and Martinelli's 96th-minute curler won it. Japan's brilliant group stage run ends." },
   { team: "Colombia", flag: "🇨🇴", state: "in", detail: "Won Group K (7 pts) — 0-0 draw with Portugal on MD3; R32 Jul 3, Kansas City vs Ghana" },
   { team: "Portugal", flag: "🇵🇹", state: "in", detail: "2nd in Group K (5 pts, GD +5) — drew 0-0 with Colombia (MD3); R32 Jul 2, Toronto vs Croatia" },
   { team: "Egypt", flag: "🇪🇬", state: "in", detail: "2nd in Group G (5 pts) — drew 1-1 with Iran (Saber 5'; VAR drama at end); R32 Jul 3, Dallas vs Australia. First time Egypt has EVER advanced past the World Cup group stage" },
-  { team: "Belgium", flag: "🇧🇪", state: "in", detail: "Won Group G (5 pts, GD +4) — 5-1 rout of New Zealand (Trossard ×2, De Bruyne, Lukaku, Saelemaekers) overtook Egypt on final day; R32 Jul 1, Seattle vs 3rd-place team" },
+  { team: "Belgium", flag: "🇧🇪", state: "in", detail: "Won Group G (5 pts, GD +4) — 5-1 rout of New Zealand (Trossard ×2, De Bruyne, Lukaku, Saelemaekers) overtook Egypt on final day; R32 Jul 1, Seattle vs Senegal" },
   { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", state: "in", detail: "Won Group L (7 pts) — Bellingham 62', Kane 67' beat Panama 2-0; Kane passes Lineker as England's all-time WC top scorer; R32 Jul 1 Atlanta vs DR Congo" },
   { team: "Bosnia & Herzegovina", flag: "🇧🇦", state: "in", detail: "3rd in Group B (4 pts, GD −1) — confirmed best-3rd qualifier; R32 Jul 1 Bay Area vs USA" },
   { team: "South Korea", flag: "🇰🇷", state: "out", detail: "Eliminated — 3rd in Group A (3 pts, GD −1); did not advance as best-3rd (outranked by 7 teams with 4 pts and Senegal with GD +2)" },
   { team: "Australia", flag: "🇦🇺", state: "in", detail: "2nd in Group D (4 pts, GD 0) — drew 0-0 with Paraguay on MD3; advance to R32 Jul 3, Dallas" },
-  { team: "Paraguay", flag: "🇵🇾", state: "in", detail: "3rd in Group D (4 pts, GD −2) — confirmed best-3rd qualifier; R32 Jun 29 Boston vs Germany" },
+  { team: "Paraguay", flag: "🇵🇾", state: "in", detail: "R16 bound — SHOCKED Germany 4-3 on penalties in R32 (1-1 AET, Foxborough). Enciso 42', Havertz 54'. Goalkeeper Gill saved Havertz & Woltemade; Tah hit the bar. Paraguay declare national holiday. One of the greatest WC upsets ever. R16 vs France/Sweden winner, Philadelphia Jul 4." },
   { team: "Ivory Coast", flag: "🇨🇮", state: "in", detail: "2nd in Group E (6 pts) — Pépé brace vs Curaçao on MD3 sealed 2nd place" },
   { team: "Sweden", flag: "🇸🇪", state: "in", detail: "3rd in Group F (4 pts, GD 0) — confirmed best-3rd qualifier; R32 Jun 30 New York NJ vs France" },
   { team: "Iran", flag: "🇮🇷", state: "out", detail: "Eliminated — 3rd in Group G (3 pts, GD 0); did not advance as best-3rd (outranked by Senegal on GD); VAR denied them victory vs Egypt in heartbreaking fashion" },
@@ -310,20 +327,23 @@ const QUALIFICATION = [
 const GROUP_SCENARIOS = [];
 
 const NOW_BRIEFING = {
-  headline: "All 32 teams confirmed — Round of 32 begins TODAY. Messi makes history, Kane breaks a record, DR Congo shocks.",
-  body: "The group stage is over. All 32 Round of 32 matchups are locked and the knockout tournament begins Jun 28. Saturday's finale delivered: Argentina perfect at 3-0-0 as Messi scored in his 7th straight World Cup tournament (a record). England topped Group L with Kane passing Gary Lineker as England's all-time WC top scorer. DR Congo staged a stunning three-goal comeback to beat Uzbekistan and reach the knockout stage for the FIRST TIME IN THEIR HISTORY. The best-3rd race produced seven 4-pt qualifiers (Bosnia, Paraguay, Sweden, Ecuador, DR Congo, Algeria, Ghana) and Senegal (3 pts, GD+2) as the eighth — edging out South Korea, Iran, and Scotland.",
+  headline: "R32 underway — Paraguay SHOCK Germany, Morocco beat Netherlands on pens. Three matches today (Jun 30).",
+  body: "Four Round of 32 matches are complete and the drama has been extraordinary. Canada knocked out South Africa with a stoppage-time volley (Jun 28). Then came the day of shocks: Paraguay — a 3rd-place team from Group D — eliminated Germany on penalties in Boston, and Morocco beat the Netherlands on penalties in Monterrey. Germany lost a World Cup shootout for the first time EVER. Brazil survived Japan's early lead with Martinelli's 96th-minute winner. Today (Jun 30): Netherlands vs Morocco result is in; Ivory Coast vs Norway (1 PM ET Dallas), France vs Sweden (5 PM ET MetLife), Mexico vs Ecuador (9 PM ET Azteca) are today's remaining matches.",
   threads: [
-    "Algeria 3-3 Austria (KC — Arnautovic 28', Belghali 41', Sabitzer 55', Mahrez 60', Mahrez 90+3', Kalajdzić 90+5') — Algeria led 3-2 deep into stoppage time before Austria's Kalajdzić equalized in the 96th minute. Both teams advance: Austria 2nd in Group J (R32 vs Spain, LA Jul 2), Algeria 3rd-best qualifier (R32 vs Switzerland, Vancouver Jul 2).",
-    "Jordan 1-3 Argentina (Lo Celso 19' free kick, Lautaro ~35' pen, Al-Tamari ~55', Messi 80' free kick) — Messi's late free kick made him the first player to score in seven consecutive World Cup tournaments. Argentina finish 3-0-0, 9 pts, the only perfect record in the tournament. R32: Argentina vs Cabo Verde, Miami Jul 2.",
-    "Panama 0-2 England (Bellingham 62', Kane 67' header) — Harry Kane's header passed Gary Lineker as England's all-time World Cup top scorer. England top Group L (7 pts). R32: England vs DR Congo, Atlanta Jul 1.",
-    "Croatia 2-1 Ghana (Sučić 31', Luckassen 73' eq, Vlašić 83' from Modric corner) — Croatia's Vlašić broke Ghanaian hearts late to clinch 2nd place in Group L (6 pts). Both teams advance: Croatia (R32 vs Portugal, Toronto Jul 2), Ghana as best-3rd qualifier (R32 vs Colombia, Kansas City Jul 3).",
-    "DR Congo 3-1 Uzbekistan (Shomurodov 10', Wissa 68' pen, Mayele 78', Wissa 90+1') — DR Congo trailed at half-time but turned it around with three second-half goals. Their FIRST EVER World Cup knockout stage appearance. R32: DR Congo vs England, Atlanta Jul 1.",
-    "Colombia 0-0 Portugal — A tense, goalless draw saw Colombia win Group K (7 pts) and Portugal advance as runners-up (5 pts). R32: Colombia vs Ghana (KC Jul 3), Portugal vs Croatia (Toronto Jul 2).",
-    "ROUND OF 32 SCHEDULE: Jun 28 LA — South Africa vs Canada | Jun 29 Boston — Germany vs Paraguay | Jun 29 Houston — Brazil vs Japan | Jun 30 Monterrey — Netherlands vs Morocco | Jun 30 NY/NJ — France vs Sweden | Jun 30 Dallas — Ivory Coast vs Norway | Jul 1 Mexico City — Mexico vs Ecuador | Jul 1 Atlanta — England vs DR Congo | Jul 1 Bay Area — USA vs Bosnia | Jul 1 Seattle — Belgium vs Senegal | Jul 2 Toronto — Portugal vs Croatia | Jul 2 LA — Spain vs Austria | Jul 2 Vancouver — Switzerland vs Algeria | Jul 2 Miami — Argentina vs Cabo Verde | Jul 3 Dallas — Australia vs Egypt | Jul 3 KC — Colombia vs Ghana.",
+    "Canada 1-0 South Africa (Jun 28, Los Angeles): Eustáquio 90+4' volley — Canada's first knockout win ever. R16: Canada vs Morocco, Houston Jul 4.",
+    "Germany 1-1 Paraguay AET, Paraguay 4-3 pens (Jun 29, Foxborough): Enciso 42' (PAR), Havertz 54' (GER). Gill saves Havertz & Woltemade; Tah hits the bar. GERMANY ELIMINATED. Paraguay declare national holiday. R16 vs France/Sweden winner, Philadelphia Jul 4.",
+    "Brazil 2-1 Japan (Jun 29, Houston): Sano (JPN), Casemiro header (BRA), Martinelli 96' curler (BRA) — dramatic comeback winner in stoppage time. R16 vs Ivory Coast/Norway winner, New York Jul 5.",
+    "Netherlands 1-1 Morocco AET, Morocco 3-2 pens (Jun 30, Monterrey): Gakpo 72' (NED), Diop 90+1' equalizer (MAR). Bounou saves Summerville; Saibari wins it. NETHERLANDS ELIMINATED — 3rd straight WC exit on pens. R16: Morocco vs Canada, Houston Jul 4.",
+    "TODAY (Jun 30): Ivory Coast vs Norway 1 PM ET, Dallas · France vs Sweden 5 PM ET, MetLife · Mexico vs Ecuador 9 PM ET, Azteca.",
+    "COMING UP (Jul 1): England vs DR Congo 3 PM ET Atlanta · USA vs Bosnia 6 PM ET Bay Area · Belgium vs Senegal 9 PM ET Seattle.",
+    "COMING UP (Jul 2–3): Portugal vs Croatia (Toronto) · Spain vs Austria (LA) · Switzerland vs Algeria (Vancouver) · Argentina vs Cabo Verde (Miami) · Colombia vs Ghana (KC) · Australia vs Egypt (Dallas).",
   ],
 };
 
 const DAY_SUMMARIES = {
+  "Sun Jun 28": "Round of 32 begins. Canada 1-0 South Africa (Los Angeles) — Eustáquio 90+4' volley wins it; Canada reach the R16 for the FIRST TIME IN THEIR HISTORY. South Africa eliminated after their best-ever WC performance.",
+  "Mon Jun 29": "R32 Day 2 — two historic results. Germany 1-1 Paraguay (AET, PAR 4-3 pens, Boston): Enciso 42' (PAR), Havertz 54' (GER); Paraguay GK Orlando Gill saved Havertz & Woltemade, Tah hit the bar — FIRST-EVER WC shootout loss for Germany. Paraguay declare national holiday. Brazil 2-1 Japan (Houston): Sano gave Japan the lead, Casemiro equalized with a header, Martinelli curled in a 96th-minute winner after Guimarães played him through.",
+  "Tue Jun 30": "R32 Day 3 (in progress). Netherlands 1-1 Morocco (AET, MAR 3-2 pens, Monterrey): Gakpo 72' (NED), Diop 90+1' (MAR); Bounou saves Summerville; Saibari wins it — Morocco through, Netherlands exit WC in shootout for 3rd consecutive time. Evening: Ivory Coast vs Norway (1 PM ET, Dallas), France vs Sweden (5 PM ET, MetLife), Mexico vs Ecuador (9 PM ET, Azteca) — all yet to be completed.",
   "Fri Jun 26": "Group I: France 4-1 Norway (Dembélé hat-trick 7', 20', 32'; Aasgaard 26'; Doué 90+'). Senegal 5-0 Iraq. Group H: Spain 1-0 Uruguay (Baena 42'), Cabo Verde 0-0 Saudi Arabia — Spain top, Cabo Verde through on 3 draws. Group G (11 PM): Belgium 5-1 New Zealand (Trossard 28' & 50', De Bruyne 66', Lukaku 86', Saelemaekers 90+'), Egypt 1-1 Iran (Saber 5', Rezaeian 14'; Iran's Khalilzadeh goal overturned by VAR 90+3') — Belgium win group GD tiebreaker; Egypt advance to knockouts for first time in their history.",
   "Sat Jun 27": "All groups complete. Group L (5 PM ET): England 2-0 Panama (Bellingham 62', Kane 67' — Kane passes Lineker as England's all-time WC top scorer); Croatia 2-1 Ghana (Sučić 31', Vlašić 83'). Group K (7:30 PM ET): Colombia 0-0 Portugal (Colombia win group 7 pts); DR Congo 3-1 Uzbekistan (Wissa brace, Mayele — historic first WC KO appearance for DRC). Group J (10 PM ET): Algeria 3-3 Austria (Mahrez 90+3', Kalajdzić 90+5' — frantic finish, both advance); Jordan 1-3 Argentina (Messi 80' free kick — 7th straight WC tournament scorer, all-time record).",
   "Thu Jun 25": "Group E and F completed early; Group D late drama. Ecuador stunned Germany 2-1 (Angulo 7', Plata 77'); Ivory Coast beat Curaçao 2-0 (Pépé brace). Netherlands 3-1 Tunisia; Japan 1-1 Sweden — all three Group F teams advance. Late: Turkey 3-2 USA (Trusty 3'; Arda Güler 10', Yılmaz 31'; S. Berhalter 49'; Kaan Ayhan 90+8') — wild finish at SoFi; USA still group winners. Paraguay 0-0 Australia — Australia through 2nd.",
@@ -780,16 +800,21 @@ function MatchCard({ m, expanded, onToggle, alwaysOpen = false }) {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <Pill tone="default">Grp {m.group}</Pill>
+          <Pill tone="default">{m.round || `Grp ${m.group}`}</Pill>
           {m.status === "live" && <Pill tone="live">● Live</Pill>}
-          {m.status === "final" && <Pill tone="final">Full time</Pill>}
+          {m.status === "final" && <Pill tone="final">{m.pens ? "AET · Pens" : "Full time"}</Pill>}
           {m.status === "upcoming" && <Pill tone="upcoming">{m.date} · {m.time}</Pill>}
           {m.kc && <Pill tone="kc">Kansas City</Pill>}
         </div>
         {!alwaysOpen && <span style={{ fontSize: 11, color: T.textDim }}>{expanded ? "▲" : "▼"}</span>}
       </div>
-      <TeamRow name={m.home} flag={FLAG[m.home]} score={scoreShown ? m.hs : null} win={scoreShown && m.hs > m.as} />
-      <TeamRow name={m.away} flag={FLAG[m.away]} score={scoreShown ? m.as : null} win={scoreShown && m.as > m.hs} />
+      <TeamRow name={m.home} flag={FLAG[m.home]} score={scoreShown ? m.hs : null} win={scoreShown && (m.hs > m.as || (m.pens === "a" && m.hs === m.as))} />
+      <TeamRow name={m.away} flag={FLAG[m.away]} score={scoreShown ? m.as : null} win={scoreShown && (m.as > m.hs || (m.pens === "b" && m.hs === m.as))} />
+      {m.pens && scoreShown && (
+        <div style={{ fontSize: 10, fontWeight: 700, color: T.green, textAlign: "center", marginTop: 3 }}>
+          {m.pens === "a" ? m.home : m.away} advance on penalties
+        </div>
+      )}
       <div style={{ marginTop: 10, fontSize: 11, color: T.textDim, display: "flex", gap: 6, alignItems: "center" }}>
         <span>📍</span><span>{m.venue}</span>
       </div>
@@ -810,7 +835,7 @@ function MatchCard({ m, expanded, onToggle, alwaysOpen = false }) {
             </>
           ) : (
             <div style={{ fontSize: 12.5, color: T.textDim, lineHeight: 1.5 }}>
-              Matchday {m.md} · odds open closer to kickoff.
+              {typeof m.md === "number" ? `Matchday ${m.md}` : m.md} · odds open closer to kickoff.
               {m.note && <div style={{ marginTop: 6, color: T.amber }}>⭐ {m.note}</div>}
             </div>
           )}
@@ -1363,7 +1388,7 @@ export default function App() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                 <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: T.text }}>{day.date}</h3>
-                <span style={{ fontSize: 10, color: T.textDim, textTransform: "uppercase" }}>MD{day.md} · {day.games.length} games</span>
+                <span style={{ fontSize: 10, color: T.textDim, textTransform: "uppercase" }}>{typeof day.md === "number" ? `MD${day.md}` : day.md} · {day.games.length} games</span>
               </div>
               {DAY_SUMMARIES[day.date] && (
                 <div style={{ background: T.amberBg, border: `1px solid ${T.amberBorder}`, borderRadius: 12, padding: "13px 14px", marginBottom: 14 }}>
