@@ -219,21 +219,14 @@ const TITLE_ODDS = [
 const TITLE_ODDS_NOTE = "Pre-tournament line from the December draw vs. current price (Jun 20). Pre-game/futures only — not live in-play.";
 
 const R32 = [
-  { m: 73, date: "Jun 28", venue: "Los Angeles", a: { team: "South Africa", flag: "🇿🇦", conf: true }, b: { team: "Canada", flag: "🇨🇦", conf: true } },
-  // M74b: Paraguay confirmed — Sweden (F3rd) goes to M77, Bosnia (B3rd) goes to M81; Paraguay (D3rd, 4 pts) is next best from A/B/C/D/F pool
-  { m: 74, date: "Jun 29", venue: "Boston", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { team: "Paraguay", flag: "🇵🇾", conf: true } },
-  { m: 75, date: "Jun 30", venue: "Monterrey", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
-  { m: 76, date: "Jun 29", venue: "Houston", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { team: "Japan", flag: "🇯🇵", conf: true } },
-  // M77a: France won Group I (9 pts) — confirmed
-  // M77b: Sweden confirmed — after Paraguay (D3rd) goes to M74, Sweden (F3rd, 4 pts GD 0) is best remaining from C/D/F/G/H pool
-  { m: 77, date: "Jun 30", venue: "New York NJ", a: { team: "France", flag: "🇫🇷", conf: true }, b: { team: "Sweden", flag: "🇸🇪", conf: true } },
-  // M78a: Ivory Coast confirmed 2nd in Group E
-  // M78b: Norway finished 2nd in Group I — confirmed
-  { m: 78, date: "Jun 30", venue: "Dallas", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
-  // M79b: Ecuador confirmed — after Sweden (F3rd) goes to M77, Ecuador (E3rd, 4 pts GD 0) is best remaining from C/E/F/H/I pool
-  { m: 79, date: "Jun 30", venue: "Mexico City", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { team: "Ecuador", flag: "🇪🇨", conf: true } },
-  { m: 80, date: "Jul 1", venue: "Atlanta", a: { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", conf: true }, b: { team: "DR Congo", flag: "🇨🇩", conf: true } },
-  // M81b: Bosnia confirmed — B3rd (4 pts GD-1) fills this slot after Sweden (F3rd) goes to M77 and Ecuador (E3rd) goes to M79
+  { m: 73, date: "Jun 28", venue: "Los Angeles", winner: "b", score: "0–1", a: { team: "South Africa", flag: "🇿🇦", conf: true }, b: { team: "Canada", flag: "🇨🇦", conf: true } },
+  { m: 74, date: "Jun 29", venue: "Boston", winner: "b", score: "1–1 (pens)", a: { team: "Germany", flag: "🇩🇪", conf: true }, b: { team: "Paraguay", flag: "🇵🇾", conf: true } },
+  { m: 75, date: "Jun 30", venue: "Monterrey", winner: "b", score: "1–1 (pens)", a: { team: "Netherlands", flag: "🇳🇱", conf: true }, b: { team: "Morocco", flag: "🇲🇦", conf: true } },
+  { m: 76, date: "Jun 29", venue: "Houston", winner: "a", score: "2–1", a: { team: "Brazil", flag: "🇧🇷", conf: true }, b: { team: "Japan", flag: "🇯🇵", conf: true } },
+  { m: 77, date: "Jun 30", venue: "New York NJ", winner: "a", score: "3–0", a: { team: "France", flag: "🇫🇷", conf: true }, b: { team: "Sweden", flag: "🇸🇪", conf: true } },
+  { m: 78, date: "Jun 30", venue: "Dallas", winner: "b", score: "1–2", a: { team: "Ivory Coast", flag: "🇨🇮", conf: true }, b: { team: "Norway", flag: "🇳🇴", conf: true } },
+  { m: 79, date: "Jun 30", venue: "Mexico City", winner: "a", score: "2–0", a: { team: "Mexico", flag: "🇲🇽", conf: true }, b: { team: "Ecuador", flag: "🇪🇨", conf: true } },
+  { m: 80, date: "Jul 1", venue: "Atlanta", winner: "a", score: "2–1", a: { team: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", conf: true }, b: { team: "DR Congo", flag: "🇨🇩", conf: true } },
   { m: 81, date: "Jul 1", venue: "Bay Area", us: true, a: { team: "USA", flag: "🇺🇸", conf: true }, b: { team: "Bosnia & Herzegovina", flag: "🇧🇦", conf: true } },
   { m: 82, date: "Jul 1", venue: "Seattle", a: { team: "Belgium", flag: "🇧🇪", conf: true }, b: { team: "Senegal", flag: "🇸🇳", conf: true } },
   { m: 83, date: "Jul 2", venue: "Toronto", a: { team: "Portugal", flag: "🇵🇹", conf: true }, b: { team: "Croatia", flag: "🇭🇷", conf: true } },
@@ -1093,14 +1086,15 @@ function flagFor(name) {
   return alias[name] || "⚽";
 }
 
-function ForecastSlot({ slot }) {
+function ForecastSlot({ slot, won }) {
   const [open, setOpen] = useState(false);
   if (slot.conf) {
+    const isLoser = won === false;
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: T.greenBg, borderLeft: `2px solid ${T.green}`, borderRadius: 5 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: isLoser ? "#fef2f2" : T.greenBg, borderLeft: `2px solid ${isLoser ? T.red : T.green}`, borderRadius: 5, opacity: isLoser ? 0.72 : 1 }}>
         <span style={{ fontSize: 14 }}>{slot.flag}</span>
-        <span style={{ fontSize: 12.5, fontWeight: 700, color: T.green }}>{slot.team}</span>
-        <span style={{ marginLeft: "auto", fontSize: 9, color: T.green }}>✓</span>
+        <span style={{ fontSize: 12.5, fontWeight: 700, color: isLoser ? T.red : T.green }}>{slot.team}</span>
+        <span style={{ marginLeft: "auto", fontSize: 9, color: isLoser ? T.red : T.green }}>{won === true ? "ADV ✓" : won === false ? "OUT ✗" : "✓"}</span>
       </div>
     );
   }
@@ -1135,25 +1129,40 @@ function TreeMatch({ match }) {
   return (
     <div style={{ background: T.cardBg, border: `1px solid ${match.kc ? T.amberBorder : T.border}`, borderRadius: 9, padding: 7, display: "flex", flexDirection: "column", gap: 4, width: 210, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8.5, color: T.textDim, padding: "0 2px 1px" }}>
-        <span>M{match.m}</span>
+        <span>M{match.m}{match.score ? ` · ${match.score}` : ""}</span>
         <span>{match.date} · {match.venue}{match.kc ? " ★" : ""}</span>
       </div>
-      <ForecastSlot slot={match.a} />
-      <ForecastSlot slot={match.b} />
+      <ForecastSlot slot={match.a} won={match.winner === "a" ? true : match.winner === "b" ? false : undefined} />
+      <ForecastSlot slot={match.b} won={match.winner === "b" ? true : match.winner === "a" ? false : undefined} />
     </div>
   );
 }
 
 function FutureMatch({ match, label }) {
+  const r32ById = Object.fromEntries(R32.map((m) => [m.m, m]));
+  const getWinner = (fromId) => {
+    const r = r32ById[fromId];
+    if (!r?.winner) return null;
+    return r.winner === "a" ? r.a : r.b;
+  };
   return (
     <div style={{ background: T.cardBg, border: `1px solid ${match.us ? T.blueBorder : match.kc ? T.amberBorder : T.border}`, borderRadius: 9, padding: 7, display: "flex", flexDirection: "column", gap: 4, width: 210, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 8.5, color: T.textDim, padding: "0 2px 1px" }}>
         <span>{label}</span>
         <span>{match.date} · {match.venue}{match.kc ? " ★" : ""}</span>
       </div>
-      {match.from.map((f) => (
-        <div key={f} style={{ padding: "6px 8px", background: T.inputBg, borderRadius: 5, fontSize: 10.5, color: T.textMid }}>Winner M{f}</div>
-      ))}
+      {match.from.map((f) => {
+        const w = getWinner(f);
+        return w ? (
+          <div key={f} style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", background: T.greenBg, borderLeft: `2px solid ${T.green}`, borderRadius: 5 }}>
+            <span style={{ fontSize: 14 }}>{w.flag}</span>
+            <span style={{ fontSize: 12.5, fontWeight: 700, color: T.green }}>{w.team}</span>
+            <span style={{ marginLeft: "auto", fontSize: 9, color: T.green }}>✓</span>
+          </div>
+        ) : (
+          <div key={f} style={{ padding: "6px 8px", background: T.inputBg, borderRadius: 5, fontSize: 10.5, color: T.textMid }}>Winner M{f}</div>
+        );
+      })}
     </div>
   );
 }
